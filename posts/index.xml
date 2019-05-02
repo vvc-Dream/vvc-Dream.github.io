@@ -6,10 +6,19 @@
     <description>Recent content in Posts on vvc-Dream的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 20 Jan 2019 15:52:31 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 02 May 2019 12:26:10 +0800</lastBuildDate>
     
 	<atom:link href="https://vvc-Dream.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Git基本操作</title>
+      <link>https://vvc-Dream.github.io/posts/git/</link>
+      <pubDate>Thu, 02 May 2019 12:26:10 +0800</pubDate>
+      
+      <guid>https://vvc-Dream.github.io/posts/git/</guid>
+      <description>&lt;p&gt;​   个人整理日常使用较多的Git基本操作。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>使用Hugo&#43;Github创建个人博客</title>

@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://vvc-Dream.github.io/posts/git/</loc>
+    <lastmod>2019-05-02T12:26:10+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://vvc-Dream.github.io/posts/create-hugo-blog/</loc>
     <lastmod>2019-01-20T15:52:31+08:00</lastmod>
   </url>
@@ -31,31 +36,31 @@
   
   <url>
     <loc>https://vvc-Dream.github.io/tags/hugo/</loc>
-    <lastmod>2019-01-20T15:52:31+08:00</lastmod>
+    <lastmod>2019-05-02T12:26:10+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://vvc-Dream.github.io/posts/</loc>
-    <lastmod>2019-01-20T15:52:31+08:00</lastmod>
+    <lastmod>2019-05-02T12:26:10+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://vvc-Dream.github.io/tags/</loc>
-    <lastmod>2019-01-20T15:52:31+08:00</lastmod>
+    <lastmod>2019-05-02T12:26:10+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://vvc-Dream.github.io/</loc>
-    <lastmod>2019-01-20T15:52:31+08:00</lastmod>
+    <lastmod>2019-05-02T12:26:10+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://vvc-Dream.github.io/categories/%E5%BC%80%E5%8F%91/</loc>
-    <lastmod>2019-01-20T15:52:31+08:00</lastmod>
+    <lastmod>2019-05-02T12:26:10+08:00</lastmod>
     <priority>0</priority>
   </url>
   
