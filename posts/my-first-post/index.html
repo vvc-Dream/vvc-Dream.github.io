@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+	<meta name="msvalidate.01" content="E41E35607EFA4063D8C1CA15B84D8B8C" />
+    <meta charset="utf-8">
+    <meta name="generator" content="Hugo 0.53" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>My First Post | vvc-Dream的博客</title>
+    <meta property="og:title" content="My First Post - vvc-Dream的博客">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content="2019-01-18T23:54:01&#43;08:00">
+        
+        
+    <meta property="article:modified_time" content="2019-01-18T23:54:01&#43;08:00">
+        
+    <meta name="Keywords" content="vvc-Dream keywords">
+    <meta name="description" content="这是手动指定的概要内容。
+这是个多行文本
+
+所以首先使用 `|` 开启了多行，并且所有行都向内缩进了一层。
+">
+        
+    <meta name="author" content="vvc-Dream">
+    <meta property="og:url" content="https://vvc-Dream.github.io/posts/my-first-post/">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="/css/normalize.css">
+    
+        <link rel="stylesheet" href="/css/prism.css">
+    
+    <link rel="stylesheet" href="/css/style.css">
+    <script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+
+    
+
+
+    
+    
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+	<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/meting/dist/Meting.min.js"></script>
+	<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+	<script src="//cdn.bootcss.com/jquery.pjax/1.9.6/jquery.pjax.min.js"></script>
+		
+		<div class="aplayer" data-id="2625893735" data-server="netease" data-type="playlist" data-fixed="true" data-autoplay="false" data-volume="1.0">
+		</div>
+    
+<script>
+$(document).pjax('a[target!=_blank]', '#main', {fragment:'#main', timeout:8000});
+$(document).on('pjax:send', function() { 
+    $(".pjax_loading").css("display", "block");
+});
+$(document).on('pjax:complete', function() { 
+    $(".pjax_loading").css("display", "none");
+    pajx_loadDuodsuo();
+});
+function pajx_loadDuodsuo(){
+var dus=$(".ds-thread");
+if($(dus).length==1){
+var el = document.createElement('div');
+el.setAttribute('data-thread-key',$(dus).attr("data-thread-key"));
+el.setAttribute('data-url',$(dus).attr("data-url"));
+DUOSHUO.EmbedThread(el);
+$(dus).html(el);
+}
+}
+</script>
+</head>
+
+<body>
+<header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="https://vvc-Dream.github.io/">
+                        vvc-Dream的博客
+                    </a>
+                
+                <p class="description">vvc-Dream subtitle</p>
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="" href="https://vvc-Dream.github.io/">首页</a>
+                    
+                    <a  href="https://vvc-Dream.github.io/books/" title="新书">新书</a>
+                    
+                    <a  href="https://vvc-Dream.github.io/archives/" title="归档">归档</a>
+                    
+                    <a  href="https://vvc-Dream.github.io/about/" title="关于">关于</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+<div id="body">
+    <div class="container">
+        <div class="col-group">
+
+            <div class="col-8" id="main">
+                <div class="res-cons">
+                    <article class="post">
+                        <header>
+                            <h1 class="post-title">My First Post</h1>
+                        </header>
+                        <date class="post-meta meta-date">
+                            2019年1月18日
+                        </date>
+                        
+                        <div class="post-meta">
+                            <span>|</span>
+                            
+                                <span class="meta-category"><a href="https://vvc-Dream.github.io/categories/%E6%9D%82%E6%8A%80%E6%B5%85%E5%B0%9D">杂技浅尝</a></span>
+                            
+                        </div>
+                        
+                        
+                        <div class="post-content">
+                            
+
+<h2 id="用hexo-github搭建你的个人博客">用Hexo+Github搭建你的个人博客</h2>
+
+<h3 id="总述">总述</h3>
+
+<p>搭建的过程分为以下几步：</p>
+
+<ol>
+<li>安装Node.js</li>
+<li>安装Git软件</li>
+<li>注册Github账号</li>
+<li>创建项目</li>
+<li>配置本地密匙</li>
+<li>安装hexo博客框架</li>
+<li>测试运行</li>
+<li>上传到Github</li>
+</ol>
+
+<hr />
+
+<h4 id="安装node-js">安装Node.js</h4>
+
+<p>Node.js下载地址：<a href="https://nodejs.org/en/download/">Node.js</a></p>
+
+<p>安装一路默认安装即可</p>
+
+<p>详细安装文档参看：<a href="http://www.runoob.com/nodejs/nodejs-install-setup.html">Node.js安装文档</a></p>
+
+<hr />
+
+<h4 id="安装git软件">安装Git软件</h4>
+
+<p>Git软件下载地址：<a href="https://git-scm.com/download">Git</a></p>
+
+<p>安装一路默认安装即可</p>
+
+<p>关于更多Git详情参看：<a href="http://www.runoob.com/git/git-tutorial.html">Git教程</a></p>
+
+<hr />
+
+<h4 id="安装hexo">安装Hexo</h4>
+
+<h5 id="1-什么是hexo">1. 什么是Hexo</h5>
+
+<p>Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页.</p>
+
+<h5 id="2-安装hexo">2. 安装Hexo</h5>
+
+<p>新建一个文件夹Hexo，在该文件夹下右键，点击 Git Bash Here ，打开Git命令窗口.</p>
+
+<p>安装Hexo命令:</p>
+
+<pre><code>npm install -g hexo-cli  #-g表示全局安装
+</code></pre>
+
+<p>提示：在Git命令窗口无法使用Ctrl+V粘贴，可右键，点击 Paste .</p>
+
+                        </div>
+
+                        
+
+<div class="post-archive">
+    <h2>See Also</h2>
+    <ul class="listing">
+        
+        <li><a href="/about/">Archives</a></li>
+        
+        <li><a href="/books/">Archives</a></li>
+        
+        <li><a href="/archives/">Archives</a></li>
+        
+    </ul>
+</div>
+
+
+                        <div class="post-meta meta-tags">
+                            
+                            <ul class="clearfix">
+                                
+                                <li><a href="https://vvc-Dream.github.io/tags/hugo">hugo</a></li>
+                                
+                            </ul>
+                            
+                        </div>
+                    </article>
+                    
+    
+
+    
+    
+                </div>
+            </div>
+            <div id="secondary">
+    <section class="widget">
+        <form id="search" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="https://vvc-Dream.github.io/">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://vvc-Dream.github.io/posts/create-hugo-blog/" title="使用Hugo&#43;Github创建个人博客">使用Hugo&#43;Github创建个人博客</a>
+    </li>
+    
+    <li>
+        <a href="https://vvc-Dream.github.io/posts/my-first-post/" title="My First Post">My First Post</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">分类</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://vvc-Dream.github.io/categories/%E5%BC%80%E5%8F%91/">开发(1)</a>
+    </li>
+    
+    <li>
+        <a href="https://vvc-Dream.github.io/categories/%E6%9D%82%E6%8A%80%E6%B5%85%E5%B0%9D/">杂技浅尝(1)</a>
+    </li>
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title">标签</h3>
+<div class="tagcloud">
+    
+    <a href="https://vvc-Dream.github.io/tags/hugo/">hugo</a>
+    
+</div>
+    </section>
+
+    
+<section class="widget">
+    <h3 class="widget-title">友情链接</h3>
+    <ul class="widget-list">
+        
+        <li>
+            <a target="_blank" href="https://github.com/vvc-Dream/vvc-Dream.github.io" title="Github">Github</a>
+        </li>
+        
+        <li>
+            <a target="_blank" href="http://space.bilibili.com/44178647?" title="哔哩哔哩">哔哩哔哩</a>
+        </li>
+        
+    </ul>
+</section>
+
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="https://vvc-Dream.github.io/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+        </div>
+    </div>
+</div>
+<footer id="footer">
+    <div class="container">
+        &copy; 2018 <a href="https://vvc-Dream.github.io/">vvc-Dream的博客 By vvc-Dream</a>.
+        Powered by <a rel="nofollow noreferer noopener" href="https://gohugo.io" target="_blank">Hugo</a>.
+        <a href="https://www.flysnow.org/" target="_blank">Theme</a> based on <a href="https://github.com/rujews/maupassant-hugo" target="_blank">maupassant</a>.
+        
+    </div>
+</footer>
+
+
+    <script type="text/javascript">
+    
+    (function(){
+        $("pre code").parent().addClass("line-numbers")
+    }())
+
+    window.MathJax = {
+        tex2jax: {
+            inlineMath: [ ['$','$'] ],
+            processEscapes: true
+        }
+    };
+    </script>
+    <script type="text/javascript" src="/js/prism.js" async="true"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src="/js/totop.js?v=0.0.0" async=""></script>
+
+
+
+
+
+
+</body>
+</html>

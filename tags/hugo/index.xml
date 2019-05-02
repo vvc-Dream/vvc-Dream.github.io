@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hugo on vvc-Dream的博客</title>
+    <link>https://vvc-Dream.github.io/tags/hugo/</link>
+    <description>Recent content in Hugo on vvc-Dream的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sun, 20 Jan 2019 15:52:31 +0800</lastBuildDate>
+    
+	<atom:link href="https://vvc-Dream.github.io/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>使用Hugo&#43;Github创建个人博客</title>
+      <link>https://vvc-Dream.github.io/posts/create-hugo-blog/</link>
+      <pubDate>Sun, 20 Jan 2019 15:52:31 +0800</pubDate>
+      
+      <guid>https://vvc-Dream.github.io/posts/create-hugo-blog/</guid>
+      <description>&lt;p&gt;​   本教程适合小白，稍微懂点前端知识最好。利用静态页面生成器Hugao + Github Pages制作个人博客。&lt;/p&gt;
+
+&lt;p&gt;​   教程相关内容都可以在网络上搜索到。&lt;/p&gt;
+
+&lt;p&gt;​   当然最好是查看官方文档。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>My First Post</title>
+      <link>https://vvc-Dream.github.io/posts/my-first-post/</link>
+      <pubDate>Fri, 18 Jan 2019 23:54:01 +0800</pubDate>
+      
+      <guid>https://vvc-Dream.github.io/posts/my-first-post/</guid>
+      <description>用Hexo+Github搭建你的个人博客 总述 搭建的过程分为以下几步： 安装Node.js 安装Git软件 注册Github账号 创建项目 配置本地密匙</description>
+    </item>
+    
+  </channel>
+</rss>
