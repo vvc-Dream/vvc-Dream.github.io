@@ -1,0 +1,481 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+	<meta name="baidu-site-verification" content="1COMmuDayL" />
+	<meta name="msvalidate.01" content="E41E35607EFA4063D8C1CA15B84D8B8C" />
+    <meta charset="utf-8">
+    <meta name="generator" content="Hugo 0.53" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>重写hashCode方法和equals方法 | vvc-Dream的博客</title>
+    <meta property="og:title" content="重写hashCode方法和equals方法 - vvc-Dream的博客">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content="2019-06-06T22:42:49&#43;08:00">
+        
+        
+    <meta property="article:modified_time" content="2019-06-06T22:42:49&#43;08:00">
+        
+    <meta name="Keywords" content="vvc-Dream keywords">
+    <meta name="description" content="重写hashCode方法和equals方法">
+        <meta name="author" content="vvc-Dream">
+        
+    <meta property="og:url" content="https://vvc-Dream.github.io/posts/%E9%87%8D%E5%86%99hashcode%E6%96%B9%E6%B3%95%E5%92%8Cequals%E6%96%B9%E6%B3%95/">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="/css/normalize.css">
+    
+        <link rel="stylesheet" href="/css/prism.css">
+    
+    <link rel="stylesheet" href="/css/style.css">
+    <script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+
+    
+
+
+    
+    
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+	<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/meting/dist/Meting.min.js"></script>
+	<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+	<script src="//cdn.bootcss.com/jquery.pjax/1.9.6/jquery.pjax.min.js"></script>
+		
+		<div class="aplayer" data-id="2625893735" data-server="netease" data-type="playlist" data-fixed="true" data-autoplay="false" data-volume="1.0">
+		</div>
+    
+<script>
+$(document).pjax('a[target!=_blank]', '#main', {fragment:'#main', timeout:8000});
+$(document).on('pjax:send', function() { 
+    $(".pjax_loading").css("display", "block");
+});
+$(document).on('pjax:complete', function() { 
+    $(".pjax_loading").css("display", "none");
+    pajx_loadDuodsuo();
+});
+function pajx_loadDuodsuo(){
+var dus=$(".ds-thread");
+if($(dus).length==1){
+var el = document.createElement('div');
+el.setAttribute('data-thread-key',$(dus).attr("data-thread-key"));
+el.setAttribute('data-url',$(dus).attr("data-url"));
+DUOSHUO.EmbedThread(el);
+$(dus).html(el);
+}
+}
+</script>
+</head>
+
+<body>
+<header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="https://vvc-Dream.github.io/">
+                        vvc-Dream的博客
+                    </a>
+                
+                <p class="description">vvc-Dream subtitle</p>
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="" href="https://vvc-Dream.github.io/">首页</a>
+                    
+                    <a  href="https://vvc-Dream.github.io/books/" title="新书">新书</a>
+                    
+                    <a  href="https://vvc-Dream.github.io/archives/" title="归档">归档</a>
+                    
+                    <a  href="https://vvc-Dream.github.io/about/" title="关于">关于</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+<div id="body">
+    <div class="container">
+        <div class="col-group">
+
+            <div class="col-8" id="main">
+                <div class="res-cons">
+                    <article class="post">
+                        <header>
+                            <h1 class="post-title">重写hashCode方法和equals方法</h1>
+                        </header>
+                        <date class="post-meta meta-date">
+                            2019年6月6日
+                        </date>
+                        
+                        <div class="post-meta">
+                            <span>|</span>
+                            
+                                <span class="meta-category"><a href="https://vvc-Dream.github.io/categories/%E5%BC%80%E5%8F%91">开发</a></span>
+                            
+                        </div>
+                        
+                        
+                        <div class="post-content">
+                            <p>鉴于阿里巴巴开发手册上着重强调重写equals()方法时，需要重写hashCode()方法，借此机会来讨论下为什么需要重写hashCode()方法和equals()方法</p>
+
+<h2 id="一-前言">一、前言</h2>
+
+<p>本篇文章主要探讨的问题有三个：</p>
+
+<p>1、首先我们为什么需要重写hashCode()方法和equals()方法？
+2、在什么情况下需要重写hashCode()方法和equals()方法？
+3、如何重写这两个方法？</p>
+
+<h2 id="二-为什么需要重写hashcode-方法和equals-方法">二、为什么需要重写hashCode()方法和equals()方法</h2>
+
+<p>首先，为什么要重写equals()方法。我们在定义类时，<strong>我们经常会希望两个不同对象的某些属性值相同时就认为他们相同</strong>，所以我们要重写equals()方法，按照原则，我们重写了equals()方法，也要重写hashCode()方法。</p>
+
+<p>Java中的超类Object类中定义的equals()方法是用来比较两个引用所指向的对象的内存地址是否一致，Object类中equals()方法的源码：</p>
+
+<pre><code class="language-java">public boolean equals(Object obj) {
+       return (this == obj);
+}
+</code></pre>
+
+<p>Object类中hashCode()方法的源码：</p>
+
+<pre><code class="language-java">public native int hashCode();
+</code></pre>
+
+<p>Object类中的hashCode()方法，用的是native关键字修饰，说明这个方法是个原生函数，也就说这个方法的实现不是用java语言实现的，是使用c/c++实现的，并且被编译成了DLL，由java去调用，jdk源码中不包含。对于不同的平台它们是不同的，java在不同的操作系统中调用不同的native方法实现对操作系统的访问，因为java语言不能直接访问操作系统底层，因为它没有指针。</p>
+
+<p>（1）这种方法调用的过程：</p>
+
+<p>1、在java中申明native方法，然后编译；
+2、用javah产生一个 <code>.h</code> 文件；
+3、写一个 <code>.cpp</code>文件实现native导出方法，其中需要包含第二步产生的<code>.h</code>文件(其中又包含了jdk带的jni.h文件)；
+4、将<code>.cpp</code>文件编译成动态链接库文件；
+5、在java中用<code>System.loadLibrary()</code>文件加载第四步产生的动态链接库文件，然后这个navite方法就可被访问了
+Java的API文档对hashCode()方法做了详细的说明，这也是我们重写hashCode()方法时的原则【Object类】；</p>
+
+<p>（2）重点要注意的是：</p>
+
+<p>a. 在java应用程序运行时，无论何时多次调用同一个对象时的hashCode()方法，这个对象的hashCode()方法的返回值必须是相同的一个int值；</p>
+
+<p>b. 如果两个对象equals()返回值为true，则他们的hashCode()也必须返回相同的int值；</p>
+
+<p>c. 如果两个对象equals()返回值为false，则他们的hashCode()返回值也必须不同；</p>
+
+<p>现在，我们到这里可以看出，我们重写了equals()方法也要重写hashCode()方法，这是因为要保证上面所述的b,c原则；所以java中的很多类都重写了这两个方法，例如String类，包装类等。</p>
+
+<h2 id="三-在什么情况下需要重写hashcode-方法和equals-方法">三、在什么情况下需要重写hashCode()方法和equals()方法</h2>
+
+<p>当我们自定义的一个类，想要把它的实例保存在集合中时，我们就需要重写这两个方法；集合(Collection)有两个类，一个是List，一个是Set。</p>
+
+<pre><code>List:集合中的元素是有序的，可以重复的；
+Set:无序，不可重复的；12
+</code></pre>
+
+<p>（1）以HashSet来举例：</p>
+
+<p>HashSet存放元素时，根据元素的hashCode方法计算出该对象的哈希码，快速找到要存储的位置，然后进行比较，</p>
+
+<p>比较过程如下：</p>
+
+<ul>
+<li><p>如果该对象哈希码与集合已存在对象的哈希码不一致，则该对象没有与其他对象重复，添加到集合中！</p></li>
+
+<li><p>如果存在于该对象相同的哈希码，那么通过equals方法判断两个哈希码相同的对象是否为同一对象（判断的标准是：属性是否相同）</p>
+
+<ul>
+<li>相同对象，不添加。</li>
+<li>不同对象，添加。</li>
+</ul></li>
+</ul>
+
+<p>注意：如果返回值为false，则这个时候会以链表的形式在同一个位置上存放两个元素，这会使得HashSet的性能降低，因为不能快速定位了。示意图如下：</p>
+
+<p><img src="https://img-blog.csdn.net/20170319141157177?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQveGxnZW4xNTczODc=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述" /></p>
+
+<p>还有一种情况就是两个对象的hashCode()返回值不同，但是equals()返回true，这个时候HashSet会把这两个对象都存进去，这就和Set集合不重复的规则相悖了；所以，我们重写了equals()方法时，要按照b，c规则重写hashCode()方法！</p>
+
+<h2 id="四-如何重写这两个方法">四、如何重写这两个方法</h2>
+
+<p>如果你决定要重写equals()方法，那么你一定还要明确这么做所带来的风险，并确保自己能写出一个健壮的equals()方法。</p>
+
+<p>一定要注意的一点是，在重写equals()后，一定要重写hashCode()方法。</p>
+
+<p>（1）我们先看看 JavaSE 8 Specification中对equals()方法的说明：</p>
+
+<p>The equals method implements an equivalence relation on non-null object references:</p>
+
+<ul>
+<li>It is reflexive: for any non-null reference value x, x.equals(x) should return true.</li>
+<li>It is symmetric: for any non-null reference values x and y, x.equals(y) should return true if and only if y.equals(x) returns true.</li>
+<li>It is transitive: for any non-null reference values x, y, and z, if x.equals(y) returns true and y.equals(z) returns true, then x.equals(z) should return true.</li>
+<li>It is consistent: for any non-null reference values x and y, multiple invocations of x.equals(y) consistently return true or consistently return false, provided no information used in equals comparisons on the objects is modified.</li>
+<li>For any non-null reference value x, x.equals(null) should return false.</li>
+</ul>
+
+<p>The equals method for class Object implements the most discriminating possible equivalence relation on objects; that is, for any non-null reference values x and y, this method returns true if and only if x and y refer to the same object (x == y has the value true).</p>
+
+<p>这段话用了很多离散数学中的术数．简单说明一下：</p>
+
+<ol>
+<li>自反性：A.equals(A)要返回true；</li>
+<li>对称性：如果A.equals(B)返回true, 则B.equals(A)也要返回true；</li>
+<li>传递性：如果A.equals(B)为true, B.equals&copy;为true, 则A.equals&copy;也要为true. 说白了就是 A = B , B = C , 那么A = C；</li>
+<li>一致性：只要A,B对象的状态没有改变，A.equals(B)必须始终返回true；</li>
+<li>A.equals(null) 要返回false；</li>
+</ol>
+
+<p>（2）简单步骤：</p>
+
+<p>为了说明方便，我们先定义一个程序员类(Coder):</p>
+
+<pre><code class="language-java">class Coder {  
+    private String name;  
+    private int age;  
+
+    // getters and setters  
+} 
+</code></pre>
+
+<p>我们想要的是，如果２个程序员对象的name和age都是相同的，那么我们就认为这两个程序员是一个人。这时候我们就要重写其equals()方法。因为默认的equals()实际是判断两个引用是否指向内在中的同一个对象，相当于 == 。　重写时要遵循以下三步：</p>
+
+<p>1、判断是否等于自身：</p>
+
+<pre><code class="language-java">if(other == this){
+   return true;  
+}
+</code></pre>
+
+<p>2、 使用instanceof运算符判断 other 是否为Coder类型的对象：</p>
+
+<pre><code class="language-java">if(!(other instanceof Coder))  {
+   return false;  
+}
+</code></pre>
+
+<p>3、比较Coder类中你自定义的数据域，name和age，一个都不能少：</p>
+
+<pre><code class="language-java">Coder o = (Coder)other;  
+return o.name.equals(name) &amp;&amp; o.age == age;12
+</code></pre>
+
+<p>看到这有人可能会问，第3步中有一个强制转换，如果有人将一个Integer类的对象传到了这个equals中，那么会不会扔ClassCastException呢？这个担心其实是多余的．因为我们在第二步中已经进行了instanceof 的判断，如果other是非Coder对象，甚至other是个null, 那么在这一步中都会直接返回false, 从而后面的代码得不到执行的机会。</p>
+
+<p>上面的三步也是＜Effective Java＞中推荐的步骤，基本可保证万无一失。</p>
+
+<p>我们在大学计算机数据结构课程中都已经学过哈希表(hash table)了，hashCode()方法就是为哈希表服务的。</p>
+
+<p>当我们在使用形如HashMap, HashSet这样前面以Hash开头的集合类时，hashCode()就会被隐式调用以来创建哈希映射关系。</p>
+
+<p>＜Effective Java＞中给出了一个能最大程度上避免哈希冲突的写法，但我个人认为对于一般的应用来说没有必要搞的这么麻烦．如果你的应用中HashSet中需要存放上万上百万个对象时，那你应该严格遵循书中给定的方法．如果是写一个中小型的应用，那么下面的原则就已经足够使用了：</p>
+
+<p>要保证Coder对象中所有的成员都能在hashCode中得到体现．</p>
+
+<pre><code class="language-java">@Override  
+public int hashCode() {  
+    int result = 17;  
+    result = result * 31 + name.hashCode();  
+    result = result * 31 + age;  
+
+    return result;  
+} 
+</code></pre>
+
+<p>其中int result = 17你也可以改成20, 50等等都可以．看到这里我突然有些好奇，想看一下String类中的hashCode()方法是如何实现的．查文档知：</p>
+
+<p>“Returns a hash code for this string. The hash code for a String object is computed as</p>
+
+<p>s[0]*31^(n-1) + s[1]*31^(n-2) + … + s[n-1]</p>
+
+<p>using int arithmetic, where s[i] is the ith character of the string, n is the length of the string, and ^ indicates exponentiation. (The hash value of the empty string is zero.)”</p>
+
+<p>对每个字符的ASCII码计算n - 1次方然后再进行加和，可见Sun对hashCode的实现是很严谨的. 这样能最大程度避免２个不同的String会出现相同的hashCode的情况．</p>
+                        </div>
+
+                        
+
+<div class="post-archive">
+    <h2>See Also</h2>
+    <ul class="listing">
+        
+        <li><a href="/posts/equals%E4%B8%8E%E7%9A%84%E5%8C%BA%E5%88%AB/">Equals与==的区别</a></li>
+        
+        <li><a href="/posts/forforeach%E5%92%8Citerator%E7%9A%84%E5%8C%BA%E5%88%AB/">For、foreach和Iterator的区别</a></li>
+        
+        <li><a href="/posts/%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E4%B8%8E%E5%8C%85%E8%A3%85%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">基本数据类型与包装数据类型</a></li>
+        
+        <li><a href="/posts/java%E4%B8%AD%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E4%B8%8E%E5%86%85%E5%AD%98/">Java中的数据类型与内存</a></li>
+        
+        <li><a href="/posts/java%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">Java基本数据类型</a></li>
+        
+    </ul>
+</div>
+
+
+                        <div class="post-meta meta-tags">
+                            
+                            <ul class="clearfix">
+                                
+                                <li><a href="https://vvc-Dream.github.io/tags/java">java</a></li>
+                                
+                            </ul>
+                            
+                        </div>
+                    </article>
+                    
+    
+
+    
+    
+                </div>
+            </div>
+            <div id="secondary">
+    <section class="widget">
+        <form id="search" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="https://vvc-Dream.github.io/">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://vvc-Dream.github.io/posts/java%E4%B8%ADclone%E6%96%B9%E6%B3%95%E7%9A%84%E5%AE%9E%E7%8E%B0/" title="Java中clone方法的实现">Java中clone方法的实现</a>
+    </li>
+    
+    <li>
+        <a href="https://vvc-Dream.github.io/posts/java%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%BA%8F%E5%88%97%E5%8C%96serialization%E5%92%8C%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" title="Java对象的序列化（Serialization）和反序列化">Java对象的序列化（Serialization）和反序列化</a>
+    </li>
+    
+    <li>
+        <a href="https://vvc-Dream.github.io/posts/%E9%87%8D%E5%86%99hashcode%E6%96%B9%E6%B3%95%E5%92%8Cequals%E6%96%B9%E6%B3%95/" title="重写hashCode方法和equals方法">重写hashCode方法和equals方法</a>
+    </li>
+    
+    <li>
+        <a href="https://vvc-Dream.github.io/posts/equals%E4%B8%8E%E7%9A%84%E5%8C%BA%E5%88%AB/" title="Equals与==的区别">Equals与==的区别</a>
+    </li>
+    
+    <li>
+        <a href="https://vvc-Dream.github.io/posts/forforeach%E5%92%8Citerator%E7%9A%84%E5%8C%BA%E5%88%AB/" title="For、foreach和Iterator的区别">For、foreach和Iterator的区别</a>
+    </li>
+    
+    <li>
+        <a href="https://vvc-Dream.github.io/posts/%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E4%B8%8E%E5%8C%85%E8%A3%85%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" title="基本数据类型与包装数据类型">基本数据类型与包装数据类型</a>
+    </li>
+    
+    <li>
+        <a href="https://vvc-Dream.github.io/posts/java%E4%B8%AD%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E4%B8%8E%E5%86%85%E5%AD%98/" title="Java中的数据类型与内存">Java中的数据类型与内存</a>
+    </li>
+    
+    <li>
+        <a href="https://vvc-Dream.github.io/posts/java%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" title="Java基本数据类型">Java基本数据类型</a>
+    </li>
+    
+    <li>
+        <a href="https://vvc-Dream.github.io/posts/tomcat%E7%AB%AF%E5%8F%A3%E8%A2%AB%E5%8D%A0%E7%94%A8/" title="Tomcat端口被占用">Tomcat端口被占用</a>
+    </li>
+    
+    <li>
+        <a href="https://vvc-Dream.github.io/posts/axure/" title="Axure">Axure</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">分类</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://vvc-Dream.github.io/categories/%E5%BC%80%E5%8F%91/">开发(12)</a>
+    </li>
+    
+    <li>
+        <a href="https://vvc-Dream.github.io/categories/%E6%9D%82%E6%8A%80%E6%B5%85%E5%B0%9D/">杂技浅尝(1)</a>
+    </li>
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title">标签</h3>
+<div class="tagcloud">
+    
+    <a href="https://vvc-Dream.github.io/tags/hugo/">hugo</a>
+    
+    <a href="https://vvc-Dream.github.io/tags/java/">java</a>
+    
+</div>
+    </section>
+
+    
+<section class="widget">
+    <h3 class="widget-title">友情链接</h3>
+    <ul class="widget-list">
+        
+        <li>
+            <a target="_blank" href="https://github.com/vvc-Dream/vvc-Dream.github.io" title="Github">Github</a>
+        </li>
+        
+        <li>
+            <a target="_blank" href="http://space.bilibili.com/44178647?" title="哔哩哔哩">哔哩哔哩</a>
+        </li>
+        
+    </ul>
+</section>
+
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="https://vvc-Dream.github.io/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+        </div>
+    </div>
+</div>
+<footer id="footer">
+    <div class="container">
+        &copy; 2018 <a href="https://vvc-Dream.github.io/">vvc-Dream的博客 By vvc-Dream</a>.
+        Powered by <a rel="nofollow noreferer noopener" href="https://gohugo.io" target="_blank">Hugo</a>.
+        <a href="https://www.flysnow.org/" target="_blank">Theme</a> based on <a href="https://github.com/rujews/maupassant-hugo" target="_blank">maupassant</a>.
+        
+    </div>
+</footer>
+
+
+    <script type="text/javascript">
+    
+    (function(){
+        $("pre code").parent().addClass("line-numbers")
+    }())
+
+    window.MathJax = {
+        tex2jax: {
+            inlineMath: [ ['$','$'] ],
+            processEscapes: true
+        }
+    };
+    </script>
+    <script type="text/javascript" src="/js/prism.js" async="true"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src="/js/totop.js?v=0.0.0" async=""></script>
+
+
+
+
+
+
+</body>
+</html>

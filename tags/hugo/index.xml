@@ -6,10 +6,32 @@
     <description>Recent content in Hugo on vvc-Dream的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 02 May 2019 12:26:10 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 08 May 2019 15:14:07 +0800</lastBuildDate>
     
 	<atom:link href="https://vvc-Dream.github.io/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Tomcat端口被占用</title>
+      <link>https://vvc-Dream.github.io/posts/tomcat%E7%AB%AF%E5%8F%A3%E8%A2%AB%E5%8D%A0%E7%94%A8/</link>
+      <pubDate>Wed, 08 May 2019 15:14:07 +0800</pubDate>
+      
+      <guid>https://vvc-Dream.github.io/posts/tomcat%E7%AB%AF%E5%8F%A3%E8%A2%AB%E5%8D%A0%E7%94%A8/</guid>
+      <description>&lt;p&gt;​   本教程适合小白，稍微懂点前端知识最好。利用静态页面生成器Hugao + Github Pages制作个人博客。&lt;/p&gt;
+
+&lt;p&gt;​   教程相关内容都可以在网络上搜索到。&lt;/p&gt;
+
+&lt;p&gt;​   当然最好是查看官方文档。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Axure</title>
+      <link>https://vvc-Dream.github.io/posts/axure/</link>
+      <pubDate>Sun, 05 May 2019 14:19:19 +0800</pubDate>
+      
+      <guid>https://vvc-Dream.github.io/posts/axure/</guid>
+      <description>&lt;p&gt;​   关于Axure的分享。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Git基本操作</title>
