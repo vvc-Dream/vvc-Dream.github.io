@@ -6,10 +6,19 @@
     <description>Recent content in Posts on vvc-Dream的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Tue, 18 Jun 2019 22:41:15 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 26 Jun 2019 23:34:57 +0800</lastBuildDate>
     
 	<atom:link href="https://vvc-Dream.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Java集合入门和深入学习</title>
+      <link>https://vvc-Dream.github.io/posts/java%E9%9B%86%E5%90%88%E5%85%A5%E9%97%A8%E5%92%8C%E6%B7%B1%E5%85%A5%E5%AD%A6%E4%B9%A0/</link>
+      <pubDate>Wed, 26 Jun 2019 23:34:57 +0800</pubDate>
+      
+      <guid>https://vvc-Dream.github.io/posts/java%E9%9B%86%E5%90%88%E5%85%A5%E9%97%A8%E5%92%8C%E6%B7%B1%E5%85%A5%E5%AD%A6%E4%B9%A0/</guid>
+      <description>&lt;p&gt;由浅入深，深入Java集合&amp;hellip;&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>保险业务基础</title>
