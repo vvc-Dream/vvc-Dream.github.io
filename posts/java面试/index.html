@@ -1,0 +1,634 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+	<meta name="baidu-site-verification" content="1COMmuDayL" />
+	<meta name="msvalidate.01" content="E41E35607EFA4063D8C1CA15B84D8B8C" />
+    <meta charset="utf-8">
+    <meta name="generator" content="Hugo 0.53" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Java面试 | vvc-Dream的博客</title>
+    <meta property="og:title" content="Java面试 - vvc-Dream的博客">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content="2019-06-27T19:34:58&#43;08:00">
+        
+        
+    <meta property="article:modified_time" content="2019-06-27T19:34:58&#43;08:00">
+        
+    <meta name="Keywords" content="vvc-Dream keywords">
+    <meta name="description" content="Java面试">
+        <meta name="author" content="vvc-Dream">
+        
+    <meta property="og:url" content="https://vvc-Dream.github.io/posts/java%E9%9D%A2%E8%AF%95/">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="/css/normalize.css">
+    
+        <link rel="stylesheet" href="/css/prism.css">
+    
+    <link rel="stylesheet" href="/css/style.css">
+    <script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+
+    
+
+
+    
+    
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+	<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/meting/dist/Meting.min.js"></script>
+	<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+	<script src="//cdn.bootcss.com/jquery.pjax/1.9.6/jquery.pjax.min.js"></script>
+		
+		<div class="aplayer" data-id="2625893735" data-server="netease" data-type="playlist" data-fixed="true" data-autoplay="false" data-volume="1.0">
+		</div>
+    
+<script>
+$(document).pjax('a[target!=_blank]', '#main', {fragment:'#main', timeout:8000});
+$(document).on('pjax:send', function() { 
+    $(".pjax_loading").css("display", "block");
+});
+$(document).on('pjax:complete', function() { 
+    $(".pjax_loading").css("display", "none");
+    pajx_loadDuodsuo();
+});
+function pajx_loadDuodsuo(){
+var dus=$(".ds-thread");
+if($(dus).length==1){
+var el = document.createElement('div');
+el.setAttribute('data-thread-key',$(dus).attr("data-thread-key"));
+el.setAttribute('data-url',$(dus).attr("data-url"));
+DUOSHUO.EmbedThread(el);
+$(dus).html(el);
+}
+}
+</script>
+</head>
+
+<body>
+<header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="https://vvc-Dream.github.io/">
+                        vvc-Dream的博客
+                    </a>
+                
+                <p class="description">vvc-Dream subtitle</p>
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="" href="https://vvc-Dream.github.io/">首页</a>
+                    
+                    <a  href="https://vvc-Dream.github.io/books/" title="新书">新书</a>
+                    
+                    <a  href="https://vvc-Dream.github.io/archives/" title="归档">归档</a>
+                    
+                    <a  href="https://vvc-Dream.github.io/about/" title="关于">关于</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+<div id="body">
+    <div class="container">
+        <div class="col-group">
+
+            <div class="col-8" id="main">
+                <div class="res-cons">
+                    <article class="post">
+                        <header>
+                            <h1 class="post-title">Java面试</h1>
+                        </header>
+                        <date class="post-meta meta-date">
+                            2019年6月27日
+                        </date>
+                        
+                        <div class="post-meta">
+                            <span>|</span>
+                            
+                                <span class="meta-category"><a href="https://vvc-Dream.github.io/categories/%E5%BC%80%E5%8F%91">开发</a></span>
+                            
+                        </div>
+                        
+                        
+                        <div class="post-content">
+                            <p>Java面试相关，持续更新&hellip;</p>
+
+<hr />
+
+<h4 id="1-一个5l的杯子-一个6l的杯子-得到3l的水">1.一个5L的杯子，一个6L的杯子，得到3L的水</h4>
+
+<p>​   （6-5）得6L杯子里剩余1L水。1L水倒入5L杯子，6L杯子倒满水然后倒入5L杯子里，得6L杯子剩余水2L。一次类推，下一次6L杯子就会剩余水3L。</p>
+
+<hr />
+
+<h4 id="2-烧断一根不均匀的绳子要一个小时-如何得到一小时十五分钟的绳子">2.烧断一根不均匀的绳子要一个小时，如何得到一小时十五分钟的绳子</h4>
+
+<ul>
+<li>A绳子两头一起烧，烧完需30min</li>
+<li>同时烧上另一根B，上一根烧完则B剩余30min的绳子</li>
+<li>然后B点燃两头（烧完15min），同时点燃另一根C，则B烧完C剩余45min绳子。</li>
+<li>然后再拿两根绳子，一个烧一头一个烧两天。可得30min绳子。</li>
+</ul>
+
+<hr />
+
+<h4 id="3-有一组数-很多-有正有负-如何得出其中相加为0的">3.有一组数，很多，有正有负，如何得出其中相加为0的。</h4>
+
+<ul>
+<li>方案一</li>
+</ul>
+
+<p>该组数从小到大排列，A只想最小值（最左边），B值向最大值（最右边），</p>
+
+<p>若A+B<0，则A向右移一个单位；若A+B>0，则B向左移一个单位；直至A+B=0;</p>
+
+<ul>
+<li>方案二</li>
+</ul>
+
+<p>先用set存放该组数，剔除重复值，然后取绝对值并排序（上述也有排序过程），重复值则为和为0的数。</p>
+
+<h4 id="4-什么是tcp-ip协议">4.什么是TCP/IP协议？</h4>
+
+<p>​       可以看作是网络的一中传输规则，就如同在现实生活中开车要遵守交通规则，在网络上传输数据也有它自己的一套规则。TCP/IP协议（传输控制协议/互联网协议）不是简单的一个协议，而是一组特别的协议，包括：TCP，IP，UDP，ARP等，这些被称为子协议。</p>
+
+<hr />
+
+<h4 id="5-spring理解">5.Spring理解</h4>
+
+<ul>
+<li><p>Bean管理</p></li>
+
+<li><p>依赖注入（DI），又称为控制反转（IOC）</p></li>
+
+<li><p>面向切面编程（AOP）</p></li>
+</ul>
+
+<h5 id="1-bean管理">(1).Bean管理</h5>
+
+<p>与传统的应用程序不同，在Spring中将对象的创建交给Spring容器来管理，也就是说只有放入Spring容器中的类，Spring才能对其产生作用。那么Spring究竟是怎样获取类的对象的呢？
+ 要想知道这个，我们首先要弄清楚这几点：
+ BeanFactory是Spring容器的根接口，ApplicationContext是它的子接口，通常用它的子接口ApplicationContext来访问Spring容器。</p>
+
+<h6 id="applicationcontext子接口常用的有四个实现类">ApplicationContext子接口常用的有四个实现类：</h6>
+
+<ul>
+<li>ClassPathXmlApplicationContext 从 classpath 加载 spring 的配置文件</li>
+<li>FileSystemApplicationContext 从系统文件加载 spring 的配置文件</li>
+<li>AnnotationConfigApplicationContext 获取基于注解的 spring 容器对象</li>
+<li>XmlWebApplicationContext 在 web 环境中获取 spring 容器对象</li>
+</ul>
+
+<p>Spring通过BeanFactory来获取这些类的对象，在配置文件中通过<bean/>节点将类交给Spring进行管理，ApplicationContext的实现类通过getBean()方法从Spring容器中获取对象，默认为单例的。</p>
+
+<h5 id="2-依赖注入">(2).依赖注入</h5>
+
+<p>它可以降低类之间的耦合性，有两种注入方式：</p>
+
+<ul>
+<li>set注入，在配置文件中使用<property>节点
+
+<br /></li>
+</ul>
+
+<p><img src="https:////upload-images.jianshu.io/upload_images/3579909-46ce375ba0a05ec8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/667/format/webp" alt="img" /></p>
+
+<p>set注入</p>
+
+<ul>
+<li>构造方法注入，在配置文件中使用<constructor-arg>节点
+
+<br /></li>
+</ul>
+
+<p><img src="https:////upload-images.jianshu.io/upload_images/3579909-53af0b3342b1cac7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/648/format/webp" alt="img" /></p>
+
+<p>构造方法注入</p>
+
+<p>下面举个例子来说明一下什么是依赖注入：
+ 假设类A因功能F需要调用类B，传统的程序中，我们就会去new一个类B的对象，因而类A就会依赖类于类B，这就是说如果类B不存在，则类A也就无法使用。而使用依赖注入以后，类A只需要去调用实现功能F接口的一个实现类，这个实现类可能是类B,C等等，具体调用谁是有Spring的配置文件决定的，这样类A就不再依赖于类B。
+ 我们可以这样理解控制反转：
+ 资源不是由使用资源的双方进行管理，而是由不使用资源的第三方（即Spring容器）进行管理，这样做的好处是：</p>
+
+<ul>
+<li>资源集中管理，实现资源的可配置与易管理</li>
+<li>降低使用资源双方的依赖程度</li>
+</ul>
+
+<p>在传统程序中，当某个角色需要另外一个角色协助时，由调用者来创建被调用者的实例。而在Spring中，创建被调用者的的工作不再由调用者来完成，而由第三方Spring容器来完成，所以称为控制反转，Spring容器创建被调用者的实例，然后注入调用者，所以又称为依赖注入。</p>
+
+<h5 id="3-面向切面编程">(3).面向切面编程</h5>
+
+<p>AOP在Spring中主要表现在两个方面：</p>
+
+<ul>
+<li>提供声明式事务管理</li>
+<li>Spring支持用户自定义切面</li>
+</ul>
+
+<p>面向切面编程是对面向对象编程（OOP）的补充。面向对象编程将程序分解成为各个层次的对象，面向切面编程将程序运行过程分解成各个切面。面向切面编程基于动态代理实现，降低了类直接的耦合程度。Spring的事务管理就是基于AOP实现的。</p>
+
+<hr />
+
+<h4 id="6-strtus2理解">6.strtus2理解</h4>
+
+<p>Struts2是一个按照MVC设计模式设计的web层框架，struts2以webwork为核心，采用拦截器的机制处理用户的请求，这样的设计使得业务逻辑控制器能够与servletAPI完全脱离开。我们可以把struts2理解为一个大大的servlet，而这个servlet就是ActionServlet。</p>
+
+<ul>
+<li>Struts2的执行流程？</li>
+</ul>
+
+<p>a、浏览器发送请求</p>
+
+<p>b、浏览器请求被Struts2提供的过滤器StrutsPrepareAndExecuteFilter拦截</p>
+
+<p>c、核心控制器FilterDispatcher根据请求决定调用合适的Action</p>
+
+<p>d、Struts2的拦截器链自动对请求应用通用功能，也包含用户自定义的一些拦截器</p>
+
+<p>e、回调Action的execute方法或自定义的action方法，首先这些方法会获得用户请求的参数，然后执行某种数据库的操作</p>
+
+<p>f、返回result视图，处理的结果会被输出到浏览器中</p>
+
+<ul>
+<li>拦截器和过滤器有哪些区别？</li>
+</ul>
+
+<p>拦截器是基于Java反射机制的，而过滤器是基于函数回调；</p>
+
+<p>拦截器不依赖于servlet容器，而过滤器依赖于servlet容器；</p>
+
+<p>拦截器只对action起作用，而过滤器对几乎所有请求起作用；</p>
+
+<p>拦截器可以访问action上下文，值栈的对象，而过滤器不能；</p>
+
+<p>在action的生命周期中，拦截器可以被多从调用，而过滤器只能在初始化的时候被调用一次；</p>
+
+<ul>
+<li>简单介绍一下struts2的值栈？</li>
+</ul>
+
+<p>值栈是对应每一个请求对象的数据存储中心。struts2的一个很重要的特点就是引入了值栈。之前我们通过缓存或者模型驱动在action和页面之间传递数据，数据混乱，并且难以管理，缓存还有时间限制，使用起来非常困难。值栈的引入解决了这个问题，它可以统一管理页面和action之间的数据，供action、result、interceptor等使用。我们大多数情况下都不需要考虑值栈在哪里，只需要获取相应的数据就可以啦，这大大降低了开发人员的工作量。</p>
+
+<hr />
+
+<h4 id="7-servlet与jsp区别">7.servlet与JSP区别</h4>
+
+<p>​   JSP的本质就是Servlet，JVM只能识别java的类，不能识别JSP的代码,Web容器将JSP的代码编译成JVM能够识别的java类。</p>
+
+<ul>
+<li>JSP 工作原理：</li>
+</ul>
+
+<p>JSP页面在执行的时候都会被服务器端的JSP引擎转换为Servelet（.java），然后又由JSP引擎调用Java编译器，将Servelet（.java）编译为Class文件（.class），并由Java虚拟机（JVM）解释执行。</p>
+
+<pre><code>Servlet的应用逻辑是在Java文件中，从Java代码中动态输出HTML，并且完全从表示层中的HTML里分离开来。而JSP的情况是Java和HTML可以组合成一个扩展名为.jsp的文件。JSP侧重于视图，Servlet主要用于控制逻辑。
+</code></pre>
+
+<hr />
+
+<h4 id="8-springmvc理解">8.SpringMVC理解</h4>
+
+<ul>
+<li><p>Spring MVC 中的MVC （modal、view、controller）分别是 模型、视图、控制器</p></li>
+
+<li><p>Spring的模型-视图-控制器（MVC），该框架是围绕一个DispatcherServlet来设计的，这个DispatcherServlet会把请求分发给各个处理器，并支持可配置的处理器映射、视图渲染、等，甚至还能支持文件上传等功能。</p></li>
+
+<li><p>运行原理</p></li>
+</ul>
+
+<p>1、 首先用户发送请求——&gt;DispatcherServlet，前端控制器收到请求后自己不进行处理，而是委托给其他的解析器进行处理，作为统一访问点，进行全局的流程控制；</p>
+
+<p>2、 DispatcherServlet——&gt;HandlerMapping，由DispatcherServlet控制器查询一个或多个HandlerMapping，找到处理请求的Controller,HandlerMapping将会把请求映射为HandlerExecutionChain对象（包含一个Handler处理器（页面控制器）对象、多个HandlerInterceptor拦截器）对象，通过这种策略模式，很容易添加新的映射策略；</p>
+
+<p>3、 DispatcherServlet——&gt;HandlerAdapter，HandlerAdapter将会把处理器包装为适配器，从而支持多种类型的处理器，即适配器设计模式的应用，从而很容易支持很多类型的处理器；</p>
+
+<p>4、 HandlerAdapter——&gt;处理器功能处理方法的调用，HandlerAdapter将会根据适配的结果调用真正的处理器的功能处理方法，完成功能处理；并返回给DispatcherServlet一个ModelAndView对象（包含模型数据、逻辑视图名）；</p>
+
+<p>5、 ModelAndView的逻辑视图名——&gt; ViewResolver， DispatcherServlet查询一个或多个ViewResoler视图解析器，找到ModelAndView指定的视图,ViewResolver将把逻辑视图名解析为具体的View，通过这种策略模式，很容易更换其他视图技术；</p>
+
+<p>6、 View——&gt;渲染，View会根据传进来的Model模型数据进行渲染，此处的Model实际是一个Map数据结构，因此很容易支持其他视图技术；</p>
+
+<h2 id="7-返回控制权给dispatcherservlet-由dispatcherservlet返回响应给用户-到此一个流程结束">7、返回控制权给DispatcherServlet，由DispatcherServlet返回响应给用户，到此一个流程结束。</h2>
+
+<h4 id="9-整形变量是否存在栈中">9.整形变量是否存在栈中</h4>
+
+<p>​   不管成员变量还是局部变量，如果是基础数据类型，那么值存于栈中。如果是应用数据类型，其引用放在栈里，对象实体放在堆里。</p>
+
+<hr />
+
+<h4 id="10-xml-和-json">10.XML 和 JSON</h4>
+
+<ul>
+<li>XML</li>
+</ul>
+
+<blockquote>
+<p>可扩展标记语言（英语：Extensible Markup Language，简称：XML）.用来传输及存储数据信息，不用来表现或展示数据。</p>
+</blockquote>
+
+<ul>
+<li>JSON</li>
+</ul>
+
+<blockquote>
+<ul>
+<li>JSON 是一个轻量级的数据格式 ，不是一种编程语言。JSON是一个JavaScript 的严格的子集，利用JavaScript 中一些模式来表示结构化数据。</li>
+<li>与XML 相比，JSON是在JS中读写结构化数据更好的 方式，因为它可以把JSON 直接传给eval(),而不必创建 DOM 对象。</li>
+</ul>
+</blockquote>
+
+<ul>
+<li>平台无关性,语言无关性,系统无关性</li>
+
+<li><p>XML可读性比JSON强，XML更符合人类语言习惯</p></li>
+
+<li><p>XML解析</p></li>
+</ul>
+
+<p>基本的解析方式有两种,一种叫<strong>SAX</strong>，另一种叫<strong>DOM</strong>。</p>
+
+<hr />
+
+<h4 id="11-集合底层实现原理">11.集合底层实现原理</h4>
+
+<ul>
+<li>ArrayList实现原理要点概括</li>
+</ul>
+
+<ol>
+<li>ArrayList是List接口的可变数组非同步实现，并允许包括null在内的所有元素。</li>
+<li>底层使用数组实现</li>
+<li>该集合是可变长度数组，数组扩容时，会将老数组中的元素重新拷贝一份到新的数组中，每次数组容量增长大约是其容量的1.5倍，这种操作的代价很高。</li>
+<li>采用了Fail-Fast机制，面对并发的修改时，迭代器很快就会完全失败，而不是冒着在将来某个不确定时间发生任意不确定行为的风险</li>
+<li>remove方法会让下标到数组末尾的元素向前移动一个单位，并把最后一位的值置空，方便GC</li>
+</ol>
+
+<ul>
+<li>LinkedList实现原理要点概括</li>
+</ul>
+
+<ol>
+<li>LinkedList是List接口的双向链表非同步实现，并允许包括null在内的所有元素。</li>
+<li>底层的数据结构是基于双向链表的，该数据结构我们称为节点</li>
+<li>双向链表节点对应的类Node的实例，Node中包含成员变量：prev，next，item。其中，prev是该节点的上一个节点，next是该节点的下一个节点，item是该节点所包含的值。</li>
+<li>它的查找是分两半查找，先判断index是在链表的哪一半，然后再去对应区域查找，这样最多只要遍历链表的一半节点即可找到</li>
+</ol>
+
+<ul>
+<li>HashMap实现原理要点概括</li>
+</ul>
+
+<ol>
+<li>HashMap是基于哈希表的Map接口的非同步实现，允许使用null值和null键，但不保证映射的顺序。</li>
+<li>底层使用数组实现，数组中每一项是个单向链表，即数组和链表的结合体；当链表长度大于一定阈值时，链表转换为红黑树，这样减少链表查询时间。</li>
+<li>HashMap在底层将key-value当成一个整体进行处理，这个整体就是一个Node对象。HashMap底层采用一个Node[]数组来保存所有的key-value对，当需要存储一个Node对象时，会根据key的hash算法来决定其在数组中的存储位置，在根据equals方法决定其在该数组位置上的链表中的存储位置；当需要取出一个Node时，也会根据key的hash算法找到其在数组中的存储位置，再根据equals方法从该位置上的链表中取出该Node。</li>
+<li>HashMap进行数组扩容需要重新计算扩容后每个元素在数组中的位置，很耗性能</li>
+<li>采用了Fail-Fast机制，通过一个modCount值记录修改次数，对HashMap内容的修改都将增加这个值。迭代器初始化过程中会将这个值赋给迭代器的expectedModCount，在迭代过程中，判断modCount跟expectedModCount是否相等，如果不相等就表示已经有其他线程修改了Map，马上抛出异常</li>
+</ol>
+
+<ul>
+<li>Hashtable实现原理要点概括</li>
+</ul>
+
+<ol>
+<li>Hashtable是基于哈希表的Map接口的同步实现，不允许使用null值和null键</li>
+<li>底层使用数组实现，数组中每一项是个单链表，即数组和链表的结合体</li>
+<li>Hashtable在底层将key-value当成一个整体进行处理，这个整体就是一个Entry对象。Hashtable底层采用一个Entry[]数组来保存所有的key-value对，当需要存储一个Entry对象时，会根据key的hash算法来决定其在数组中的存储位置，在根据equals方法决定其在该数组位置上的链表中的存储位置；当需要取出一个Entry时，也会根据key的hash算法找到其在数组中的存储位置，再根据equals方法从该位置上的链表中取出该Entry。</li>
+<li>synchronized是针对整张Hash表的，即每次锁住整张表让线程独占</li>
+</ol>
+
+<ul>
+<li>ConcurrentHashMap实现原理要点概括</li>
+</ul>
+
+<ol>
+<li>ConcurrentHashMap允许多个修改操作并发进行，其关键在于使用了锁分离技术。</li>
+<li>它使用了多个锁来控制对hash表的不同段进行的修改，每个段其实就是一个小的hashtable，它们有自己的锁。只要多个并发发生在不同的段上，它们就可以并发进行。</li>
+<li>ConcurrentHashMap在底层将key-value当成一个整体进行处理，这个整体就是一个Entry对象。Hashtable底层采用一个Entry[]数组来保存所有的key-value对，当需要存储一个Entry对象时，会根据key的hash算法来决定其在数组中的存储位置，在根据equals方法决定其在该数组位置上的链表中的存储位置；当需要取出一个Entry时，也会根据key的hash算法找到其在数组中的存储位置，再根据equals方法从该位置上的链表中取出该Entry。</li>
+<li>与HashMap不同的是，ConcurrentHashMap使用多个子Hash表，也就是段(Segment)</li>
+<li>ConcurrentHashMap完全允许多个读操作并发进行，读操作并不需要加锁。如果使用传统的技术，如HashMap中的实现，如果允许可以在hash链的中间添加或删除元素，读操作不加锁将得到不一致的数据。ConcurrentHashMap实现技术是保证HashEntry几乎是不可变的。</li>
+</ol>
+
+<ul>
+<li>HashSet实现原理要点概括</li>
+</ul>
+
+<ol>
+<li>HashSet由哈希表(实际上是一个HashMap实例)支持，不保证set的迭代顺序，并允许使用null元素。</li>
+<li>基于HashMap实现，API也是对HashMap的行为进行了封装，可参考HashMap</li>
+</ol>
+
+<ul>
+<li>LinkedHashMap实现原理要点概括</li>
+</ul>
+
+<ol>
+<li>LinkedHashMap继承于HashMap，底层使用哈希表和双向链表来保存所有元素，并且它是非同步，允许使用null值和null键。</li>
+<li>基本操作与父类HashMap相似，通过重写HashMap相关方法，重新定义了数组中保存的元素Entry，来实现自己的链接列表特性。该Entry除了保存当前对象的引用外，还保存了其上一个元素before和下一个元素after的引用，从而构成了双向链接列表。</li>
+</ol>
+
+<ul>
+<li>LinkedHashSet实现原理要点概括</li>
+</ul>
+
+<ol>
+<li>对于LinkedHashSet而言，它继承与HashSet、又基于LinkedHashMap来实现的。LinkedHashSet底层使用LinkedHashMap来保存所有元素，它继承与HashSet，其所有的方法操作上又与HashSet相同。</li>
+</ol>
+                        </div>
+
+                        
+
+<div class="post-archive">
+    <h2>See Also</h2>
+    <ul class="listing">
+        
+        <li><a href="/posts/java%E9%9B%86%E5%90%88%E5%85%A5%E9%97%A8%E5%92%8C%E6%B7%B1%E5%85%A5%E5%AD%A6%E4%B9%A0/">Java集合入门和深入学习</a></li>
+        
+        <li><a href="/posts/java%E4%B8%ADclone%E6%96%B9%E6%B3%95%E7%9A%84%E5%AE%9E%E7%8E%B0/">Java中clone方法的实现</a></li>
+        
+        <li><a href="/posts/java%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%BA%8F%E5%88%97%E5%8C%96serialization%E5%92%8C%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/">Java对象的序列化（Serialization）和反序列化</a></li>
+        
+        <li><a href="/posts/%E9%87%8D%E5%86%99hashcode%E6%96%B9%E6%B3%95%E5%92%8Cequals%E6%96%B9%E6%B3%95/">重写hashCode方法和equals方法</a></li>
+        
+        <li><a href="/posts/equals%E4%B8%8E%E7%9A%84%E5%8C%BA%E5%88%AB/">Equals与==的区别</a></li>
+        
+    </ul>
+</div>
+
+
+                        <div class="post-meta meta-tags">
+                            
+                            <ul class="clearfix">
+                                
+                                <li><a href="https://vvc-Dream.github.io/tags/java">java</a></li>
+                                
+                            </ul>
+                            
+                        </div>
+                    </article>
+                    
+    
+
+    
+    
+                </div>
+            </div>
+            <div id="secondary">
+    <section class="widget">
+        <form id="search" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="https://vvc-Dream.github.io/">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://vvc-Dream.github.io/posts/java%E9%9D%A2%E8%AF%95/" title="Java面试">Java面试</a>
+    </li>
+    
+    <li>
+        <a href="https://vvc-Dream.github.io/posts/java%E9%9B%86%E5%90%88%E5%85%A5%E9%97%A8%E5%92%8C%E6%B7%B1%E5%85%A5%E5%AD%A6%E4%B9%A0/" title="Java集合入门和深入学习">Java集合入门和深入学习</a>
+    </li>
+    
+    <li>
+        <a href="https://vvc-Dream.github.io/posts/%E4%BF%9D%E9%99%A9%E4%B8%9A%E5%8A%A1%E5%9F%BA%E7%A1%80/" title="保险业务基础">保险业务基础</a>
+    </li>
+    
+    <li>
+        <a href="https://vvc-Dream.github.io/posts/java%E4%B8%ADclone%E6%96%B9%E6%B3%95%E7%9A%84%E5%AE%9E%E7%8E%B0/" title="Java中clone方法的实现">Java中clone方法的实现</a>
+    </li>
+    
+    <li>
+        <a href="https://vvc-Dream.github.io/posts/java%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%BA%8F%E5%88%97%E5%8C%96serialization%E5%92%8C%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" title="Java对象的序列化（Serialization）和反序列化">Java对象的序列化（Serialization）和反序列化</a>
+    </li>
+    
+    <li>
+        <a href="https://vvc-Dream.github.io/posts/%E9%87%8D%E5%86%99hashcode%E6%96%B9%E6%B3%95%E5%92%8Cequals%E6%96%B9%E6%B3%95/" title="重写hashCode方法和equals方法">重写hashCode方法和equals方法</a>
+    </li>
+    
+    <li>
+        <a href="https://vvc-Dream.github.io/posts/equals%E4%B8%8E%E7%9A%84%E5%8C%BA%E5%88%AB/" title="Equals与==的区别">Equals与==的区别</a>
+    </li>
+    
+    <li>
+        <a href="https://vvc-Dream.github.io/posts/forforeach%E5%92%8Citerator%E7%9A%84%E5%8C%BA%E5%88%AB/" title="For、foreach和Iterator的区别">For、foreach和Iterator的区别</a>
+    </li>
+    
+    <li>
+        <a href="https://vvc-Dream.github.io/posts/%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E4%B8%8E%E5%8C%85%E8%A3%85%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" title="基本数据类型与包装数据类型">基本数据类型与包装数据类型</a>
+    </li>
+    
+    <li>
+        <a href="https://vvc-Dream.github.io/posts/java%E4%B8%AD%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E4%B8%8E%E5%86%85%E5%AD%98/" title="Java中的数据类型与内存">Java中的数据类型与内存</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">分类</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://vvc-Dream.github.io/categories/%E5%BC%80%E5%8F%91/">开发(15)</a>
+    </li>
+    
+    <li>
+        <a href="https://vvc-Dream.github.io/categories/%E6%9D%82%E6%8A%80%E6%B5%85%E5%B0%9D/">杂技浅尝(1)</a>
+    </li>
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title">标签</h3>
+<div class="tagcloud">
+    
+    <a href="https://vvc-Dream.github.io/tags/hugo/">hugo</a>
+    
+    <a href="https://vvc-Dream.github.io/tags/insurance/">insurance</a>
+    
+    <a href="https://vvc-Dream.github.io/tags/java/">java</a>
+    
+</div>
+    </section>
+
+    
+<section class="widget">
+    <h3 class="widget-title">友情链接</h3>
+    <ul class="widget-list">
+        
+        <li>
+            <a target="_blank" href="https://github.com/vvc-Dream/vvc-Dream.github.io" title="Github">Github</a>
+        </li>
+        
+        <li>
+            <a target="_blank" href="http://space.bilibili.com/44178647?" title="哔哩哔哩">哔哩哔哩</a>
+        </li>
+        
+    </ul>
+</section>
+
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="https://vvc-Dream.github.io/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+        </div>
+    </div>
+</div>
+<footer id="footer">
+    <div class="container">
+        &copy; 2018 <a href="https://vvc-Dream.github.io/">vvc-Dream的博客 By vvc-Dream</a>.
+        Powered by <a rel="nofollow noreferer noopener" href="https://gohugo.io" target="_blank">Hugo</a>.
+        <a href="https://www.flysnow.org/" target="_blank">Theme</a> based on <a href="https://github.com/rujews/maupassant-hugo" target="_blank">maupassant</a>.
+        
+    </div>
+</footer>
+
+
+    <script type="text/javascript">
+    
+    (function(){
+        $("pre code").parent().addClass("line-numbers")
+    }())
+
+    window.MathJax = {
+        tex2jax: {
+            inlineMath: [ ['$','$'] ],
+            processEscapes: true
+        }
+    };
+    </script>
+    <script type="text/javascript" src="/js/prism.js" async="true"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src="/js/totop.js?v=0.0.0" async=""></script>
+
+
+
+
+
+
+</body>
+</html>
