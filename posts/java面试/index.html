@@ -443,6 +443,58 @@ $(dus).html(el);
 <ol>
 <li>对于LinkedHashSet而言，它继承与HashSet、又基于LinkedHashMap来实现的。LinkedHashSet底层使用LinkedHashMap来保存所有元素，它继承与HashSet，其所有的方法操作上又与HashSet相同。</li>
 </ol>
+
+<hr />
+
+<h4 id="12-jsp内置对象">12.JSP内置对象</h4>
+
+<ul>
+<li>内置对象简介</li>
+</ul>
+
+<p>JSP 内置对象是 Web 容器创建的一组对象，不需使用 new 关键字就可以直接使用的内置对象。</p>
+
+<ul>
+<li>九大内置对象
+
+<ol>
+<li>五大常用的内置对象：out、request、reponse、session、application</li>
+<li>不常用的内置对象：Page、pageContext、exception、config</li>
+</ol></li>
+</ul>
+
+<hr />
+
+<h4 id="13-session的生命周期">13.session的生命周期</h4>
+
+<p>Session中的数据保存在服务器端。Session指的就是用户在浏览某个网站时，从进入网站到浏览器关闭所经过的这段时间，也就是用户浏览这个网站所花费的时间。</p>
+
+<ul>
+<li>Session的销毁
+
+<ol>
+<li>session调用了session.invalidate()方法.</li>
+<li>前后两次请求超出了session指定的生命周期时间.</li>
+</ol></li>
+</ul>
+
+<hr />
+
+<h4 id="14-cookie的生命周期">14.cookie的生命周期</h4>
+
+<p>cookie中的数据保存在客户端端。cookie的生命周期可以通过cookie.setMaxAge(2000);来设置，如果没有设置setMaxAge,则cookie的生命周期当浏览器关闭的时候，就消亡了。</p>
+
+<hr />
+
+<h4 id="15-servlet-strtus2-springmvc是单例还是多例">15.servlet、strtus2、springMVC是单例还是多例</h4>
+
+<ul>
+<li><p>struts2中action是多例的，即一个session产生一个action</p></li>
+
+<li><p>而servlet采用单实例多线程模式开发，减少产生servlet实例的开销。</p></li>
+
+<li><p>Springmvc默认是单例模式</p></li>
+</ul>
                         </div>
 
                         
@@ -497,6 +549,26 @@ $(dus).html(el);
 <ul class="widget-list">
     
     <li>
+        <a href="https://vvc-Dream.github.io/posts/java%E9%9D%A2%E8%AF%95%E8%BF%9B%E9%98%B6/" title="Java面试（进阶）">Java面试（进阶）</a>
+    </li>
+    
+    <li>
+        <a href="https://vvc-Dream.github.io/posts/mysql%E7%B4%A2%E5%BC%95/" title="Mysql索引">Mysql索引</a>
+    </li>
+    
+    <li>
+        <a href="https://vvc-Dream.github.io/posts/java%E5%8D%95%E7%82%B9%E7%99%BB%E9%99%86/" title="Java单点登陆">Java单点登陆</a>
+    </li>
+    
+    <li>
+        <a href="https://vvc-Dream.github.io/posts/seeion%E6%98%AF%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E8%A2%AB%E5%88%9B%E5%BB%BA%E7%9A%84/" title="Seeion是什么时候被创建的">Seeion是什么时候被创建的</a>
+    </li>
+    
+    <li>
+        <a href="https://vvc-Dream.github.io/posts/object%E7%B1%BB/" title="Object类">Object类</a>
+    </li>
+    
+    <li>
         <a href="https://vvc-Dream.github.io/posts/java%E9%9D%A2%E8%AF%95/" title="Java面试">Java面试</a>
     </li>
     
@@ -516,26 +588,6 @@ $(dus).html(el);
         <a href="https://vvc-Dream.github.io/posts/java%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%BA%8F%E5%88%97%E5%8C%96serialization%E5%92%8C%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" title="Java对象的序列化（Serialization）和反序列化">Java对象的序列化（Serialization）和反序列化</a>
     </li>
     
-    <li>
-        <a href="https://vvc-Dream.github.io/posts/%E9%87%8D%E5%86%99hashcode%E6%96%B9%E6%B3%95%E5%92%8Cequals%E6%96%B9%E6%B3%95/" title="重写hashCode方法和equals方法">重写hashCode方法和equals方法</a>
-    </li>
-    
-    <li>
-        <a href="https://vvc-Dream.github.io/posts/equals%E4%B8%8E%E7%9A%84%E5%8C%BA%E5%88%AB/" title="Equals与==的区别">Equals与==的区别</a>
-    </li>
-    
-    <li>
-        <a href="https://vvc-Dream.github.io/posts/forforeach%E5%92%8Citerator%E7%9A%84%E5%8C%BA%E5%88%AB/" title="For、foreach和Iterator的区别">For、foreach和Iterator的区别</a>
-    </li>
-    
-    <li>
-        <a href="https://vvc-Dream.github.io/posts/%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E4%B8%8E%E5%8C%85%E8%A3%85%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" title="基本数据类型与包装数据类型">基本数据类型与包装数据类型</a>
-    </li>
-    
-    <li>
-        <a href="https://vvc-Dream.github.io/posts/java%E4%B8%AD%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E4%B8%8E%E5%86%85%E5%AD%98/" title="Java中的数据类型与内存">Java中的数据类型与内存</a>
-    </li>
-    
 </ul>
     </section>
 
@@ -546,7 +598,7 @@ $(dus).html(el);
 <ul class="widget-list">
     
     <li>
-        <a href="https://vvc-Dream.github.io/categories/%E5%BC%80%E5%8F%91/">开发(15)</a>
+        <a href="https://vvc-Dream.github.io/categories/%E5%BC%80%E5%8F%91/">开发(20)</a>
     </li>
     
     <li>

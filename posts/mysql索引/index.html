@@ -1,0 +1,621 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+	<meta name="baidu-site-verification" content="1COMmuDayL" />
+	<meta name="msvalidate.01" content="E41E35607EFA4063D8C1CA15B84D8B8C" />
+    <meta charset="utf-8">
+    <meta name="generator" content="Hugo 0.53" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Mysql索引 | vvc-Dream的博客</title>
+    <meta property="og:title" content="Mysql索引 - vvc-Dream的博客">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content="2019-07-06T16:05:26&#43;08:00">
+        
+        
+    <meta property="article:modified_time" content="2019-07-06T16:05:26&#43;08:00">
+        
+    <meta name="Keywords" content="vvc-Dream keywords">
+    <meta name="description" content="Mysql索引">
+        <meta name="author" content="vvc-Dream">
+        
+    <meta property="og:url" content="https://vvc-Dream.github.io/posts/mysql%E7%B4%A2%E5%BC%95/">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="/css/normalize.css">
+    
+        <link rel="stylesheet" href="/css/prism.css">
+    
+    <link rel="stylesheet" href="/css/style.css">
+    <script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+
+    
+
+
+    
+    
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+	<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/meting/dist/Meting.min.js"></script>
+	<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+	<script src="//cdn.bootcss.com/jquery.pjax/1.9.6/jquery.pjax.min.js"></script>
+		
+		<div class="aplayer" data-id="2625893735" data-server="netease" data-type="playlist" data-fixed="true" data-autoplay="false" data-volume="1.0">
+		</div>
+    
+<script>
+$(document).pjax('a[target!=_blank]', '#main', {fragment:'#main', timeout:8000});
+$(document).on('pjax:send', function() { 
+    $(".pjax_loading").css("display", "block");
+});
+$(document).on('pjax:complete', function() { 
+    $(".pjax_loading").css("display", "none");
+    pajx_loadDuodsuo();
+});
+function pajx_loadDuodsuo(){
+var dus=$(".ds-thread");
+if($(dus).length==1){
+var el = document.createElement('div');
+el.setAttribute('data-thread-key',$(dus).attr("data-thread-key"));
+el.setAttribute('data-url',$(dus).attr("data-url"));
+DUOSHUO.EmbedThread(el);
+$(dus).html(el);
+}
+}
+</script>
+</head>
+
+<body>
+<header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="https://vvc-Dream.github.io/">
+                        vvc-Dream的博客
+                    </a>
+                
+                <p class="description">vvc-Dream subtitle</p>
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="" href="https://vvc-Dream.github.io/">首页</a>
+                    
+                    <a  href="https://vvc-Dream.github.io/books/" title="新书">新书</a>
+                    
+                    <a  href="https://vvc-Dream.github.io/archives/" title="归档">归档</a>
+                    
+                    <a  href="https://vvc-Dream.github.io/about/" title="关于">关于</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+<div id="body">
+    <div class="container">
+        <div class="col-group">
+
+            <div class="col-8" id="main">
+                <div class="res-cons">
+                    <article class="post">
+                        <header>
+                            <h1 class="post-title">Mysql索引</h1>
+                        </header>
+                        <date class="post-meta meta-date">
+                            2019年7月6日
+                        </date>
+                        
+                        <div class="post-meta">
+                            <span>|</span>
+                            
+                                <span class="meta-category"><a href="https://vvc-Dream.github.io/categories/%E5%BC%80%E5%8F%91">开发</a></span>
+                            
+                        </div>
+                        
+                        
+                        <div class="post-content">
+                            
+
+<p>MySQL索引总结</p>
+
+<hr />
+
+<h2 id="mysql索引使用总结">mysql索引使用总结</h2>
+
+<h3 id="1-使用索引注意">1 使用索引注意</h3>
+
+<p>(1)越小的数据类型通常更好：越小的数据类型通常在磁盘、内存和CPU缓存中都需要更少的空间，处理起来更快。
+(2)简单的数据类型更好：整型数据比起字符，处理开销更小，因为字符串的比较更复杂。在MySQL中，应该用内置的日期和时间数据类型，而不是用字符串来存储时间；以及用整型数据类型存储IP地址。
+(3)尽量避免NULL：应该指定列为NOT NULL，除非你想存储NULL。在MySQL中，含有空值的列很难进行查询优化，因为它们使得索引、索引的统计信息以及比较运算更加复杂。你应该用0、一个特殊的值或者一个空串代替空值。
+(4)索引不会包含有NULL值的列。</p>
+
+<h3 id="2-索引不能使用排查">2 索引不能使用排查</h3>
+
+<p>但是如果是同样的sql如果在之前能够使用到索引，那么现在使用不到索引，以下几种主要情况:</p>
+
+<p>\1. 随着表的增长，where条件出来的数据太多，大于15%，使得索引失效（会导致CBO计算走索引花费大于走全表）</p>
+
+<p>\2. 统计信息失效，需要重新搜集统计信息</p>
+
+<p>\3. 索引本身失效，需要重建索引</p>
+
+<h3 id="3-不会用到索引">3 不会用到索引</h3>
+
+<p>下面是一些不会使用到索引的原因
+<strong>1) 没有查询条件，或者查询条件没有建立索引;</strong>
+<strong>2) 在查询条件上没有使用引导列</strong>
+<strong>3) 查询的数量是大表的大部分，应该是30％以上。</strong>
+<strong>4) 索引本身失效</strong>
+<strong>5) 在索引列上使用mysql的内置函数</strong>
+<strong>6) 对小表查询，数据量小</strong>
+<strong>7) CBO计算走索引花费过大的情况。其实也包含了上面的情况，这里指的是表占有的block要比索引小。</strong>
+<strong>8)隐式转换导致索引失效.这一点应当引起重视.也是开发中经常会犯的错误. 由于表的字段tu_mdn定义为varchar2(20),</strong>
+但在查询时把该字段作为number类型以where条件传给mysql,这样会导致索引失效.
+错误的例子：select * from test where tu_mdn=13333333333;
+正确的例子：select * from test where tu_mdn=&lsquo;13333333333&rsquo;;
+<strong>9)对索引列进行运算导致索引失效,我所指的对索引列进行运算包括(+，-，*，/，! 等)</strong>
+错误的例子：select * from test where id-1=9;
+正确的例子：select * from test where id=10;
+<strong>10)使用mysql内部函数导致索引失效.对于这样情况应当创建基于函数的索引.</strong>
+错误的例子：select * from test where round(id)=10;
+说明，此时id的索引已经不起作用了 正确的例子：首先建立函数索引，
+create index test_id_fbi_idx on test(round(id));
+然后 select * from test where round(id)=10; 这时函数索引起作用了</p>
+
+<p><strong>11)如果MySQL估计使用索引比全表扫描更慢，则不使用索引。例如如果列key_part1均匀分布在1到100之间，查询时使用索引就不是很好</strong></p>
+
+<pre><code>mysql&gt;select * from table_name where key_part1&gt;1 and key_part&lt;90;
+</code></pre>
+
+<p><strong>12)如果使用MEMORY/HEAP表并且where条件中不使用“=”进行索引列，那么不会用到索引</strong>。Heap表只有在“=”的条件下会使用索引。因为用的是哈希索引。</p>
+
+<p><strong>13)用or分割开的条件，如果or前的条件中的列有索引，而后面的列中没有索引，那么涉及的索引都不会被用到</strong>。</p>
+
+<p><a href="javascript:void(0);"><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码" /></a></p>
+
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码" /></p>
+
+<pre><code>mysql&gt; show index from test1\G;
+*************************** 1. row ***************************
+        Table: test1
+   Non_unique: 1
+     Key_name: inx_id_name
+ Seq_in_index: 1
+  Column_name: name
+    Collation: A
+  Cardinality: 552589
+     Sub_part: NULL
+       Packed: NULL
+         Null: YES
+   Index_type: BTREE
+      Comment: 
+Index_comment: 
+*************************** 2. row ***************************
+        Table: test1
+   Non_unique: 1
+     Key_name: inx_id_name
+ Seq_in_index: 2
+  Column_name: id
+    Collation: A
+  Cardinality: 567855
+     Sub_part: NULL
+       Packed: NULL
+         Null: 
+   Index_type: BTREE
+      Comment: 
+Index_comment: 
+2 rows in set (0.00 sec)
+
+ERROR: 
+No query specified
+
+mysql&gt; 
+</code></pre>
+
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码" /></p>
+
+<p><a href="javascript:void(0);"><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码" /></a></p>
+
+<p>从上面可以发现只有name和id列上面有索引。来看如下的执行计划。</p>
+
+<p><a href="javascript:void(0);"><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码" /></a></p>
+
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码" /></p>
+
+<pre><code>mysql&gt; explain extended select * from test1 where name='name100' or dept='dept100';
++----+-------------+-------+------------+------+---------------+------+---------+------+--------+----------+-------------+
+| id | select_type | table | partitions | type | possible_keys | key  | key_len | ref  | rows   | filtered | Extra       |
++----+-------------+-------+------------+------+---------------+------+---------+------+--------+----------+-------------+
+|  1 | SIMPLE      | test1 | NULL       | ALL  | inx_id_name   | NULL | NULL    | NULL | 769014 |    19.00 | Using where |
++----+-------------+-------+------------+------+---------------+------+---------+------+--------+----------+-------------+
+1 row in set, 2 warnings (0.00 sec)
+
+mysql&gt;
+</code></pre>
+
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码" /></p>
+
+<p><a href="javascript:void(0);"><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码" /></a></p>
+
+<p><strong>14)如果将要使用的索引列不是复合索引列表中的第一部分，则不会使用索引</strong></p>
+
+<p>如下例子:可见虽然在id上面建有复合索引，但是由于id不是索引的第一列，那么在查询中这个索引也不会被MySQL采用。（索引的最左匹配原则）</p>
+
+<p><a href="javascript:void(0);"><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码" /></a></p>
+
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码" /></p>
+
+<pre><code>mysql&gt; explain select * from test1 where id=1;
++----+-------------+-------+------------+------+---------------+------+---------+------+--------+----------+-------------+
+| id | select_type | table | partitions | type | possible_keys | key  | key_len | ref  | rows   | filtered | Extra       |
++----+-------------+-------+------------+------+---------------+------+---------+------+--------+----------+-------------+
+|  1 | SIMPLE      | test1 | NULL       | ALL  | NULL          | NULL | NULL    | NULL | 787947 |    10.00 | Using where |
++----+-------------+-------+------------+------+---------------+------+---------+------+--------+----------+-------------+
+1 row in set, 1 warning (0.00 sec)
+
+mysql&gt;
+</code></pre>
+
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码" /></p>
+
+<p><a href="javascript:void(0);"><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码" /></a></p>
+
+<p><strong>15)如果like是以%开始，可见虽然在name上面建有索引，但是由于where 条件中like的值的“%”在第一位了，那么MySQL也会采用这个索引。</strong></p>
+
+<p>如果WHERE子句的查询条件里使用了比较操作符LIKE和REGEXP，MYSQL只有在搜索模板的第一个字符不是通配符的情况下才能使用索引。比如说，如果查询条件是LIKE &lsquo;abc%&rsquo;,MYSQL将使用索引；如果条件是LIKE &lsquo;%abc&rsquo;，MYSQL将不使用索引。</p>
+
+<p><strong>17)独立的列（对列变量需要计算（聚合运算、类型转换等））</strong></p>
+
+<p>独立的列是指索引列不能是表达式的一部分，也不是是函数的参数。例如以下两个查询无法使用索引：</p>
+
+<p>1）表达式：  select actor_id from sakila.actor where actor_id+1=5;</p>
+
+<p>2）函数参数：select &hellip; where TO_DAYS(CURRENT_DATE) - TO_DAYS(date_col)&lt;=10;<strong>应该把列计算转换成常量计算。</strong></p>
+
+<p>示例：</p>
+
+<p>如果列类型是字符串，但在查询时把一个数值型常量赋值给了一个字符型的列名name，那么虽然在name列上有索引，但是也没有用到。</p>
+
+<p><a href="javascript:void(0);"><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码" /></a></p>
+
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码" /></p>
+
+<pre><code>mysql&gt; explain select * from company2 where name=294\G 
+*************************** 1. row *************************** 
+id: 1 
+select_type: SIMPLE 
+table: company2 
+type: ALL 
+possible_keys: ind_company2_name 
+key: NULL 
+key_len: NULL 
+ref: NULL 
+rows: 1000 
+Extra: Using where 
+1 row in set (0.00 sec)
+</code></pre>
+
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码" /></p>
+
+<p><a href="javascript:void(0);"><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码" /></a></p>
+
+<p>而下面的sql语句就可以正确使用索引。</p>
+
+<p><a href="javascript:void(0);"><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码" /></a></p>
+
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码" /></p>
+
+<pre><code>mysql&gt; explain select * from company2 where name name=‘294'\G 
+*************************** 1. row *************************** 
+id: 1 
+select_type: SIMPLE 
+table: company2 
+type: ref 
+possible_keys: ind_company2_name 
+key: ind_company2_name 
+key_len: 23 
+ref: const 
+rows: 1 
+Extra: Using where 
+1 row in set (0.00 sec)
+</code></pre>
+
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码" /></p>
+
+<p><a href="javascript:void(0);"><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码" /></a></p>
+
+<p><strong>18).在JOIN操作中（需要从多个数据表提取数据时），MYSQL只有在主键和外键的数据类型相同时才能使用索引，否则即使建立了 索引也不会使用</strong></p>
+
+<p><strong>19).在ORDER BY操作中，MYSQL只有在排序条件不是一个查询条件表达式的情况下才使用索引。尽管如此，在涉及多个数据表的查询里，即使有索引可用，那些索引在加快ORDER BY操作方面也没什么作用。</strong></p>
+
+<p><strong>20).不要给“性别”增加索引。如果某个数据列里包含着许多重复的值，就算为它建立了索引也不会有很好的效果。比如说，如果某个数据列里包含了净是些诸如“0/1”或“Y/N”等值，就没有必要为它创建一个索引。</strong></p>
+
+<p>简单的说吧，不需要，因为性别，就两个值男与女(人妖不算，呵)。为这两个值建立索引是不值得的，因为无论多少条记录，建立性别的索引，最多让你的语句少检索一半。但与建立索引带来的损失比，捡芝麻丢西瓜。(可能不准确，但大意如些)。</p>
+
+<p>打个比方，数据库就好比一本新华字典，我们查数据时，可以根据拼音来查，字在字典的排序是根据拼音来排序的，我们要查一个字，可以根据拼音很快就能查到我们要查的字，这就叫作聚集索引！换句话说，聚集索引就是按照物理排序的，也因为是按物理排序的，所以一张表只能有一个聚集索引，也是最快的索引。当然，我们也可以根据部首来查，但是这种查询必须先查找到部首，然后再到检索表查到那么字，最后才能查到我们需要的字，你没办法像拼音查法一样翻翻字典就可以查到，这就叫作普通索引。普通索引可以有多个。</p>
+
+<p>假如一本字典里全是&rdquo;男&rdquo;和&rdquo;女&rdquo;两个字,那么在检索表里也有很多个&rdquo;男&rdquo;和&rdquo;女&rdquo;,这对查询帮助不大。</p>
+
+<p><strong>21）.如果对大的文本进行搜索，使用全文索引而不使用like“%&hellip;%”.</strong></p>
+
+<p><strong>22).如果列名是索引，使用column_name is null将使用索引。</strong></p>
+
+<p>如下</p>
+
+<p><a href="javascript:void(0);"><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码" /></a></p>
+
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码" /></p>
+
+<pre><code>mysql&gt; explain select * from company2 where name is null\G 
+*************************** 1. row *************************** 
+id: 1 
+select_type: SIMPLE 
+table: company2 
+type: ref 
+possible_keys: ind_company2_name 
+key: ind_company2_name 
+key_len: 11 
+ref: const 
+rows: 1 
+Extra: Using where 
+1 row in set (0.00 sec)
+</code></pre>
+
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码" /></p>
+
+<p><a href="javascript:void(0);"><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码" /></a></p>
+
+<p><strong>23).不使用NOT IN和&lt;&gt;操作</strong>NOT IN和&lt;&gt;操作都不会使用索引将进行全表扫描。NOT IN可以NOT EXISTS代替，id&lt;&gt;3则可使用id&gt;3 or id&lt;3来代替。</p>
+
+<p><strong>24).排序的索引问题</strong>mysql查询只使用一个索引，因此如果where子句中已经使用了索引的话，那么order by中的列是不会使用索引的。因此数据库默认排序可以符合要求的情况下不要使用排序操作；尽量不要包含多个列的排序，如果需要最好给这些列创建复合索引。</p>
+
+<p><strong>25).使用短索引对串列进行索引，如果可能应该指定一个前缀长度。例如，如果有一个CHAR(255)的列，如果在前10个或20个字符内，多数值是惟一的，那么就不要对整个列进行索引。短索引不仅可以提高查询速度而且可以节省磁盘空间和I/O操作。</strong></p>
+
+<p><strong>26).索引不会包含有NULL值的列只要列中包含有NULL值都将不会被包含在索引中，复合索引中只要有一列含有NULL值，那么这一列对于此复合索引就是无效的。所以我们在数据库设计时不要让字段的默认值为NULL。</strong></p>
+
+<p>27).<strong>使用ENUM而不是字符串</strong></p>
+
+<p>ENUM保存的是TINYINT，别在枚举中搞一些“中国”“北京”“技术部”这样的字符串，字符串空间又大，效率又低。</p>
+
+<h1 id="三-索引分析方法">三、索引分析方法</h1>
+
+<h3 id="3-1查看索引使用情况">3.1查看索引使用情况</h3>
+
+<p>如果索引正在工作，Handler_read_key的值将很高，这个值代表了一个行被索引值读的次数。</p>
+
+<p>Handler_read_rnd_next的值高则意味着查询运行低效，并且应该建立索引补救。</p>
+
+<p><a href="javascript:void(0);"><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码" /></a></p>
+
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码" /></p>
+
+<pre><code>mysql&gt; show status like 'Handler_read%'; 
++-----------------------+--------+
+| Variable_name         | Value  |
++-----------------------+--------+
+| Handler_read_first    | 9      |
+| Handler_read_key      | 16     |
+| Handler_read_last     | 0      |
+| Handler_read_next     | 680908 |
+| Handler_read_prev     | 0      |
+| Handler_read_rnd      | 0      |
+| Handler_read_rnd_next | 935519 |
++-----------------------+--------+
+7 rows in set (0.00 sec)
+
+mysql&gt; 
+</code></pre>
+
+<p><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码" /></p>
+
+<p><a href="javascript:void(0);"><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码" /></a></p>
+
+<h3 id="3-2两个简单实用的优化方法">3.2两个简单实用的优化方法：</h3>
+
+<p>分析表的语法如下:(检查一个或多个表是否有错误)</p>
+
+<pre><code>`mysql&gt; CHECK TABLE tbl_name[,tbl_name] …[option] …option = ``{ QUICK | FAST | MEDIUM| EXTENDED | CHANGED} ``mysql&gt; check table sales; ``+--------------+-------+----------+----------+ ``| Table | Op | Msg_type | Msg_text | ``+--------------+-------+----------+----------+ ``| sakila.sales | check | status | OK | ``+--------------+-------+----------+----------+ ``1 row ``in` `set` `(0.01 sec)`
+</code></pre>
+
+<h3 id="优化表的语法格式">优化表的语法格式：</h3>
+
+<p>OPTIMIZE [LOCAL | NO_WRITE_TO_BINLOG] TABLE tbl_name [,tbl_name]
+如果已经删除了表的一大部分，或者如果已经对含有可变长度行的表进行了很多的改动，则需要做定期优化。这个命令可以将表中的空间碎片进行合并，但是此命令只对MyISAM、BDB和InnoDB表起作用。</p>
+
+<pre><code>`mysql&gt; optimize table sales; ``+--------------+----------+----------+----------+ ``| Table | Op | Msg_type | Msg_text | ``+--------------+----------+----------+----------+ ``| sakila.sales | optimize | status | OK | ``+--------------+----------+----------+----------+ ``1 row ``in` `set` `(0.05 sec)`
+</code></pre>
+
+                        </div>
+
+                        
+
+<div class="post-archive">
+    <h2>See Also</h2>
+    <ul class="listing">
+        
+        <li><a href="/posts/java%E5%8D%95%E7%82%B9%E7%99%BB%E9%99%86/">Java单点登陆</a></li>
+        
+        <li><a href="/posts/seeion%E6%98%AF%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E8%A2%AB%E5%88%9B%E5%BB%BA%E7%9A%84/">Seeion是什么时候被创建的</a></li>
+        
+        <li><a href="/posts/object%E7%B1%BB/">Object类</a></li>
+        
+        <li><a href="/posts/java%E9%9D%A2%E8%AF%95/">Java面试</a></li>
+        
+        <li><a href="/posts/java%E9%9B%86%E5%90%88%E5%85%A5%E9%97%A8%E5%92%8C%E6%B7%B1%E5%85%A5%E5%AD%A6%E4%B9%A0/">Java集合入门和深入学习</a></li>
+        
+    </ul>
+</div>
+
+
+                        <div class="post-meta meta-tags">
+                            
+                            <ul class="clearfix">
+                                
+                                <li><a href="https://vvc-Dream.github.io/tags/java">java</a></li>
+                                
+                            </ul>
+                            
+                        </div>
+                    </article>
+                    
+    
+
+    
+    
+                </div>
+            </div>
+            <div id="secondary">
+    <section class="widget">
+        <form id="search" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="https://vvc-Dream.github.io/">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://vvc-Dream.github.io/posts/java%E9%9D%A2%E8%AF%95%E8%BF%9B%E9%98%B6/" title="Java面试（进阶）">Java面试（进阶）</a>
+    </li>
+    
+    <li>
+        <a href="https://vvc-Dream.github.io/posts/mysql%E7%B4%A2%E5%BC%95/" title="Mysql索引">Mysql索引</a>
+    </li>
+    
+    <li>
+        <a href="https://vvc-Dream.github.io/posts/java%E5%8D%95%E7%82%B9%E7%99%BB%E9%99%86/" title="Java单点登陆">Java单点登陆</a>
+    </li>
+    
+    <li>
+        <a href="https://vvc-Dream.github.io/posts/seeion%E6%98%AF%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E8%A2%AB%E5%88%9B%E5%BB%BA%E7%9A%84/" title="Seeion是什么时候被创建的">Seeion是什么时候被创建的</a>
+    </li>
+    
+    <li>
+        <a href="https://vvc-Dream.github.io/posts/object%E7%B1%BB/" title="Object类">Object类</a>
+    </li>
+    
+    <li>
+        <a href="https://vvc-Dream.github.io/posts/java%E9%9D%A2%E8%AF%95/" title="Java面试">Java面试</a>
+    </li>
+    
+    <li>
+        <a href="https://vvc-Dream.github.io/posts/java%E9%9B%86%E5%90%88%E5%85%A5%E9%97%A8%E5%92%8C%E6%B7%B1%E5%85%A5%E5%AD%A6%E4%B9%A0/" title="Java集合入门和深入学习">Java集合入门和深入学习</a>
+    </li>
+    
+    <li>
+        <a href="https://vvc-Dream.github.io/posts/%E4%BF%9D%E9%99%A9%E4%B8%9A%E5%8A%A1%E5%9F%BA%E7%A1%80/" title="保险业务基础">保险业务基础</a>
+    </li>
+    
+    <li>
+        <a href="https://vvc-Dream.github.io/posts/java%E4%B8%ADclone%E6%96%B9%E6%B3%95%E7%9A%84%E5%AE%9E%E7%8E%B0/" title="Java中clone方法的实现">Java中clone方法的实现</a>
+    </li>
+    
+    <li>
+        <a href="https://vvc-Dream.github.io/posts/java%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%BA%8F%E5%88%97%E5%8C%96serialization%E5%92%8C%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" title="Java对象的序列化（Serialization）和反序列化">Java对象的序列化（Serialization）和反序列化</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">分类</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://vvc-Dream.github.io/categories/%E5%BC%80%E5%8F%91/">开发(20)</a>
+    </li>
+    
+    <li>
+        <a href="https://vvc-Dream.github.io/categories/%E6%9D%82%E6%8A%80%E6%B5%85%E5%B0%9D/">杂技浅尝(1)</a>
+    </li>
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title">标签</h3>
+<div class="tagcloud">
+    
+    <a href="https://vvc-Dream.github.io/tags/hugo/">hugo</a>
+    
+    <a href="https://vvc-Dream.github.io/tags/insurance/">insurance</a>
+    
+    <a href="https://vvc-Dream.github.io/tags/java/">java</a>
+    
+</div>
+    </section>
+
+    
+<section class="widget">
+    <h3 class="widget-title">友情链接</h3>
+    <ul class="widget-list">
+        
+        <li>
+            <a target="_blank" href="https://github.com/vvc-Dream/vvc-Dream.github.io" title="Github">Github</a>
+        </li>
+        
+        <li>
+            <a target="_blank" href="http://space.bilibili.com/44178647?" title="哔哩哔哩">哔哩哔哩</a>
+        </li>
+        
+    </ul>
+</section>
+
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="https://vvc-Dream.github.io/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+        </div>
+    </div>
+</div>
+<footer id="footer">
+    <div class="container">
+        &copy; 2018 <a href="https://vvc-Dream.github.io/">vvc-Dream的博客 By vvc-Dream</a>.
+        Powered by <a rel="nofollow noreferer noopener" href="https://gohugo.io" target="_blank">Hugo</a>.
+        <a href="https://www.flysnow.org/" target="_blank">Theme</a> based on <a href="https://github.com/rujews/maupassant-hugo" target="_blank">maupassant</a>.
+        
+    </div>
+</footer>
+
+
+    <script type="text/javascript">
+    
+    (function(){
+        $("pre code").parent().addClass("line-numbers")
+    }())
+
+    window.MathJax = {
+        tex2jax: {
+            inlineMath: [ ['$','$'] ],
+            processEscapes: true
+        }
+    };
+    </script>
+    <script type="text/javascript" src="/js/prism.js" async="true"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src="/js/totop.js?v=0.0.0" async=""></script>
+
+
+
+
+
+
+</body>
+</html>
