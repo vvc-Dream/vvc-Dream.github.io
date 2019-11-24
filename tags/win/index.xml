@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Win on vvc-Dream的博客</title>
+    <link>https://vvc-Dream.github.io/tags/win/</link>
+    <description>Recent content in Win on vvc-Dream的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sun, 24 Nov 2019 14:00:48 +0800</lastBuildDate>
+    
+	<atom:link href="https://vvc-Dream.github.io/tags/win/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Win10美化</title>
+      <link>https://vvc-Dream.github.io/posts/win10%E7%BE%8E%E5%8C%96/</link>
+      <pubDate>Sun, 24 Nov 2019 14:00:48 +0800</pubDate>
+      
+      <guid>https://vvc-Dream.github.io/posts/win10%E7%BE%8E%E5%8C%96/</guid>
+      <description>&lt;p&gt;​   win10美化以及相关软件。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
