@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Win on vvc-Dream的博客</title>
-    <link>https://vvc-Dream.github.io/tags/win/</link>
-    <description>Recent content in Win on vvc-Dream的博客</description>
+    <title>工具 on vvc-Dream的博客</title>
+    <link>https://vvc-Dream.github.io/categories/%E5%B7%A5%E5%85%B7/</link>
+    <description>Recent content in 工具 on vvc-Dream的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <lastBuildDate>Sun, 24 Nov 2019 15:04:43 +0800</lastBuildDate>
     
-	<atom:link href="https://vvc-Dream.github.io/tags/win/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://vvc-Dream.github.io/categories/%E5%B7%A5%E5%85%B7/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -20,17 +20,6 @@
       <description>&lt;p&gt;​   工欲善其事，必先利其器。&lt;/p&gt;
 
 &lt;p&gt;​   win10效率工具。&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Win10美化</title>
-      <link>https://vvc-Dream.github.io/posts/win10%E7%BE%8E%E5%8C%96/</link>
-      <pubDate>Sun, 24 Nov 2019 14:00:48 +0800</pubDate>
-      
-      <guid>https://vvc-Dream.github.io/posts/win10%E7%BE%8E%E5%8C%96/</guid>
-      <description>&lt;p&gt;​   人靠衣装马靠鞍。&lt;/p&gt;
-
-&lt;p&gt;​   win10美化以及相关软件。&lt;/p&gt;</description>
     </item>
     
   </channel>
