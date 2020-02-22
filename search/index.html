@@ -6,16 +6,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>404 Page not found | vvc-Dream&#39; Blog</title>
-    <meta property="og:title" content="404 Page not found - vvc-Dream&#39; Blog">
+    <title>搜索 | vvc-Dream&#39; Blog</title>
+    <meta property="og:title" content="搜索 - vvc-Dream&#39; Blog">
     <meta property="og:type" content="article">
         
         
     <meta name="Keywords" content="vvc-Dream keywords">
-    <meta name="description" content="404 Page not found">
+    <meta name="description" content="搜索页面">
         
     <meta name="author" content="vvc-Dream">
-    <meta property="og:url" content="https://vvc-Dream.github.io/404.html">
+    <meta property="og:url" content="https://vvc-Dream.github.io/search/">
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 
     <link rel="stylesheet" href='/css/normalize.css'>
@@ -86,35 +86,32 @@
 
                 <div class="col-8" id="main">
                     
-<div class="body404">
-    <div class="info404">
-        <header id="header404" class="clearfix">
-            <div class="site-name404"><i>404</i></div>
-        </header>
-        <section>
-            <div class="title404">
-                <p>每一个平凡的日常<br />都是连续发生中的奇迹</p>
-            </div>
-            
+<div class="res-cons" id="pjax-content">
+    <h3 class="archive-title">
+        搜索
+        <span class="keyword">哈哈</span>
+        的结果
+    </h3>
 
-<div class="post-archive">
-    <h2>See Also</h2>
-    <ul class="listing">
-        
-        <li><a href="/posts/%E6%89%8B%E6%9C%BAPC%E6%8A%95%E5%B1%8F/" onclick="pjax_οnclickH(this);">手机PC投屏</a></li>
-        
-        <li><a href="/posts/win10%E6%95%88%E7%8E%87%E5%B7%A5%E5%85%B7/" onclick="pjax_οnclickH(this);">Win10效率工具</a></li>
-        
-        <li><a href="/posts/win10%E7%BE%8E%E5%8C%96/" onclick="pjax_οnclickH(this);">Win10美化</a></li>
-        
-        <li><a href="/posts/java%E9%9D%A2%E8%AF%95%E8%BF%9B%E9%98%B6/" onclick="pjax_οnclickH(this);">Java面试（进阶）</a></li>
-        
-        <li><a href="/posts/mysql%E7%B4%A2%E5%BC%95/" onclick="pjax_οnclickH(this);">Mysql索引</a></li>
-        
-    </ul>
-</div>
-<script>
-function pjax_οnclickH(vvc){
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="链接">标题</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2019年12月01日
+        </date>
+        <div class="post-content">
+            概要……
+            <p class="readmore"><a href="链接">阅读全文</a></p>
+        </div>
+    </article>
+
+<script type="text/javascript">
+
+	function pjax_οnclickC(vvc){
+	alert("AAA");
 	$.ajax({
             type:'GET',
             url:vvc.href,
@@ -126,13 +123,53 @@ function pjax_οnclickH(vvc){
               	});
     window.history.pushState({url:vvc.href},null,vvc.href);
 	vvc.href = "#";
-}
+	}
+
+    var getUrlParameter = function getUrlParameter(sParam) {
+        var sPageURL = window.location.search.substring(1),
+            sURLVariables = sPageURL.split('&'),
+            sParameterName,
+            i;
+
+        for (i = 0; i < sURLVariables.length; i++) {
+            sParameterName = sURLVariables[i].split('=');
+
+            if (sParameterName[0] === sParam) {
+                return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+            }
+        }
+    };
+
+    $(document).ready(function () {
+        var q = getUrlParameter("q");
+        $("span.keyword").text(q);
+        $("article.post").remove();
+        $.ajax({
+            url: 'https:\/\/vvc-Dream.github.io\/index.xml',
+            dataType: "xml",
+            success: function (data) {
+                $(data).find("item").each(function () {
+                    var item = $(this);
+                    var title = item.find("title").text();
+                    if (title.toLowerCase().indexOf(q.toLowerCase()) >= 0) {
+                        var url = item.find("link").text();
+                        var searchItem = `<article class="post"><header><h1 class="post-title"><a href="` + url + `" onclick="pjax_οnclickC(this);">` + title + `</a></h1></header>`;
+                        var pubDate = new Date(item.find("pubDate").text())
+                        searchItem += `<date class="post-meta meta-date">` + pubDate.getFullYear() + `年` + (pubDate.getMonth() + 1) + `月` + pubDate.getDate() + `日</date>`;
+                        searchItem += `<div class="post-content">` + item.find("description").text() + `……<p class="readmore"><a href="` + url + `" onclick="pjax_οnclickC(this);">阅读全文</a></p></div></article>`;
+
+                        $("div.res-cons").append(searchItem);
+                    }
+                });
+            }
+        });
+    });
+	
+
 </script>
 
-            <a rel="nofollow" href="https://vvc-Dream.github.io/" class="index404">回首页看看</a>
-        </section>
-    </div>
 </div>
+
 
                 </div>
 
@@ -257,6 +294,17 @@ function pjax_οnclickH(vvc){
     </div>
 </footer>
 
+
+    
+    <script type="text/javascript">
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
 
 
 <a id="rocket" href="#top"></a>

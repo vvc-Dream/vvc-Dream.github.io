@@ -1,21 +1,19 @@
 <!doctype html>
 <html lang="zh-CN">
 <head>
-	<meta name="baidu-site-verification" content="1COMmuDayL" />
-	<meta name="msvalidate.01" content="E41E35607EFA4063D8C1CA15B84D8B8C" />
+
     <meta charset="utf-8">
-    <meta name="generator" content="Hugo 0.53" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Java中clone方法的实现 | vvc-Dream的博客</title>
-    <meta property="og:title" content="Java中clone方法的实现 - vvc-Dream的博客">
+    <title>Java中clone方法的实现 | vvc-Dream&#39; Blog</title>
+    <meta property="og:title" content="Java中clone方法的实现 - vvc-Dream&#39; Blog">
     <meta property="og:type" content="article">
         
-    <meta property="article:published_time" content="2019-06-08T22:46:16&#43;08:00">
+    <meta property="article:published_time" content='2019-06-08T22:46:16&#43;08:00'>
         
         
-    <meta property="article:modified_time" content="2019-06-08T22:46:16&#43;08:00">
+    <meta property="article:modified_time" content='2019-06-08T22:46:16&#43;08:00'>
         
     <meta name="Keywords" content="vvc-Dream keywords">
     <meta name="description" content="Java中clone方法的实现">
@@ -24,60 +22,51 @@
     <meta property="og:url" content="https://vvc-Dream.github.io/posts/java%E4%B8%ADclone%E6%96%B9%E6%B3%95%E7%9A%84%E5%AE%9E%E7%8E%B0/">
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 
-    <link rel="stylesheet" href="/css/normalize.css">
-    
-        <link rel="stylesheet" href="/css/prism.css">
-    
-    <link rel="stylesheet" href="/css/style.css">
-    <script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href='/css/normalize.css'>
+    <link rel="stylesheet" href='/css/style.css'>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
     
 
 
     
     
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
-	<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/meting/dist/Meting.min.js"></script>
-	<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
-	<script src="//cdn.bootcss.com/jquery.pjax/1.9.6/jquery.pjax.min.js"></script>
-		
-		<div class="aplayer" data-id="2625893735" data-server="netease" data-type="playlist" data-fixed="true" data-autoplay="false" data-volume="1.0">
-		</div>
-    
-<script>
-$(document).pjax('a[target!=_blank]', '#main', {fragment:'#main', timeout:8000});
-$(document).on('pjax:send', function() { 
-    $(".pjax_loading").css("display", "block");
-});
-$(document).on('pjax:complete', function() { 
-    $(".pjax_loading").css("display", "none");
-    pajx_loadDuodsuo();
-});
-function pajx_loadDuodsuo(){
-var dus=$(".ds-thread");
-if($(dus).length==1){
-var el = document.createElement('div');
-el.setAttribute('data-thread-key',$(dus).attr("data-thread-key"));
-el.setAttribute('data-url',$(dus).attr("data-url"));
-DUOSHUO.EmbedThread(el);
-$(dus).html(el);
-}
-}
-</script>
+	
+	<script type="text/javascript" src="/js/jquery.min.js" async="true"></script>
+	<script type="text/javascript" src="/js/MyPjax.js" async="true"></script>
+
+	
+	<link rel="stylesheet" href="https://vvc-Dream.github.io/css/APlayer.min.css">
+	<script type="text/javascript" src="https://vvc-Dream.github.io/js/APlayer.min.js" ></script>
+	<script type="text/javascript" src="https://vvc-Dream.github.io/js/Meting.min.js" ></script>
+	
+
+	<div class="aplayer" 
+		data-id="2625893735" 
+		data-server="netease" 
+		data-type="playlist" 
+		data-fixed="true"
+		data-autoplay="false" 
+		data-order="random" 
+		data-volume="0.55" 
+		data-theme="#cc543a" 
+		date-preload="auto" >
+	</div>
+	
 </head>
 
+
 <body>
-<header id="header" class="clearfix">
+    <header id="header" class="clearfix">
     <div class="container">
         <div class="col-group">
             <div class="site-name ">
                 
                     <a id="logo" href="https://vvc-Dream.github.io/">
-                        vvc-Dream的博客
+                        vvc-Dream&#39; Blog
                     </a>
                 
-                <p class="description">vvc-Dream subtitle</p>
+                <p class="description">vvc-Dream的个人博客</p>
             </div>
             <div>
                 <nav id="nav-menu" class="clearfix">
@@ -95,246 +84,277 @@ $(dus).html(el);
     </div>
 </header>
 
+    <div id="body">
+        <div class="container">
+            <div class="col-group">
 
-<div id="body">
-    <div class="container">
-        <div class="col-group">
-
-            <div class="col-8" id="main">
-                <div class="res-cons">
-                    <article class="post">
-                        <header>
-                            <h1 class="post-title">Java中clone方法的实现</h1>
-                        </header>
-                        <date class="post-meta meta-date">
-                            2019年6月8日
-                        </date>
-                        
-                        <div class="post-meta">
-                            <span>|</span>
-                            
-                                <span class="meta-category"><a href="https://vvc-Dream.github.io/categories/%E5%BC%80%E5%8F%91">开发</a></span>
-                            
-                        </div>
-                        
-                        
-                        <div class="post-content">
-                            <p>java中仅有的创建对象的两种方式：①.使用new操作符创建对象；②.使用clone方法复制对象。由于clone方法将最终将调用JVM中的原生方法完成复制，所以一般使用clone方法复制对象要比新建一个对象然后逐一进行元素复制效率要高。</p>
-
+                <div class="col-8" id="main">
+                    
+<div class="res-cons" id="pjax-content">
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">Java中clone方法的实现</h1>
+        </header>
+        <date class="post-meta meta-date">
+            2019年6月8日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='https://vvc-Dream.github.io/categories/%E5%BC%80%E5%8F%91' onclick="pjax_οnclickD(this);">开发</a></span>
+            
+        </div>
+        
+        
+        <div class="post-meta">
+            <span id="busuanzi_container_page_pv">|<span id="busuanzi_value_page_pv"></span><span>
+                    阅读</span></span>
+        </div>
+        
+        
+        <div class="post-content">
+            <p>java中仅有的创建对象的两种方式：①.使用new操作符创建对象；②.使用clone方法复制对象。由于clone方法将最终将调用JVM中的原生方法完成复制，所以一般使用clone方法复制对象要比新建一个对象然后逐一进行元素复制效率要高。</p>
 <h2 id="浅拷贝与深拷贝">浅拷贝与深拷贝</h2>
-
 <p>在java中基本数据类型是按值传递的，而对象是按引用传递的。所以当调用对象的clone方法进行对象复制时将涉及深拷贝和浅拷贝的概念。</p>
-
 <p>浅拷贝是指拷贝对象时仅仅拷贝对象本身（包括对象中的基本变量），而不拷贝对象包含的引用指向的对象。深拷贝不仅拷贝对象本身，而且拷贝对象包含的引用指向的所有对象。通过clone方法复制对象时，若不对clone()方法进行改写，则调用此方法得到的对象为浅拷贝。</p>
-
 <p>例如：浅拷贝</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Stack</span> <span style="color:#66d9ef">implements</span> Cloneable <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">private</span> Object<span style="color:#f92672">[</span><span style="color:#f92672">]</span> elements<span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">int</span> size <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">int</span> DEFAULT_INITIAL_CAPACITY <span style="color:#f92672">=</span> 16<span style="color:#f92672">;</span>
 
-<pre><code class="language-java">    public class Stack implements Cloneable {
-        private Object[] elements;
-        private int size = 0;
-        private static final int DEFAULT_INITIAL_CAPACITY = 16;
+        <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">Stack</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            elements <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Object<span style="color:#f92672">[</span>DEFAULT_INITIAL_CAPACITY<span style="color:#f92672">]</span><span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
 
-        public Stack() {
-            elements = new Object[DEFAULT_INITIAL_CAPACITY];
-        }
+        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">push</span><span style="color:#f92672">(</span>Object o<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            ensureCapacity<span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+            elements<span style="color:#f92672">[</span>size<span style="color:#f92672">+</span><span style="color:#f92672">+</span><span style="color:#f92672">]</span> <span style="color:#f92672">=</span> o<span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
 
-        public void push(Object o) {
-            ensureCapacity();
-            elements[size++] = o;
-        }
+        <span style="color:#66d9ef">public</span> Object <span style="color:#a6e22e">pop</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>size <span style="color:#f92672">=</span><span style="color:#f92672">=</span> 0<span style="color:#f92672">)</span>
+                <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> EmptyStackException<span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+            Object result <span style="color:#f92672">=</span> elements<span style="color:#f92672">[</span><span style="color:#f92672">-</span><span style="color:#f92672">-</span>size<span style="color:#f92672">]</span><span style="color:#f92672">;</span>
+            elements<span style="color:#f92672">[</span>size<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span> <span style="color:#75715e">// 【避免内存泄漏】
+</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">return</span> result<span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
 
-        public Object pop() {
-            if (size == 0)
-                throw new EmptyStackException();
-            Object result = elements[--size];
-            elements[size] = null; // 【避免内存泄漏】
-            return result;
-        }
+        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">ensureCapacity</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>elements<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span> <span style="color:#f92672">=</span><span style="color:#f92672">=</span> size<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                elements <span style="color:#f92672">=</span> Arrays<span style="color:#f92672">.</span><span style="color:#a6e22e">copyOf</span><span style="color:#f92672">(</span>elements<span style="color:#f92672">,</span> 2 <span style="color:#f92672">*</span> size <span style="color:#f92672">+</span> 1<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+            <span style="color:#f92672">}</span>
+        <span style="color:#f92672">}</span>
 
-        private void ensureCapacity() {
-            if (elements.length == size) {
-                elements = Arrays.copyOf(elements, 2 * size + 1);
-            }
-        }
+        <span style="color:#75715e">// 实现clone方法,浅拷贝
+</span><span style="color:#75715e"></span>        <span style="color:#a6e22e">@Override</span>
+        <span style="color:#66d9ef">protected</span> Stack <span style="color:#a6e22e">clone</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> CloneNotSupportedException <span style="color:#f92672">{</span>
 
-        // 实现clone方法,浅拷贝
-        @Override
-        protected Stack clone() throws CloneNotSupportedException {
-
-            return (Stack) super.clone();
-        }
-    }
-</code></pre>
-
-<p>深拷贝：</p>
-
-<pre><code class="language-java">    //深拷贝
-    @Override
-    protected Stack clone() throws CloneNotSupportedException {
-        Stack result = (Stack) super.clone();
-        result.elements = elements.clone(); //对elements元素进行拷贝（引用或基本数据类型）
-        return result;
-    }
-</code></pre>
-
-<p>其原理图：</p>
-
-<p><img src="https:////upload-images.jianshu.io/upload_images/2959073-a53016746496ba11.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/700/format/webp" alt="img" /></p>
-
+            <span style="color:#66d9ef">return</span> <span style="color:#f92672">(</span>Stack<span style="color:#f92672">)</span> <span style="color:#66d9ef">super</span><span style="color:#f92672">.</span><span style="color:#a6e22e">clone</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+    <span style="color:#f92672">}</span>
+</code></pre></div><p>深拷贝：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">    <span style="color:#75715e">//深拷贝
+</span><span style="color:#75715e"></span>    <span style="color:#a6e22e">@Override</span>
+    <span style="color:#66d9ef">protected</span> Stack <span style="color:#a6e22e">clone</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> CloneNotSupportedException <span style="color:#f92672">{</span>
+        Stack result <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>Stack<span style="color:#f92672">)</span> <span style="color:#66d9ef">super</span><span style="color:#f92672">.</span><span style="color:#a6e22e">clone</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+        result<span style="color:#f92672">.</span><span style="color:#a6e22e">elements</span> <span style="color:#f92672">=</span> elements<span style="color:#f92672">.</span><span style="color:#a6e22e">clone</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span> <span style="color:#75715e">//对elements元素进行拷贝（引用或基本数据类型）
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">return</span> result<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+</code></pre></div><p>其原理图：</p>
+<p><img src="https:////upload-images.jianshu.io/upload_images/2959073-a53016746496ba11.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/700/format/webp" alt="img"></p>
 <p>深拷贝与浅拷贝的原理</p>
-
 <p>注意：</p>
-
 <ul>
 <li>由于java5.0后引入了协变返回类型（covariant return type）实现（基于泛型），即覆盖方法的返回类型可以是被覆盖方法的返回类型的子类型，所以clone方法可以直接返回Stack类型，而不用返回Object类型，然后客户端再强转。</li>
 <li>在数组上调用clone返回的数组，其编译时类型与被克隆数组的类型相同。</li>
 <li>若elements域是final的，深拷贝不能正常工作。因为clone架构与引用可变对象的final域的正常用法是不兼容的。</li>
 <li>若elements数组中的元素是引用类型，则此方法仅仅是对引用的拷贝，元素指向的还是原来的对象</li>
 </ul>
-
-<p>还应该注意，<strong>数组的clone，仅仅复制的是数组中的元素，即若数组中元素为引用类型，仅仅复制引用。若clone的对象中含有链表，则应单独对链表进行循环复制。</strong>例如，一个内部包含一个散列桶数组的散列表，其数组中每个元素都指向一个独立的链表。此时仅仅使用上面的方法就是不完全拷贝。</p>
-
+<p>还应该注意，**数组的clone，仅仅复制的是数组中的元素，即若数组中元素为引用类型，仅仅复制引用。若clone的对象中含有链表，则应单独对链表进行循环复制。**例如，一个内部包含一个散列桶数组的散列表，其数组中每个元素都指向一个独立的链表。此时仅仅使用上面的方法就是不完全拷贝。</p>
 <p>代码：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">HashTable</span> <span style="color:#66d9ef">implements</span> Cloneable <span style="color:#f92672">{</span>
 
-<pre><code class="language-java">    public class HashTable implements Cloneable {
+        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">int</span> CAPACITY <span style="color:#f92672">=</span> 10<span style="color:#f92672">;</span>
 
-        private static final int CAPACITY = 10;
+        <span style="color:#75715e">//散列桶数组，数组中元素指向由Entry对象组成的链表（指向链表第一个Entry）
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">private</span> Entry<span style="color:#f92672">[</span><span style="color:#f92672">]</span> buckerts <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Entry<span style="color:#f92672">[</span>CAPACITY<span style="color:#f92672">]</span><span style="color:#f92672">;</span>
 
-        //散列桶数组，数组中元素指向由Entry对象组成的链表（指向链表第一个Entry）
-        private Entry[] buckerts = new Entry[CAPACITY];
+        <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">put</span><span style="color:#f92672">(</span>Object key<span style="color:#f92672">,</span> Object value<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">int</span> index <span style="color:#f92672">=</span> key<span style="color:#f92672">.</span><span style="color:#a6e22e">hashCode</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span> <span style="color:#f92672">%</span> CAPACITY<span style="color:#f92672">;</span>
+            Entry e <span style="color:#f92672">=</span> buckerts<span style="color:#f92672">[</span>index<span style="color:#f92672">]</span><span style="color:#f92672">;</span>
+            buckerts<span style="color:#f92672">[</span>index<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Entry<span style="color:#f92672">(</span>key<span style="color:#f92672">,</span>value<span style="color:#f92672">,</span>e<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
 
-        public void put(Object key, Object value) {
-            int index = key.hashCode() % CAPACITY;
-            Entry e = buckerts[index];
-            buckerts[index] = new Entry(key,value,e);
-        }
+        <span style="color:#a6e22e">@Override</span>
+        <span style="color:#66d9ef">public</span> HashTable <span style="color:#a6e22e">clone</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> CloneNotSupportedException <span style="color:#f92672">{</span>
+            HashTable result <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>HashTable<span style="color:#f92672">)</span><span style="color:#66d9ef">super</span><span style="color:#f92672">.</span><span style="color:#a6e22e">clone</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+            result<span style="color:#f92672">.</span><span style="color:#a6e22e">buckerts</span> <span style="color:#f92672">=</span> buckerts<span style="color:#f92672">.</span><span style="color:#a6e22e">clone</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span> <span style="color:#75715e">//仅仅复制了对链表的引用。
+</span><span style="color:#75715e"></span>            <span style="color:#66d9ef">return</span> result<span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
 
-        @Override
-        public HashTable clone() throws CloneNotSupportedException {
-            HashTable result = (HashTable)super.clone();
-            result.buckerts = buckerts.clone(); //仅仅复制了对链表的引用。
-            return result;
-        }
+        <span style="color:#75715e">//轻量级单链表
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Entry</span> <span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">final</span> Object key<span style="color:#f92672">;</span>
+            Object value<span style="color:#f92672">;</span>
+            Entry next<span style="color:#f92672">;</span>
 
-        //轻量级单链表
-        private static class Entry {
-            final Object key;
-            Object value;
-            Entry next;
-
-            Entry(Object key, Object value, Entry next) {
-                this.key = key;
-                this.value = value;
-                this.next = next;
-            }
-        }
-    }
-</code></pre>
-
-<p>原理图：</p>
-
-<p><img src="https:////upload-images.jianshu.io/upload_images/2959073-f28dd721fbfe57e5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/663/format/webp" alt="img" /></p>
-
+            Entry<span style="color:#f92672">(</span>Object key<span style="color:#f92672">,</span> Object value<span style="color:#f92672">,</span> Entry next<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+                <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">key</span> <span style="color:#f92672">=</span> key<span style="color:#f92672">;</span>
+                <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">value</span> <span style="color:#f92672">=</span> value<span style="color:#f92672">;</span>
+                <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">next</span> <span style="color:#f92672">=</span> next<span style="color:#f92672">;</span>
+            <span style="color:#f92672">}</span>
+        <span style="color:#f92672">}</span>
+    <span style="color:#f92672">}</span>
+</code></pre></div><p>原理图：</p>
+<p><img src="https:////upload-images.jianshu.io/upload_images/2959073-f28dd721fbfe57e5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/663/format/webp" alt="img"></p>
 <p>不完全拷贝</p>
-
 <p>虽然被克隆对象有自己的散列桶数组，但数组引用的链表与原对象是一样的。数组的clone方法，仅仅拷贝了对链表的引用，而没有复制链表中的元素。</p>
-
 <p>改进代码：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">    <span style="color:#a6e22e">@Override</span>
+    <span style="color:#66d9ef">public</span> HashTable <span style="color:#a6e22e">clone</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span> <span style="color:#66d9ef">throws</span> CloneNotSupportedException <span style="color:#f92672">{</span>
+        HashTable result <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>HashTable<span style="color:#f92672">)</span><span style="color:#66d9ef">super</span><span style="color:#f92672">.</span><span style="color:#a6e22e">clone</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+        result<span style="color:#f92672">.</span><span style="color:#a6e22e">buckerts</span> <span style="color:#f92672">=</span> buckerts<span style="color:#f92672">.</span><span style="color:#a6e22e">clone</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">for</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i<span style="color:#f92672">=</span>0<span style="color:#f92672">;</span> i<span style="color:#f92672">&lt;</span>buckerts<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">;</span> i<span style="color:#f92672">+</span><span style="color:#f92672">+</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            result<span style="color:#f92672">.</span><span style="color:#a6e22e">buckerts</span><span style="color:#f92672">[</span>i<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> buckerts<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span><span style="color:#f92672">.</span><span style="color:#a6e22e">deepCopy</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+        <span style="color:#66d9ef">return</span> result<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
 
-<pre><code class="language-java">    @Override
-    public HashTable clone() throws CloneNotSupportedException {
-        HashTable result = (HashTable)super.clone();
-        result.buckerts = buckerts.clone();
-        for(int i=0; i&lt;buckerts.length; i++) {
-            result.buckerts[i] = buckerts[i].deepCopy();
-        }
-        return result;
-    }
+    <span style="color:#75715e">//轻量级单链表
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Entry</span> <span style="color:#f92672">{</span>
+        <span style="color:#66d9ef">final</span> Object key<span style="color:#f92672">;</span>
+        Object value<span style="color:#f92672">;</span>
+        Entry next<span style="color:#f92672">;</span>
 
-    //轻量级单链表
-    private static class Entry {
-        final Object key;
-        Object value;
-        Entry next;
+        Entry<span style="color:#f92672">(</span>Object key<span style="color:#f92672">,</span> Object value<span style="color:#f92672">,</span> Entry next<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">key</span> <span style="color:#f92672">=</span> key<span style="color:#f92672">;</span>
+            <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">value</span> <span style="color:#f92672">=</span> value<span style="color:#f92672">;</span>
+            <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">next</span> <span style="color:#f92672">=</span> next<span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
 
-        Entry(Object key, Object value, Entry next) {
-            this.key = key;
-            this.value = value;
-            this.next = next;
-        }
-
-        //递归实现链表复制
-        Entry deepCopy() {
-            return new Entry(key,value,next == null ? null : next.deepCopy());
-        }
-    }
-</code></pre>
-
-<p>在内部类Entry中的深度拷贝方法递归的调用自身，以完成链表的拷贝。虽然这种方法比较简洁，但如果链表很长，有可能会导致栈溢出。可以使用迭代代替递归实现链表的复制。代码如下：</p>
-
-<pre><code class="language-java">    //迭代实现链表复制
-    Entry deepCopy() {
-        Entry result = new Entry(key, value, next);
-        for(Entry e = result; e.next != null; e = e.next) {
-            e.next = new Entry(e.next.key, e.next.value, e.next.next);
-        }
-        return result;
-    }
-</code></pre>
-
-<p><strong>实现clone方法的步骤：</strong></p>
-
+        <span style="color:#75715e">//递归实现链表复制
+</span><span style="color:#75715e"></span>        Entry <span style="color:#a6e22e">deepCopy</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> Entry<span style="color:#f92672">(</span>key<span style="color:#f92672">,</span>value<span style="color:#f92672">,</span>next <span style="color:#f92672">=</span><span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">?</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">:</span> next<span style="color:#f92672">.</span><span style="color:#a6e22e">deepCopy</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+    <span style="color:#f92672">}</span>
+</code></pre></div><p>在内部类Entry中的深度拷贝方法递归的调用自身，以完成链表的拷贝。虽然这种方法比较简洁，但如果链表很长，有可能会导致栈溢出。可以使用迭代代替递归实现链表的复制。代码如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">    <span style="color:#75715e">//迭代实现链表复制
+</span><span style="color:#75715e"></span>    Entry <span style="color:#a6e22e">deepCopy</span><span style="color:#f92672">(</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+        Entry result <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Entry<span style="color:#f92672">(</span>key<span style="color:#f92672">,</span> value<span style="color:#f92672">,</span> next<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+        <span style="color:#66d9ef">for</span><span style="color:#f92672">(</span>Entry e <span style="color:#f92672">=</span> result<span style="color:#f92672">;</span> e<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span> <span style="color:#f92672">!</span><span style="color:#f92672">=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">;</span> e <span style="color:#f92672">=</span> e<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+            e<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Entry<span style="color:#f92672">(</span>e<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">.</span><span style="color:#a6e22e">key</span><span style="color:#f92672">,</span> e<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">.</span><span style="color:#a6e22e">value</span><span style="color:#f92672">,</span> e<span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">.</span><span style="color:#a6e22e">next</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+        <span style="color:#f92672">}</span>
+        <span style="color:#66d9ef">return</span> result<span style="color:#f92672">;</span>
+    <span style="color:#f92672">}</span>
+</code></pre></div><p><strong>实现clone方法的步骤：</strong></p>
 <ul>
 <li>首先调用父类的super.clone方法（父类必须实现clone方法），这个方法将最终调用Object的中native型的clone方法完成浅拷贝</li>
 <li>对类中的引用类型进行单独拷贝</li>
 <li>检查clone中是否有不完全拷贝(例如，链表），进行额外的复制</li>
 </ul>
-                        </div>
+        </div>
 
-                        
+        
+
+
+        
 
 <div class="post-archive">
     <h2>See Also</h2>
     <ul class="listing">
         
-        <li><a href="/posts/java%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%BA%8F%E5%88%97%E5%8C%96serialization%E5%92%8C%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/">Java对象的序列化（Serialization）和反序列化</a></li>
+        <li><a href="/posts/java%E4%B8%AD%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E4%B8%8E%E5%86%85%E5%AD%98/" onclick="pjax_οnclickH(this);">Java中的数据类型与内存</a></li>
         
-        <li><a href="/posts/%E9%87%8D%E5%86%99hashcode%E6%96%B9%E6%B3%95%E5%92%8Cequals%E6%96%B9%E6%B3%95/">重写hashCode方法和equals方法</a></li>
+        <li><a href="/posts/Axure/" onclick="pjax_οnclickH(this);">Axure</a></li>
         
-        <li><a href="/posts/equals%E4%B8%8E%E7%9A%84%E5%8C%BA%E5%88%AB/">Equals与==的区别</a></li>
+        <li><a href="/posts/git/" onclick="pjax_οnclickH(this);">Git基本操作</a></li>
         
-        <li><a href="/posts/forforeach%E5%92%8Citerator%E7%9A%84%E5%8C%BA%E5%88%AB/">For、foreach和Iterator的区别</a></li>
+        <li><a href="/posts/Create-Hugo-Blog/" onclick="pjax_οnclickH(this);">使用Hugo&#43;Github创建个人博客</a></li>
         
-        <li><a href="/posts/%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E4%B8%8E%E5%8C%85%E8%A3%85%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">基本数据类型与包装数据类型</a></li>
+        <li><a href="/archives/" onclick="pjax_οnclickH(this);">Archives</a></li>
         
     </ul>
 </div>
+<script>
+function pjax_οnclickH(vvc){
+	$.ajax({
+            type:'GET',
+            url:vvc.href,
+            success:function(data){
+				$('#pjax-content').html('');
+				var _content = $(data).find("#pjax-content").html();
+            	$('#pjax-content').html(_content);
+            }
+              	});
+    window.history.pushState({url:vvc.href},null,vvc.href);
+	vvc.href = "#";
+}
+</script>
 
 
-                        <div class="post-meta meta-tags">
-                            
-                            <ul class="clearfix">
-                                
-                                <li><a href="https://vvc-Dream.github.io/tags/java">java</a></li>
-                                
-                            </ul>
-                            
-                        </div>
-                    </article>
-                    
+        <div class="post-meta meta-tags">
+            
+            <ul class="clearfix">
+                
+                <li><a href='https://vvc-Dream.github.io/tags/java' onclick="pjax_οnclickD(this);">java</a></li>
+                
+            </ul>
+            
+        </div>
+    </article>
     
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "vvc-Dream" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 
     
     
+<script>
+function pjax_οnclickD(vvc){
+	$.ajax({
+            type:'GET',
+            url:vvc.href,
+            success:function(data){
+				$('#pjax-content').html('');
+				var _content = $(data).find("#pjax-content").html();
+            	$('#pjax-content').html(_content);
+            }
+              	});
+    window.history.pushState({url:vvc.href},null,vvc.href);
+	vvc.href = "#";
+}
+</script>
+</div>
+
                 </div>
-            </div>
-            <div id="secondary">
+
+                <div id="secondary">
     <section class="widget">
-        <form id="search" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+        <form id="search" action='https://vvc-Dream.github.io/search/' method="get" accept-charset="utf-8" target="_self" _lpchecked="1">
       
       <input type="text" name="q" maxlength="20" placeholder="Search">
       <input type="hidden" name="sitesearch" value="https://vvc-Dream.github.io/">
-      <button type="submit" class="submit icon-search"></button>
+      <button type="submit" class="submit icon-search" ></button>
 </form>
     </section>
     
@@ -343,7 +363,7 @@ $(dus).html(el);
 <ul class="widget-list">
     
     <li>
-        <a href="https://vvc-Dream.github.io/posts/%E6%89%8B%E6%9C%BApc%E6%8A%95%E5%B1%8F/" title="手机PC投屏">手机PC投屏</a>
+        <a href="https://vvc-Dream.github.io/posts/%E6%89%8B%E6%9C%BAPC%E6%8A%95%E5%B1%8F/" title="手机PC投屏">手机PC投屏</a>
     </li>
     
     <li>
@@ -355,10 +375,6 @@ $(dus).html(el);
     </li>
     
     <li>
-        <a href="https://vvc-Dream.github.io/posts/java%E9%9D%A2%E8%AF%953/" title="Java面试（3）">Java面试（3）</a>
-    </li>
-    
-    <li>
         <a href="https://vvc-Dream.github.io/posts/java%E9%9D%A2%E8%AF%95%E8%BF%9B%E9%98%B6/" title="Java面试（进阶）">Java面试（进阶）</a>
     </li>
     
@@ -367,19 +383,23 @@ $(dus).html(el);
     </li>
     
     <li>
-        <a href="https://vvc-Dream.github.io/posts/java%E5%8D%95%E7%82%B9%E7%99%BB%E9%99%86/" title="Java单点登陆">Java单点登陆</a>
-    </li>
-    
-    <li>
         <a href="https://vvc-Dream.github.io/posts/seeion%E6%98%AF%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E8%A2%AB%E5%88%9B%E5%BB%BA%E7%9A%84/" title="Seeion是什么时候被创建的">Seeion是什么时候被创建的</a>
     </li>
     
     <li>
-        <a href="https://vvc-Dream.github.io/posts/object%E7%B1%BB/" title="Object类">Object类</a>
+        <a href="https://vvc-Dream.github.io/posts/java%E9%9B%86%E5%90%88%E5%85%A5%E9%97%A8%E5%92%8C%E6%B7%B1%E5%85%A5%E5%AD%A6%E4%B9%A0/" title="Java集合入门和深入学习">Java集合入门和深入学习</a>
     </li>
     
     <li>
-        <a href="https://vvc-Dream.github.io/posts/java%E9%9D%A2%E8%AF%95/" title="Java面试">Java面试</a>
+        <a href="https://vvc-Dream.github.io/posts/java%E4%B8%ADclone%E6%96%B9%E6%B3%95%E7%9A%84%E5%AE%9E%E7%8E%B0/" title="Java中clone方法的实现">Java中clone方法的实现</a>
+    </li>
+    
+    <li>
+        <a href="https://vvc-Dream.github.io/posts/java%E4%B8%AD%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E4%B8%8E%E5%86%85%E5%AD%98/" title="Java中的数据类型与内存">Java中的数据类型与内存</a>
+    </li>
+    
+    <li>
+        <a href="https://vvc-Dream.github.io/posts/Axure/" title="Axure">Axure</a>
     </li>
     
 </ul>
@@ -391,21 +411,11 @@ $(dus).html(el);
         <h3 class="widget-title">分类</h3>
 <ul class="widget-list">
     
-    <li>
-        <a href="https://vvc-Dream.github.io/categories/%E5%B7%A5%E5%85%B7/">工具(2)</a>
-    </li>
+    <li><a href="https://vvc-Dream.github.io/categories/%E5%B7%A5%E5%85%B7/">工具 (2)</a></li>
     
-    <li>
-        <a href="https://vvc-Dream.github.io/categories/%E5%BC%80%E5%8F%91/">开发(21)</a>
-    </li>
+    <li><a href="https://vvc-Dream.github.io/categories/%E5%BC%80%E5%8F%91/">开发 (9)</a></li>
     
-    <li>
-        <a href="https://vvc-Dream.github.io/categories/%E6%9D%82%E6%8A%80%E6%B5%85%E5%B0%9D/">杂技浅尝(1)</a>
-    </li>
-    
-    <li>
-        <a href="https://vvc-Dream.github.io/categories/%E7%BE%8E%E5%8C%96/">美化(1)</a>
-    </li>
+    <li><a href="https://vvc-Dream.github.io/categories/%E7%BE%8E%E5%8C%96/">美化 (1)</a></li>
     
 </ul>
     </section>
@@ -415,8 +425,6 @@ $(dus).html(el);
 <div class="tagcloud">
     
     <a href="https://vvc-Dream.github.io/tags/hugo/">hugo</a>
-    
-    <a href="https://vvc-Dream.github.io/tags/insurance/">insurance</a>
     
     <a href="https://vvc-Dream.github.io/tags/java/">java</a>
     
@@ -449,42 +457,52 @@ $(dus).html(el);
         </ul>
     </section>
 </div>
+            </div>
         </div>
     </div>
-</div>
-<footer id="footer">
+    <footer id="footer">
     <div class="container">
-        &copy; 2018 <a href="https://vvc-Dream.github.io/">vvc-Dream的博客 By vvc-Dream</a>.
+        &copy; 2020 <a href="https://vvc-Dream.github.io/">vvc-Dream&#39; Blog By vvc-Dream</a>.
         Powered by <a rel="nofollow noreferer noopener" href="https://gohugo.io" target="_blank">Hugo</a>.
-        <a href="https://www.flysnow.org/" target="_blank">Theme</a> based on <a href="https://github.com/rujews/maupassant-hugo" target="_blank">maupassant</a>.
+        <a href="https://www.flysnow.org/" target="_blank">Theme</a> based on <a href="https://github.com/flysnow-org/maupassant-hugo" target="_blank">maupassant</a>.
         
     </div>
 </footer>
 
 
-    <script type="text/javascript">
     
-    (function(){
-        $("pre code").parent().addClass("line-numbers")
-    }())
-
-    window.MathJax = {
-        tex2jax: {
-            inlineMath: [ ['$','$'] ],
-            processEscapes: true
-        }
-    };
+    <script type="text/javascript">
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
     </script>
-    <script type="text/javascript" src="/js/prism.js" async="true"></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
 
+
 <a id="rocket" href="#top"></a>
-<script type="text/javascript" src="/js/totop.js?v=0.0.0" async=""></script>
+<script type="text/javascript" src='/js/totop.js?v=0.0.0' async=""></script>
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'GA ID', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
 
 
+
+    <script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
 
 
 
 
 </body>
+
 </html>

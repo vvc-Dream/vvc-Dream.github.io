@@ -1,83 +1,72 @@
 <!doctype html>
 <html lang="zh-CN">
 <head>
-	<meta name="baidu-site-verification" content="1COMmuDayL" />
-	<meta name="msvalidate.01" content="E41E35607EFA4063D8C1CA15B84D8B8C" />
+
     <meta charset="utf-8">
-    <meta name="generator" content="Hugo 0.53" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>使用Hugo&#43;Github创建个人博客 | vvc-Dream的博客</title>
-    <meta property="og:title" content="使用Hugo&#43;Github创建个人博客 - vvc-Dream的博客">
+    <title>使用Hugo&#43;Github创建个人博客 | vvc-Dream&#39; Blog</title>
+    <meta property="og:title" content="使用Hugo&#43;Github创建个人博客 - vvc-Dream&#39; Blog">
     <meta property="og:type" content="article">
         
-    <meta property="article:published_time" content="2019-01-20T15:52:31&#43;08:00">
+    <meta property="article:published_time" content='2019-01-20T15:52:31&#43;08:00'>
         
         
-    <meta property="article:modified_time" content="2019-01-20T15:52:31&#43;08:00">
+    <meta property="article:modified_time" content='2019-01-20T15:52:31&#43;08:00'>
         
     <meta name="Keywords" content="vvc-Dream keywords">
     <meta name="description" content="使用Hugo&#43;Github创建个人博客">
         <meta name="author" content="vvc-Dream">
         
-    <meta property="og:url" content="https://vvc-Dream.github.io/posts/create-hugo-blog/">
+    <meta property="og:url" content="https://vvc-Dream.github.io/posts/Create-Hugo-Blog/">
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 
-    <link rel="stylesheet" href="/css/normalize.css">
-    
-        <link rel="stylesheet" href="/css/prism.css">
-    
-    <link rel="stylesheet" href="/css/style.css">
-    <script type="text/javascript" src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href='/css/normalize.css'>
+    <link rel="stylesheet" href='/css/style.css'>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
     
 
 
     
     
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
-	<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/meting/dist/Meting.min.js"></script>
-	<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
-	<script src="//cdn.bootcss.com/jquery.pjax/1.9.6/jquery.pjax.min.js"></script>
-		
-		<div class="aplayer" data-id="2625893735" data-server="netease" data-type="playlist" data-fixed="true" data-autoplay="false" data-volume="1.0">
-		</div>
-    
-<script>
-$(document).pjax('a[target!=_blank]', '#main', {fragment:'#main', timeout:8000});
-$(document).on('pjax:send', function() { 
-    $(".pjax_loading").css("display", "block");
-});
-$(document).on('pjax:complete', function() { 
-    $(".pjax_loading").css("display", "none");
-    pajx_loadDuodsuo();
-});
-function pajx_loadDuodsuo(){
-var dus=$(".ds-thread");
-if($(dus).length==1){
-var el = document.createElement('div');
-el.setAttribute('data-thread-key',$(dus).attr("data-thread-key"));
-el.setAttribute('data-url',$(dus).attr("data-url"));
-DUOSHUO.EmbedThread(el);
-$(dus).html(el);
-}
-}
-</script>
+	
+	<script type="text/javascript" src="/js/jquery.min.js" async="true"></script>
+	<script type="text/javascript" src="/js/MyPjax.js" async="true"></script>
+
+	
+	<link rel="stylesheet" href="https://vvc-Dream.github.io/css/APlayer.min.css">
+	<script type="text/javascript" src="https://vvc-Dream.github.io/js/APlayer.min.js" ></script>
+	<script type="text/javascript" src="https://vvc-Dream.github.io/js/Meting.min.js" ></script>
+	
+
+	<div class="aplayer" 
+		data-id="2625893735" 
+		data-server="netease" 
+		data-type="playlist" 
+		data-fixed="true"
+		data-autoplay="false" 
+		data-order="random" 
+		data-volume="0.55" 
+		data-theme="#cc543a" 
+		date-preload="auto" >
+	</div>
+	
 </head>
 
+
 <body>
-<header id="header" class="clearfix">
+    <header id="header" class="clearfix">
     <div class="container">
         <div class="col-group">
             <div class="site-name ">
                 
                     <a id="logo" href="https://vvc-Dream.github.io/">
-                        vvc-Dream的博客
+                        vvc-Dream&#39; Blog
                     </a>
                 
-                <p class="description">vvc-Dream subtitle</p>
+                <p class="description">vvc-Dream的个人博客</p>
             </div>
             <div>
                 <nav id="nav-menu" class="clearfix">
@@ -95,172 +84,120 @@ $(dus).html(el);
     </div>
 </header>
 
+    <div id="body">
+        <div class="container">
+            <div class="col-group">
 
-<div id="body">
-    <div class="container">
-        <div class="col-group">
-
-            <div class="col-8" id="main">
-                <div class="res-cons">
-                    <article class="post">
-                        <header>
-                            <h1 class="post-title">使用Hugo&#43;Github创建个人博客</h1>
-                        </header>
-                        <date class="post-meta meta-date">
-                            2019年1月20日
-                        </date>
-                        
-                        <div class="post-meta">
-                            <span>|</span>
-                            
-                                <span class="meta-category"><a href="https://vvc-Dream.github.io/categories/%E5%BC%80%E5%8F%91">开发</a></span>
-                            
-                        </div>
-                        
-                        
-                        <div class="post-content">
-                            <p>​   本教程适合小白，稍微懂点前端知识最好。利用静态页面生成器Hugao + Github Pages制作个人博客。</p>
-
-<p>​   教程相关内容都可以在网络上搜索到。</p>
-
-<p>​   当然最好是查看官方文档。</p>
-
+                <div class="col-8" id="main">
+                    
+<div class="res-cons" id="pjax-content">
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">使用Hugo&#43;Github创建个人博客</h1>
+        </header>
+        <date class="post-meta meta-date">
+            2019年1月20日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='https://vvc-Dream.github.io/categories/%E5%BC%80%E5%8F%91' onclick="pjax_οnclickD(this);">开发</a></span>
+            
+        </div>
+        
+        
+        <div class="post-meta">
+            <span id="busuanzi_container_page_pv">|<span id="busuanzi_value_page_pv"></span><span>
+                    阅读</span></span>
+        </div>
+        
+        
+        <div class="post-content">
+            <p>​	本教程适合小白，稍微懂点前端知识最好。利用静态页面生成器Hugao + Github Pages制作个人博客。</p>
+<p>​	教程相关内容都可以在网络上搜索到。</p>
+<p>​	当然最好是查看官方文档。</p>
 <h4 id="原理">原理：</h4>
-
-<p>​   使用Hugo生成静态网页，做成自己的网站，用Github Pages来托管你的网站。</p>
-
-<p>​   此教程使用于Windows.</p>
-
+<p>​	使用Hugo生成静态网页，做成自己的网站，用Github Pages来托管你的网站。</p>
+<p>​	此教程使用于Windows.</p>
 <h4 id="概览">概览：</h4>
-
 <pre><code>1. Hugo是什么
 2. Github Pages是什么
 3. 安装Hugo
 4. 安装Git 
 5. Hugo主题下载配置
 6. 上传 Github 
-</code></pre>
-
-<h5 id="1-hugo是什么">1. Hugo是什么</h5>
-
+</code></pre><h5 id="1-hugo是什么">1. Hugo是什么</h5>
 <p>Hugo 是一个基于 Go 语言开发的静态站点生成工具 。</p>
-
 <p>Hugo特点：</p>
-
 <ul>
 <li>无需数据库、无需需要各种权限的插件、无需跑在服务器上的底层平台，更没有额外的安全问题。</li>
 <li>都是静态站点，因此拥有轻量级、快速响应的服务性能。此外，所有的网页都是在部署的时候生成，所以服务器负载很小。</li>
 <li>极易操作的版本控制。一些 CMS 平台使用它们自己的版本控制软件（VCS）或者在网页上集成 Git 工具。而 Hugo，所有的源文件都可以用你所选的 VCS 软件来管理。</li>
 </ul>
-
 <p>更多的关于Hugo的介绍，请参考Hugo的官网 <a href="https://gohugo.io/">https://gohugo.io/</a> 。</p>
-
 <h5 id="2-github-pages是什么">2. Github Pages是什么</h5>
-
 <p>GitHub Pages是GitHub提供的一个网页寄存服务，于2008年推出。可以用于存放静态网页，包括博客、项目文档甚至整本书。Jekyll软件可以用于将文档转换成静态网页，该软件提供了将网页上传到GitHub Pages的功能。一般GitHub Pages的网站使用github.io的子域名，但是用户也可以使用第三方域名。</p>
-
 <p>注：相当于用Hugo替换Jekyll生成静态网页。关于Hugo较于Jekyll的优势：<a href="https://www.simongong.net/xuan-ze-kun-nan-zheng/">Jekyll、Hugo、Hexo对比</a></p>
-
 <h5 id="3-安装git">3. 安装Git</h5>
-
 <p>Git官网下载：<a href="https://www.git-scm.com/download/">Git</a></p>
-
 <p>安装一路默认就行。</p>
-
 <p>下载完成，通过在命令行输入 <code>git version</code> 查看是否安装成功，有输出版本号说明安装成功。</p>
-
 <p>鼠标邮件菜单里就多了<code>Git GUI Here</code>和<code>Git Bash Here</code>两个按钮，一个是图形界面的Git操作，一个是命令行。</p>
-
 <ul>
 <li>安装教程：<a href="http://jingyan.baidu.com/article/90895e0fb3495f64ed6b0b50.html">如何在windows下安装GIT</a></li>
 <li>Git入门教程：<a href="http://git.oschina.net/progit/">Pro Git（中文版）</a></li>
-<li>Git基本操作：[Git基本操作]()</li>
+<li>Git基本操作：<a href="">Git基本操作</a></li>
 </ul>
-
 <h5 id="4-安装hugo">4. 安装Hugo</h5>
-
 <p>官方文档：<a href="http://www.gohugo.org/">Hugo中文文档</a></p>
-
 <p>此处推荐使用二进制安装。</p>
-
 <p>Hugo二进制文件下载：<a href="https://github.com/spf13/hugo/releases">Hugo Releases</a></p>
-
 <blockquote>
 <p>hugo_0.53_Windows-64bit.zip</p>
 </blockquote>
-
 <p>选择对应的版本，下载后解压放入任意路径下，如：<code>D:\Blog\Hugo</code>。双击执行。</p>
-
 <h6 id="配置环境变量">配置环境变量：</h6>
-
 <p>找到系统变量下 -Path-编辑-新建  <code>D:\Blog\Hugo</code>即hugo.exe的路径。</p>
-
 <h6 id="验证安装">验证安装</h6>
-
 <p>打开cmd命令窗口，输入如下命令验证是否安装成功</p>
-
 <blockquote>
 <p>hugo version</p>
 </blockquote>
-
 <p>如果没问题的话，会输出Hugo的版本号等一些信息。</p>
-
 <h6 id="创建一个站点">创建一个站点</h6>
-
 <p>在文件夹下右键，打开 Git Bash Here 命令窗口</p>
-
 <blockquote>
 <p>hugo new site blog</p>
 </blockquote>
-
 <p>会生成名为 blog 的文件夹，以下为生成的站点结构，themes下放的模板文件，config.toml是站点配置文件</p>
-
 <blockquote>
 <p>▸ archetypes/</p>
-
 <p>▸ content/</p>
-
 <p>▸data/</p>
-
 <p>▸ layouts/</p>
-
 <p>▸ resources/</p>
-
 <p>▸ static/</p>
-
 <p>▸ themes/</p>
-
 <p>config.toml</p>
 </blockquote>
-
 <p>此时themes文件夹下是没有主题文件的，所以我们需要下载一个主题。</p>
-
 <h5 id="5-hugo主题下载配置">5. Hugo主题下载配置</h5>
-
 <h6 id="hugo主题下载">Hugo主题下载</h6>
-
 <p>Hugo官网有很多主题，选择自己喜欢的就好：<a href="https://themes.gohugo.io/">themes</a></p>
-
 <p>这里我以 maupassant 主题为例：<a href="https://github.com/rujews/maupassant-hugo">maupassant </a></p>
-
 <p>在 blog 文件夹下 ，执行：</p>
-
 <blockquote>
 <p>git clone <a href="https://github.com/rujews/maupassant-hugo">https://github.com/rujews/maupassant-hugo</a> themes/maupassant</p>
 </blockquote>
-
 <p>然后在Hugo的配置文件里config.toml(yaml,json)中进行如下配置，即可使用。</p>
-
 <blockquote>
 <p>theme = &ldquo;maupassant&rdquo;</p>
 </blockquote>
-
 <h6 id="maupassant-主题配置">maupassant 主题配置</h6>
-
 <p>Hugo maupassant 主题配置也不难，是否熟悉Hugo都可以快速配置，并生成自己的网站。 我博客的配置如下，大家可以参考。</p>
-
 <p><em>config.toml</em></p>
-
 <pre><code>baseURL = &quot;https://vvc-Dream.github.io/&quot;
 languageCode = &quot;zh-CN&quot;
 title = &quot;vvc-Dream的博客&quot;
@@ -274,10 +211,7 @@ theme = &quot;maupassant&quot;
   subtitle = &quot;vvc-Dream subtitle&quot;
   keywords = &quot;vvc-Dream keywords&quot;
   description = &quot;vvc-Dream description&quot;
-</code></pre>
-
-<h6 id="maupassant-自定义菜单">maupassant 自定义菜单</h6>
-
+</code></pre><h6 id="maupassant-自定义菜单">maupassant 自定义菜单</h6>
 <pre><code>[menu]
   [[menu.main]]
     identifier = &quot;books&quot;
@@ -294,10 +228,7 @@ theme = &quot;maupassant&quot;
     name = &quot;关于&quot;
     url = &quot;/about/&quot;
     weight = 4
-</code></pre>
-
-<h6 id="maupassant-添加链接">maupassant  添加链接</h6>
-
+</code></pre><h6 id="maupassant--添加链接">maupassant  添加链接</h6>
 <pre><code>[[params.links]]
   title = &quot;Github&quot;
   name = &quot;Github&quot;
@@ -306,188 +237,183 @@ theme = &quot;maupassant&quot;
   title = &quot;哔哩哔哩&quot;
   name = &quot;哔哩哔哩&quot;
   url = &quot;http://space.bilibili.com/44178647?&quot;
-</code></pre>
-
-<p>至此，基本配置完毕，下面来添加你的个人文章把。</p>
-
+</code></pre><p>至此，基本配置完毕，下面来添加你的个人文章把。</p>
 <h6 id="添加一篇文章">添加一篇文章</h6>
-
 <blockquote>
 <p>hugo new 页面名称 .md  #在content文件夹下生成.md内容页</p>
 </blockquote>
-
 <p>不过我们一般是在content文件夹下新建post文件夹(方便以后聚合内容)来放置.md</p>
-
 <blockquote>
 <p>hugo new post/first.md</p>
 </blockquote>
-
 <p>.md为markdown文件</p>
-
-<p>markdown编辑器推荐：[markdown]()</p>
-
-<p>markdown语法汇总：[markdown语法]()</p>
-
+<p>markdown编辑器推荐：<a href="">markdown</a></p>
+<p>markdown语法汇总：<a href="">markdown语法</a></p>
 <h6 id="查看运行效果">查看运行效果</h6>
-
 <blockquote>
 <p>hugo server -D</p>
 </blockquote>
-
 <p>然后我们就可以打开浏览器，输入<code>http://localhost:1313</code>查看我们新创建的站点了。</p>
-
 <h5 id="6-上传github">6. 上传Github</h5>
-
 <p>若无Github 账号，则先注册 Github 账号：<a href="https://github.com/">Github注册</a></p>
-
 <p>注册完登陆后，我们就创建一个我们自己的Github Pages项目。点击<a href="https://github.com/new">New repository</a>。</p>
-
 <p>创建要点如 ：</p>
-
 <ul>
 <li>Repository name 可任意填，</li>
 <li>但点击 Create Repository 后的URL则必须填成：<code>username.github.io</code></li>
 </ul>
-
 <h6 id="配置ssh密钥">配置SSH密钥</h6>
-
 <p>配置Github的SSH密钥可以让本地git项目与远程的github建立联系，让我们在本地写了代码之后直接通过git操作就可以实现本地代码库与Github代码库同步。操作如下：</p>
-
-<h6 id="第一步-看看是否存在ssh密钥-keys"># 第一步、看看是否存在SSH密钥(keys)</h6>
-
+<h6 id="-第一步看看是否存在ssh密钥keys"># 第一步、看看是否存在SSH密钥(keys)</h6>
 <p>首先，我们需要看看是否看看本机是否存在SSH keys,打开Git Bash,并运行:</p>
-
 <pre><code>$ cd ~/. ssh 
-</code></pre>
-
-<p>检查你本机用户home目录下是否存在.ssh目录</p>
-
+</code></pre><p>检查你本机用户home目录下是否存在.ssh目录</p>
 <p>如果，不存在此目录，则进行第二步操作，否则，你本机已经存在ssh公钥和私钥，可以略过第二步，直接进入第三步操作。</p>
-
-<h6 id="第二步-创建一对新的ssh密钥-keys"># 第二步、创建一对新的SSH密钥(keys)</h6>
-
+<h6 id="-第二步创建一对新的ssh密钥keys"># 第二步、创建一对新的SSH密钥(keys)</h6>
 <pre><code>$ssh-keygen -t rsa -C &quot;your_email@example.com&quot;
 #这将按照你提供的邮箱地址，创建一对密钥
 Generating public/private rsa key pair.
 Enter file in which to save the key (/c/Users/you/.ssh/id_rsa): [Press enter]
-</code></pre>
-
-<p>直接回车，则将密钥按默认文件进行存储。此时也可以输入特定的文件名，比如/c/Users/you/.ssh/github_rsa</p>
-
+</code></pre><p>直接回车，则将密钥按默认文件进行存储。此时也可以输入特定的文件名，比如/c/Users/you/.ssh/github_rsa</p>
 <p>接着，根据提示，你需要输入密码和确认密码（说到这里，如果你很放心，其实可以不用密码，就是到输密码的地方，都直接回车，所以每次push就只管回车就行了。所谓的最安全的密码，就是没有密码 哈哈）。相关提示如下：</p>
-
 <pre><code>Enter passphrase (empty for no passphrase): [Type a passphrase]
 Enter same passphrase again: [Type passphrase again]
-</code></pre>
-
-<p>输入完成之后，屏幕会显示如下信息：</p>
-
+</code></pre><p>输入完成之后，屏幕会显示如下信息：</p>
 <pre><code>Your identification has been saved in /c/Users/you/.ssh/id_rsa.
 Your public key has been saved in /c/Users/you/.ssh/id_rsa.pub.
 The key fingerprint is:
 01:0f:f4:3b:ca:85:d6:17:a1:7d:f0:68:9d:f0:a2:db your_email@example.com
-</code></pre>
-
-<h6 id="第三步-在github账户中添加你的公钥"># 第三步、在GitHub账户中添加你的公钥</h6>
-
+</code></pre><h6 id="-第三步在github账户中添加你的公钥"># 第三步、在GitHub账户中添加你的公钥</h6>
 <p>运行如下命令，将公钥的内容复制到系统粘贴板(clipboard)中。</p>
-
 <pre><code>clip &lt; ~/.ssh/id_rsa.pub
-</code></pre>
-
-<p>接着：</p>
-
+</code></pre><p>接着：</p>
 <ol>
 <li>登陆GitHub,进入你的Account Settings.</li>
 <li>选择SSH Keys</li>
 <li>粘贴密钥，添加即可</li>
 </ol>
-
-<h6 id="第四步-测试"># 第四步、测试</h6>
-
+<h6 id="-第四步测试"># 第四步、测试</h6>
 <p>可以输入下面的命令，看看设置是否成功，git@github.com的部分不要修改：</p>
-
 <pre><code>$ ssh -T git@github.com
-</code></pre>
-
-<p>如果是下面的反馈：</p>
-
+</code></pre><p>如果是下面的反馈：</p>
 <pre><code>The authenticity of host 'github.com (207.97.227.239)' can't be established.
 RSA key fingerprint is 16:27:ac:a5:76:28:2d:36:63:1b:56:4d:eb:df:a6:48.
 Are you sure you want to continue connecting (yes/no)?
-</code></pre>
-
-<p>不要紧张，输入yes就好。</p>
-
+</code></pre><p>不要紧张，输入yes就好。</p>
 <p>至此，Github项目已创建好。</p>
-
 <h5 id="上传github">上传Github</h5>
-
 <p>上传Github：<a href="http://www.gohugo.org/">Hugo官方文档</a></p>
-
 <p>首先通过命令（blog文件夹下）：</p>
-
 <blockquote>
 <p>hugo</p>
 </blockquote>
-
 <p>生成要上传的静态文件，存于public 文件加下。</p>
-
 <p>接下来上传：</p>
-
 <pre><code>$ cd public
 $ git init
 $ git remote add origin https://github.com/coderzh/coderzh.github.io.git
 $ git add -A
 $ git commit -m &quot;first commit&quot;
 $ git push -u origin master
-</code></pre>
+</code></pre><p>浏览器访问：<code>https://username.github.io/ </code>  user替换成你自己的用户名。</p>
+        </div>
 
-<p>浏览器访问：<code>https://username.github.io/</code>  user替换成你自己的用户名。</p>
-                        </div>
+        
 
-                        
+
+        
 
 <div class="post-archive">
     <h2>See Also</h2>
     <ul class="listing">
         
-        <li><a href="/posts/my-first-post/">My First Post</a></li>
+        <li><a href="/archives/" onclick="pjax_οnclickH(this);">Archives</a></li>
         
-        <li><a href="/books/">Archives</a></li>
+        <li><a href="/about/" onclick="pjax_οnclickH(this);">about</a></li>
         
-        <li><a href="/about/">Archives</a></li>
+        <li><a href="/books/" onclick="pjax_οnclickH(this);">books</a></li>
         
-        <li><a href="/archives/">Archives</a></li>
+        <li><a href="/search/" onclick="pjax_οnclickH(this);">搜索</a></li>
         
     </ul>
 </div>
+<script>
+function pjax_οnclickH(vvc){
+	$.ajax({
+            type:'GET',
+            url:vvc.href,
+            success:function(data){
+				$('#pjax-content').html('');
+				var _content = $(data).find("#pjax-content").html();
+            	$('#pjax-content').html(_content);
+            }
+              	});
+    window.history.pushState({url:vvc.href},null,vvc.href);
+	vvc.href = "#";
+}
+</script>
 
 
-                        <div class="post-meta meta-tags">
-                            
-                            <ul class="clearfix">
-                                
-                                <li><a href="https://vvc-Dream.github.io/tags/hugo">hugo</a></li>
-                                
-                            </ul>
-                            
-                        </div>
-                    </article>
-                    
+        <div class="post-meta meta-tags">
+            
+            <ul class="clearfix">
+                
+                <li><a href='https://vvc-Dream.github.io/tags/hugo' onclick="pjax_οnclickD(this);">hugo</a></li>
+                
+            </ul>
+            
+        </div>
+    </article>
     
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "vvc-Dream" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 
     
     
+<script>
+function pjax_οnclickD(vvc){
+	$.ajax({
+            type:'GET',
+            url:vvc.href,
+            success:function(data){
+				$('#pjax-content').html('');
+				var _content = $(data).find("#pjax-content").html();
+            	$('#pjax-content').html(_content);
+            }
+              	});
+    window.history.pushState({url:vvc.href},null,vvc.href);
+	vvc.href = "#";
+}
+</script>
+</div>
+
                 </div>
-            </div>
-            <div id="secondary">
+
+                <div id="secondary">
     <section class="widget">
-        <form id="search" action="//www.google.com/search" method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+        <form id="search" action='https://vvc-Dream.github.io/search/' method="get" accept-charset="utf-8" target="_self" _lpchecked="1">
       
       <input type="text" name="q" maxlength="20" placeholder="Search">
       <input type="hidden" name="sitesearch" value="https://vvc-Dream.github.io/">
-      <button type="submit" class="submit icon-search"></button>
+      <button type="submit" class="submit icon-search" ></button>
 </form>
     </section>
     
@@ -496,7 +422,7 @@ $ git push -u origin master
 <ul class="widget-list">
     
     <li>
-        <a href="https://vvc-Dream.github.io/posts/%E6%89%8B%E6%9C%BApc%E6%8A%95%E5%B1%8F/" title="手机PC投屏">手机PC投屏</a>
+        <a href="https://vvc-Dream.github.io/posts/%E6%89%8B%E6%9C%BAPC%E6%8A%95%E5%B1%8F/" title="手机PC投屏">手机PC投屏</a>
     </li>
     
     <li>
@@ -508,10 +434,6 @@ $ git push -u origin master
     </li>
     
     <li>
-        <a href="https://vvc-Dream.github.io/posts/java%E9%9D%A2%E8%AF%953/" title="Java面试（3）">Java面试（3）</a>
-    </li>
-    
-    <li>
         <a href="https://vvc-Dream.github.io/posts/java%E9%9D%A2%E8%AF%95%E8%BF%9B%E9%98%B6/" title="Java面试（进阶）">Java面试（进阶）</a>
     </li>
     
@@ -520,19 +442,23 @@ $ git push -u origin master
     </li>
     
     <li>
-        <a href="https://vvc-Dream.github.io/posts/java%E5%8D%95%E7%82%B9%E7%99%BB%E9%99%86/" title="Java单点登陆">Java单点登陆</a>
-    </li>
-    
-    <li>
         <a href="https://vvc-Dream.github.io/posts/seeion%E6%98%AF%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E8%A2%AB%E5%88%9B%E5%BB%BA%E7%9A%84/" title="Seeion是什么时候被创建的">Seeion是什么时候被创建的</a>
     </li>
     
     <li>
-        <a href="https://vvc-Dream.github.io/posts/object%E7%B1%BB/" title="Object类">Object类</a>
+        <a href="https://vvc-Dream.github.io/posts/java%E9%9B%86%E5%90%88%E5%85%A5%E9%97%A8%E5%92%8C%E6%B7%B1%E5%85%A5%E5%AD%A6%E4%B9%A0/" title="Java集合入门和深入学习">Java集合入门和深入学习</a>
     </li>
     
     <li>
-        <a href="https://vvc-Dream.github.io/posts/java%E9%9D%A2%E8%AF%95/" title="Java面试">Java面试</a>
+        <a href="https://vvc-Dream.github.io/posts/java%E4%B8%ADclone%E6%96%B9%E6%B3%95%E7%9A%84%E5%AE%9E%E7%8E%B0/" title="Java中clone方法的实现">Java中clone方法的实现</a>
+    </li>
+    
+    <li>
+        <a href="https://vvc-Dream.github.io/posts/java%E4%B8%AD%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E4%B8%8E%E5%86%85%E5%AD%98/" title="Java中的数据类型与内存">Java中的数据类型与内存</a>
+    </li>
+    
+    <li>
+        <a href="https://vvc-Dream.github.io/posts/Axure/" title="Axure">Axure</a>
     </li>
     
 </ul>
@@ -544,21 +470,11 @@ $ git push -u origin master
         <h3 class="widget-title">分类</h3>
 <ul class="widget-list">
     
-    <li>
-        <a href="https://vvc-Dream.github.io/categories/%E5%B7%A5%E5%85%B7/">工具(2)</a>
-    </li>
+    <li><a href="https://vvc-Dream.github.io/categories/%E5%B7%A5%E5%85%B7/">工具 (2)</a></li>
     
-    <li>
-        <a href="https://vvc-Dream.github.io/categories/%E5%BC%80%E5%8F%91/">开发(21)</a>
-    </li>
+    <li><a href="https://vvc-Dream.github.io/categories/%E5%BC%80%E5%8F%91/">开发 (9)</a></li>
     
-    <li>
-        <a href="https://vvc-Dream.github.io/categories/%E6%9D%82%E6%8A%80%E6%B5%85%E5%B0%9D/">杂技浅尝(1)</a>
-    </li>
-    
-    <li>
-        <a href="https://vvc-Dream.github.io/categories/%E7%BE%8E%E5%8C%96/">美化(1)</a>
-    </li>
+    <li><a href="https://vvc-Dream.github.io/categories/%E7%BE%8E%E5%8C%96/">美化 (1)</a></li>
     
 </ul>
     </section>
@@ -568,8 +484,6 @@ $ git push -u origin master
 <div class="tagcloud">
     
     <a href="https://vvc-Dream.github.io/tags/hugo/">hugo</a>
-    
-    <a href="https://vvc-Dream.github.io/tags/insurance/">insurance</a>
     
     <a href="https://vvc-Dream.github.io/tags/java/">java</a>
     
@@ -602,42 +516,52 @@ $ git push -u origin master
         </ul>
     </section>
 </div>
+            </div>
         </div>
     </div>
-</div>
-<footer id="footer">
+    <footer id="footer">
     <div class="container">
-        &copy; 2018 <a href="https://vvc-Dream.github.io/">vvc-Dream的博客 By vvc-Dream</a>.
+        &copy; 2020 <a href="https://vvc-Dream.github.io/">vvc-Dream&#39; Blog By vvc-Dream</a>.
         Powered by <a rel="nofollow noreferer noopener" href="https://gohugo.io" target="_blank">Hugo</a>.
-        <a href="https://www.flysnow.org/" target="_blank">Theme</a> based on <a href="https://github.com/rujews/maupassant-hugo" target="_blank">maupassant</a>.
+        <a href="https://www.flysnow.org/" target="_blank">Theme</a> based on <a href="https://github.com/flysnow-org/maupassant-hugo" target="_blank">maupassant</a>.
         
     </div>
 </footer>
 
 
-    <script type="text/javascript">
     
-    (function(){
-        $("pre code").parent().addClass("line-numbers")
-    }())
-
-    window.MathJax = {
-        tex2jax: {
-            inlineMath: [ ['$','$'] ],
-            processEscapes: true
-        }
-    };
+    <script type="text/javascript">
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
     </script>
-    <script type="text/javascript" src="/js/prism.js" async="true"></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
 
+
 <a id="rocket" href="#top"></a>
-<script type="text/javascript" src="/js/totop.js?v=0.0.0" async=""></script>
+<script type="text/javascript" src='/js/totop.js?v=0.0.0' async=""></script>
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'GA ID', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
 
 
+
+    <script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
 
 
 
 
 </body>
+
 </html>
