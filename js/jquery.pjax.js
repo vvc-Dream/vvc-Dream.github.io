@@ -155,7 +155,7 @@
 
     // 默认选项
     pjax.defaultOptions = {
-        timeout: 4000,
+        timeout: 10000,
         element: null,
         cache: 24 * 3600, // 缓存时间, 0为不缓存, 单位为秒
         storage: true, // 是否使用localstorage将数据保存到本地
