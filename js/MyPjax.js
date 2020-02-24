@@ -1,27 +1,35 @@
+
 $(document).ready(function(){
-  $('body').delegate('a', 'click', function (event) {
-			var href = $(this).attr('href');
-            event.preventDefault();
-			$.ajax({
-              		type:'GET',
-              		url:href,
-              		success:function(data){
-						var _content = $(data).find("#pjax-content").html();
-              			$('#pjax-content').html(_content);
-              		}
-              	});
-            window.history.pushState({url:href},null,href);
-        });
+
+	$.pjax({
+		selector: 'a',
+		container: '#pjax-content', //被替换的容器
+		_container: '#pjax-content', //要替换的容器
+		show: 'fade',  //展现的动画，支持默认和fade, 可以自定义动画方式，这里为自定义的function即可。
+		cache: true,  //是否使用缓存
+		storage: true,  //是否使用本地存储
+		titleSuffix: '', //标题后缀
+		filter: function(){},
+		callback: function(){}
+	});
   
-  window.addEventListener("popstate", function() {
-              	$.ajax({
-              		type:'GET',
-              		url:location.href,
-              		success:function(data){
-						var _content = $(data).find("#pjax-content").html();
-              			$('#pjax-content').html(_content);
-              		}
-              	});										
-	          });
+	if (!!window.localStorage) {
+		for (var key in localStorage) {
+			try {
+				if ((key.split("_") || [""])[0] === "pjax") {
+					var item = localStorage.getItem(key);
+					if (item) {
+						item = JSON.parse(item);
+						if ((parseInt(item.time) + 600 * 1000) <= new Date * 1) {
+							localStorage.removeItem(key)
+						}
+					}
+				}
+				} catch (e) { }
+		}
+	}
   
 });
+
+
+//$(document).pjax('a', '#pjax-content');
