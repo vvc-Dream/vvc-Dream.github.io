@@ -29,7 +29,6 @@
     
     
 	
-	<script type="text/javascript" src="/js/jquery.min.js" async="true"></script>
 	<script type="text/javascript" src="/js/MyPjax.js" async="true"></script>
 
 	
@@ -101,7 +100,7 @@
 	<article class="post">
         <header>
             <h1 class="post-title">
-                <a href="https://vvc-Dream.github.io/posts/win10%E7%BE%8E%E5%8C%96/" title="Win10美化" onclick="pjax_οnclickA(this);">Win10美化</a>
+                <a href="https://vvc-Dream.github.io/posts/win10%E7%BE%8E%E5%8C%96/" title="Win10美化">Win10美化</a>
             </h1>
         </header>
         <date class="post-meta meta-date">
@@ -111,7 +110,7 @@
         <div class="post-meta">
             <span>|</span>
             
-            <span class="meta-category"><a href='https://vvc-Dream.github.io/categories/%E7%BE%8E%E5%8C%96' onclick="pjax_οnclickA(this);">美化</a></span>
+            <span class="meta-category"><a href='https://vvc-Dream.github.io/categories/%E7%BE%8E%E5%8C%96'>美化</a></span>
             
         </div>
         
@@ -119,41 +118,11 @@
             <p>​	人靠衣装马靠鞍。</p>
 <p>​	win10美化以及相关软件。</p>……
         </div>
-        <p class="readmore"><a href="https://vvc-Dream.github.io/posts/win10%E7%BE%8E%E5%8C%96/" onclick="pjax_οnclickA(this);">阅读全文</a></p>
-    </article>
-<script>
-function pjax_οnclickA(vvc){
-	$.ajax({
-            type:'GET',
-            url:vvc.href,
-            success:function(data){
-				$('#pjax-content').html('');
-				var _content = $(data).find("#pjax-content").html();
-            	$('#pjax-content').html(_content);
-            }
-              	});
-	vvc.href = "#";
-    window.history.pushState({url:vvc.href},null,vvc.href);
-}
-</script>	
+        <p class="readmore"><a href="https://vvc-Dream.github.io/posts/win10%E7%BE%8E%E5%8C%96/">阅读全文</a></p>
+    </article>	
     
     
-<script>
-function pjax_οnclickG(vvc){
-	$.ajax({
-            type:'GET',
-            url:vvc.href,
-            success:function(data){
-				$('#pjax-content').html('');
-				var _content = $(data).find("#pjax-content").html();
-            	$('#pjax-content').html(_content);
-            }
-              	});
-    window.history.pushState({url:vvc.href},null,vvc.href);
-	vvc.href = "#";
-	return false;
-}
-</script>
+
 
 
 </div>

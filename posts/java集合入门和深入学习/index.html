@@ -32,7 +32,6 @@
     
     
 	
-	<script type="text/javascript" src="/js/jquery.min.js" async="true"></script>
 	<script type="text/javascript" src="/js/MyPjax.js" async="true"></script>
 
 	
@@ -103,7 +102,7 @@
         <div class="post-meta">
             <span>|</span>
             
-            <span class="meta-category"><a href='https://vvc-Dream.github.io/categories/%E5%BC%80%E5%8F%91' onclick="pjax_οnclickD(this);">开发</a></span>
+            <span class="meta-category"><a href='https://vvc-Dream.github.io/categories/%E5%BC%80%E5%8F%91'>开发</a></span>
             
         </div>
         
@@ -2685,40 +2684,25 @@ iter<span style="color:#f92672">.</span><span style="color:#a6e22e">remove</span
     <h2>See Also</h2>
     <ul class="listing">
         
-        <li><a href="/posts/java%E4%B8%ADclone%E6%96%B9%E6%B3%95%E7%9A%84%E5%AE%9E%E7%8E%B0/" onclick="pjax_οnclickH(this);">Java中clone方法的实现</a></li>
+        <li><a href="/posts/java%E4%B8%ADclone%E6%96%B9%E6%B3%95%E7%9A%84%E5%AE%9E%E7%8E%B0/">Java中clone方法的实现</a></li>
         
-        <li><a href="/posts/java%E4%B8%AD%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E4%B8%8E%E5%86%85%E5%AD%98/" onclick="pjax_οnclickH(this);">Java中的数据类型与内存</a></li>
+        <li><a href="/posts/java%E4%B8%AD%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E4%B8%8E%E5%86%85%E5%AD%98/">Java中的数据类型与内存</a></li>
         
-        <li><a href="/posts/Axure/" onclick="pjax_οnclickH(this);">Axure</a></li>
+        <li><a href="/posts/Axure/">Axure</a></li>
         
-        <li><a href="/posts/git/" onclick="pjax_οnclickH(this);">Git基本操作</a></li>
+        <li><a href="/posts/git/">Git基本操作</a></li>
         
-        <li><a href="/posts/Create-Hugo-Blog/" onclick="pjax_οnclickH(this);">使用Hugo&#43;Github创建个人博客</a></li>
+        <li><a href="/posts/Create-Hugo-Blog/">使用Hugo&#43;Github创建个人博客</a></li>
         
     </ul>
 </div>
-<script>
-function pjax_οnclickH(vvc){
-	$.ajax({
-            type:'GET',
-            url:vvc.href,
-            success:function(data){
-				$('#pjax-content').html('');
-				var _content = $(data).find("#pjax-content").html();
-            	$('#pjax-content').html(_content);
-            }
-              	});
-    window.history.pushState({url:vvc.href},null,vvc.href);
-	vvc.href = "#";
-}
-</script>
 
 
         <div class="post-meta meta-tags">
             
             <ul class="clearfix">
                 
-                <li><a href='https://vvc-Dream.github.io/tags/java' onclick="pjax_οnclickD(this);">java</a></li>
+                <li><a href='https://vvc-Dream.github.io/tags/java'>java</a></li>
                 
             </ul>
             
@@ -2748,21 +2732,6 @@ function pjax_οnclickH(vvc){
 
     
     
-<script>
-function pjax_οnclickD(vvc){
-	$.ajax({
-            type:'GET',
-            url:vvc.href,
-            success:function(data){
-				$('#pjax-content').html('');
-				var _content = $(data).find("#pjax-content").html();
-            	$('#pjax-content').html(_content);
-            }
-              	});
-    window.history.pushState({url:vvc.href},null,vvc.href);
-	vvc.href = "#";
-}
-</script>
 </div>
 
                 </div>

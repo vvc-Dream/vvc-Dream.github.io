@@ -1,17 +1,19 @@
-$(function(){
-              $('a').bind('click',function(){
-              	$.ajax({
+$(document).ready(function(){
+  $('body').delegate('a', 'click', function (event) {
+			var href = $(this).attr('href');
+            event.preventDefault();
+			$.ajax({
               		type:'GET',
-              		url:this.href,
+              		url:href,
               		success:function(data){
 						var _content = $(data).find("#pjax-content").html();
               			$('#pjax-content').html(_content);
               		}
               	});
-              	window.history.pushState({url:this.href},null,this.href);
-              	return false;
-              });
-              window.addEventListener("popstate", function() {
+            window.history.pushState({url:href},null,href);
+        });
+  
+  window.addEventListener("popstate", function() {
               	$.ajax({
               		type:'GET',
               		url:location.href,
@@ -21,20 +23,5 @@ $(function(){
               		}
               	});										
 	          });
-
-		})
-		
-
-function pjax_οnclick(vvc){
-	$.ajax({
-            type:'GET',
-            url:vvc.href,
-            success:function(data){
-				$('#pjax-content').html('');
-				var _content = $(data).find("#pjax-content").html();
-            	$('#pjax-content').html(_content);
-            }
-              	});
-	vvc.href = "#";
-    window.history.pushState({url:vvc.href},null,vvc.href);
-}
+  
+});

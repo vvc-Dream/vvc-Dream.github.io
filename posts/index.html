@@ -29,7 +29,6 @@
     
     
 	
-	<script type="text/javascript" src="/js/jquery.min.js" async="true"></script>
 	<script type="text/javascript" src="/js/MyPjax.js" async="true"></script>
 
 	
@@ -342,39 +341,24 @@
     
     
     
-<script>
-function pjax_οnclickG(vvc){
-	$.ajax({
-            type:'GET',
-            url:vvc.href,
-            success:function(data){
-				$('#pjax-content').html('');
-				var _content = $(data).find("#pjax-content").html();
-            	$('#pjax-content').html(_content);
-            }
-              	});
-    window.history.pushState({url:vvc.href},null,vvc.href);
-	vvc.href = "#";
-	return false;
-}
-</script>
+
 
 <ol class="page-navigator">
     
 
     
     <li  class="current">
-        <a href="https://vvc-Dream.github.io/posts/" nclick="pjax_οnclickG(this);">1</a>
+        <a href="https://vvc-Dream.github.io/posts/">1</a>
     </li>
     
     <li >
-        <a href="https://vvc-Dream.github.io/posts/page/2/" nclick="pjax_οnclickG(this);">2</a>
+        <a href="https://vvc-Dream.github.io/posts/page/2/">2</a>
     </li>
     
 
     
     <li class="next">
-        <a href="https://vvc-Dream.github.io/posts/page/2/" onclick="pjax_οnclickG(this);">下一页</a>
+        <a href="https://vvc-Dream.github.io/posts/page/2/">下一页</a>
     </li>
     
 </ol>
@@ -382,7 +366,7 @@ function pjax_οnclickG(vvc){
 
 
 <script>
-function pjax_οnclickE(vvc){
+function -pjax_οnclickE(vvc){
 	$.ajax({
             type:'GET',
             url:vvc.href,

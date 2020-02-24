@@ -32,7 +32,6 @@
     
     
 	
-	<script type="text/javascript" src="/js/jquery.min.js" async="true"></script>
 	<script type="text/javascript" src="/js/MyPjax.js" async="true"></script>
 
 	
@@ -103,7 +102,7 @@
         <div class="post-meta">
             <span>|</span>
             
-            <span class="meta-category"><a href='https://vvc-Dream.github.io/categories/%E5%BC%80%E5%8F%91' onclick="pjax_οnclickD(this);">开发</a></span>
+            <span class="meta-category"><a href='https://vvc-Dream.github.io/categories/%E5%BC%80%E5%8F%91'>开发</a></span>
             
         </div>
         
@@ -327,38 +326,23 @@ $ git push -u origin master
     <h2>See Also</h2>
     <ul class="listing">
         
-        <li><a href="/archives/" onclick="pjax_οnclickH(this);">Archives</a></li>
+        <li><a href="/archives/">Archives</a></li>
         
-        <li><a href="/about/" onclick="pjax_οnclickH(this);">about</a></li>
+        <li><a href="/about/">about</a></li>
         
-        <li><a href="/books/" onclick="pjax_οnclickH(this);">books</a></li>
+        <li><a href="/books/">books</a></li>
         
-        <li><a href="/search/" onclick="pjax_οnclickH(this);">搜索</a></li>
+        <li><a href="/search/">搜索</a></li>
         
     </ul>
 </div>
-<script>
-function pjax_οnclickH(vvc){
-	$.ajax({
-            type:'GET',
-            url:vvc.href,
-            success:function(data){
-				$('#pjax-content').html('');
-				var _content = $(data).find("#pjax-content").html();
-            	$('#pjax-content').html(_content);
-            }
-              	});
-    window.history.pushState({url:vvc.href},null,vvc.href);
-	vvc.href = "#";
-}
-</script>
 
 
         <div class="post-meta meta-tags">
             
             <ul class="clearfix">
                 
-                <li><a href='https://vvc-Dream.github.io/tags/hugo' onclick="pjax_οnclickD(this);">hugo</a></li>
+                <li><a href='https://vvc-Dream.github.io/tags/hugo'>hugo</a></li>
                 
             </ul>
             
@@ -388,21 +372,6 @@ function pjax_οnclickH(vvc){
 
     
     
-<script>
-function pjax_οnclickD(vvc){
-	$.ajax({
-            type:'GET',
-            url:vvc.href,
-            success:function(data){
-				$('#pjax-content').html('');
-				var _content = $(data).find("#pjax-content").html();
-            	$('#pjax-content').html(_content);
-            }
-              	});
-    window.history.pushState({url:vvc.href},null,vvc.href);
-	vvc.href = "#";
-}
-</script>
 </div>
 
                 </div>
