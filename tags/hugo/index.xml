@@ -2,39 +2,39 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>hugo on vvc-Dream&#39; Blog</title>
-    <link>https://vvc-Dream.github.io/tags/hugo/</link>
+    <link>https://vvc-dream.netlify.com/tags/hugo/</link>
     <description>Recent content in hugo on vvc-Dream&#39; Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <lastBuildDate>Sun, 05 May 2019 14:19:19 +0800</lastBuildDate>
     
-	<atom:link href="https://vvc-Dream.github.io/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://vvc-dream.netlify.com/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Axure</title>
-      <link>https://vvc-Dream.github.io/posts/Axure/</link>
+      <link>https://vvc-dream.netlify.com/posts/Axure/</link>
       <pubDate>Sun, 05 May 2019 14:19:19 +0800</pubDate>
       
-      <guid>https://vvc-Dream.github.io/posts/Axure/</guid>
+      <guid>https://vvc-dream.netlify.com/posts/Axure/</guid>
       <description>&lt;p&gt;​	关于Axure的分享。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Git基本操作</title>
-      <link>https://vvc-Dream.github.io/posts/git/</link>
+      <link>https://vvc-dream.netlify.com/posts/git/</link>
       <pubDate>Thu, 02 May 2019 12:26:10 +0800</pubDate>
       
-      <guid>https://vvc-Dream.github.io/posts/git/</guid>
+      <guid>https://vvc-dream.netlify.com/posts/git/</guid>
       <description>&lt;p&gt;​	个人整理日常使用较多的Git基本操作。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>使用Hugo&#43;Github创建个人博客</title>
-      <link>https://vvc-Dream.github.io/posts/Create-Hugo-Blog/</link>
+      <link>https://vvc-dream.netlify.com/posts/Create-Hugo-Blog/</link>
       <pubDate>Sun, 20 Jan 2019 15:52:31 +0800</pubDate>
       
-      <guid>https://vvc-Dream.github.io/posts/Create-Hugo-Blog/</guid>
+      <guid>https://vvc-dream.netlify.com/posts/Create-Hugo-Blog/</guid>
       <description>&lt;p&gt;​	本教程适合小白，稍微懂点前端知识最好。利用静态页面生成器Hugao + Github Pages制作个人博客。&lt;/p&gt;
 &lt;p&gt;​	教程相关内容都可以在网络上搜索到。&lt;/p&gt;
 &lt;p&gt;​	当然最好是查看官方文档。&lt;/p&gt;</description>

@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>美化 on vvc-Dream&#39; Blog</title>
-    <link>https://vvc-Dream.github.io/categories/%E7%BE%8E%E5%8C%96/</link>
+    <link>https://vvc-dream.netlify.com/categories/%E7%BE%8E%E5%8C%96/</link>
     <description>Recent content in 美化 on vvc-Dream&#39; Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <lastBuildDate>Sun, 24 Nov 2019 14:00:48 +0800</lastBuildDate>
     
-	<atom:link href="https://vvc-Dream.github.io/categories/%E7%BE%8E%E5%8C%96/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://vvc-dream.netlify.com/categories/%E7%BE%8E%E5%8C%96/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Win10美化</title>
-      <link>https://vvc-Dream.github.io/posts/win10%E7%BE%8E%E5%8C%96/</link>
+      <link>https://vvc-dream.netlify.com/posts/win10%E7%BE%8E%E5%8C%96/</link>
       <pubDate>Sun, 24 Nov 2019 14:00:48 +0800</pubDate>
       
-      <guid>https://vvc-Dream.github.io/posts/win10%E7%BE%8E%E5%8C%96/</guid>
+      <guid>https://vvc-dream.netlify.com/posts/win10%E7%BE%8E%E5%8C%96/</guid>
       <description>&lt;p&gt;​	人靠衣装马靠鞍。&lt;/p&gt;
 &lt;p&gt;​	win10美化以及相关软件。&lt;/p&gt;</description>
     </item>
