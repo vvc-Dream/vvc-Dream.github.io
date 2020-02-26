@@ -175,7 +175,7 @@
             $(pjax.options.container).trigger('pjax.start', [xhr, pjax.options]);
             xhr && xhr.setRequestHeader('X-PJAX', true);
         },
-        error: function () {
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
             pjax.options.callback && pjax.options.callback.call(pjax.options.element, {
                 type: 'error'
             });
