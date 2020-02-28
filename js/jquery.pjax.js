@@ -100,7 +100,15 @@
                 }
             } catch (e) {
             }
-        }
+        },
+		convert_FormData_to_json: function (formData) {
+			debugger;
+			let data = {};
+			$.each(formData, function (index, item) {
+				data[item.name] = item.value;
+			});
+			return data;
+		}
     };
     // pjax
     var pjax = function (options) {
@@ -149,6 +157,82 @@
             pjax.request(options);
         });
     };
+	
+	// pjax
+    pjax.submit = function (options ,event) {
+		debugger;
+        options = $.extend({
+            selector: '',
+            container: '',
+			_container: '',
+            callback: function () { },
+            filter: function () { }
+        }, options);
+		
+		var form = event.currentTarget;
+		var $form = $(form);
+
+		if (form.tagName.toUpperCase() !== 'FORM'){
+			throw "$.pjax.submit requires a form element";
+		}
+		
+		var defaults = {
+			type: ($form.attr('method') || 'GET').toUpperCase(),
+			url: $form.attr('action'),
+			container: $form.attr('data-pjax')
+		}
+		debugger;
+		if (defaults.type !== 'GET' && window.FormData !== undefined) {
+			var vvc = Util.convert_FormData_to_json(new FormData(form));
+			defaults.data = new FormData(form);
+			defaults.processData = false;
+			defaults.contentType = false;
+		} else {
+			// Can't handle file uploads, exit
+			if ($form.find(':file').length) {
+				return
+			}
+			// Fallback to manually serializing the fields
+			//defaults.data = Util.convert_FormData_to_json($form.serializeArray());
+		}
+		let json = $form.serialize();
+		defaults.url = defaults.url + "?" + json;
+		debugger;
+		options = $.extend(defaults, options);
+		options = $.extend(true, pjax.defaultOptions, options);
+		
+		if (event.which > 1 || event.metaKey) {
+                return true;
+        }
+		
+		event.preventDefault();
+        options = $.extend(true, options, {
+            element: this,
+            push: true
+        });
+		
+		if (options.hasOwnProperty('data')) {
+            pjax.defaultOptions.data = options.data;
+        }
+		
+		options = $.extend(true, pjax.defaultOptions, options);
+		var container = $(options.container);
+		
+		// 展现函数
+        if (!options.showFn) {
+            options.showFn = function (data, fn, isCached) {
+                pjax.showFn(options.show, container, data, fn, isCached);
+            };
+        }
+		options.cache = false;
+        pjax.options = options;
+        pjax.options.success = pjax.success;
+		debugger;
+		pjax.options.type = "POST";
+		pjax.xhr = $.ajax(pjax.options);
+		
+    };
+	
     pjax.xhr = null;
     pjax.options = {};
     pjax.state = {};
@@ -176,6 +260,7 @@
             xhr && xhr.setRequestHeader('X-PJAX', true);
         },
         error: function (XMLHttpRequest, textStatus, errorThrown) {
+			debugger;
             pjax.options.callback && pjax.options.callback.call(pjax.options.element, {
                 type: 'error'
             });
@@ -235,6 +320,7 @@
     }
     // success callback
     pjax.success = function (data, isCached) {
+		debugger;
         // isCached default is success
         if (isCached !== true) {
             isCached = false;
@@ -308,6 +394,7 @@
 
     // 发送请求
     pjax.request = function (options) {
+		debugger;
         if (options.hasOwnProperty('data')) {
             pjax.defaultOptions.data = options.data;
         }
@@ -391,19 +478,12 @@
     // pjax bind to $
     $.pjax = pjax;
     $.pjax.util = Util;
-
-/*
-    // extra
-    if ($.inArray('state', $.event.props) < 0) {
-		console.log($.event.props);
-        $.event.props.push('state');
-    }
-*/	
+	$.pjax.submit = pjax.submit;
 	
-if ($.event.props && $.inArray('state', $.event.props) < 0) {
-  $.event.props.push('state')
-} else if (!('state' in $.Event.prototype)) {
-  $.event.addProp('state')
-}
+	if ($.event.props && $.inArray('state', $.event.props) < 0) {
+	$.event.props.push('state')
+	} else if (!('state' in $.Event.prototype)) {
+	$.event.addProp('state')
+	}
 
 })(jQuery);

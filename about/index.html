@@ -28,8 +28,10 @@
     
     
 	
+	<script type="text/javascript" src="/js/jquery.ajaxSubmit.js" async="true"></script>
 	<script type="text/javascript" src="/js/jquery.pjax.js" async="true"></script>
 	<script type="text/javascript" src="/js/MyPjax.js" async="true"></script>
+	<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
 
 	
 	<link rel="stylesheet" href="https://vvc-dream.netlify.com/css/APlayer.min.css">
@@ -136,37 +138,25 @@
             
         </div>
     </article>
-    
-    <div id="disqus_thread"></div>
-<script type="application/javascript">
-    var disqus_config = function () {
-    
-    
-    
-    };
-    (function() {
-        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
-            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
-            return;
-        }
-        var d = document, s = d.createElement('script'); s.async = true;
-        s.src = '//' + "vvc-Dream" + '.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-
-    
-    
+    <div id="vcomments"></div>
+    <script>
+		new Valine({
+			el: '#vcomments' ,
+			appId: '4h8m4l2jG89TodbCzFBDlwIQ-gzGzoHsz',
+            appKey: 'P5H2wqnHovoDC7eb0jnNNEYD',
+			notify:false, 
+			verify:false, 
+			avatar:'monsterid', 
+			placeholder: 'just go go' 
+		});
+    </script>
 </div>
 
                 </div>
 
                 <div id="secondary">
     <section class="widget">
-        <form id="search" action='https://vvc-dream.netlify.com/search/' method="get" accept-charset="utf-8" target="_self" _lpchecked="1">
+        <form id="search" action='https://vvc-dream.netlify.com/search/' method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
       
       <input type="text" name="q" maxlength="20" placeholder="Search">
       <input type="hidden" name="sitesearch" value="https://vvc-dream.netlify.com/">
