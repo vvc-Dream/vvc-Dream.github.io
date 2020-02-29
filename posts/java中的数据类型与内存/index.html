@@ -471,6 +471,7 @@ java提供了一种机制，使你能够在对象刚要被垃圾回收之前运�
     </article>
     <div id="vcomments"></div>
     <script>
+		var pathname = window.location.pathname;
 		new Valine({
 			el: '#vcomments' ,
 			appId: '4h8m4l2jG89TodbCzFBDlwIQ-gzGzoHsz',
@@ -478,7 +479,8 @@ java提供了一种机制，使你能够在对象刚要被垃圾回收之前运�
 			notify:false, 
 			verify:false, 
 			avatar:'monsterid', 
-			placeholder: 'just go go' 
+			placeholder: 'just go go',
+			path: pathname
 		});
     </script>
 </div>

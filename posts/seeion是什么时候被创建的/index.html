@@ -240,6 +240,7 @@ session不是一打开网站就会立刻建立。
     </article>
     <div id="vcomments"></div>
     <script>
+		var pathname = window.location.pathname;
 		new Valine({
 			el: '#vcomments' ,
 			appId: '4h8m4l2jG89TodbCzFBDlwIQ-gzGzoHsz',
@@ -247,7 +248,8 @@ session不是一打开网站就会立刻建立。
 			notify:false, 
 			verify:false, 
 			avatar:'monsterid', 
-			placeholder: 'just go go' 
+			placeholder: 'just go go',
+			path: pathname
 		});
     </script>
 </div>

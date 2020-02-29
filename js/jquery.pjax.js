@@ -102,7 +102,6 @@
             }
         },
 		convert_FormData_to_json: function (formData) {
-			debugger;
 			let data = {};
 			$.each(formData, function (index, item) {
 				data[item.name] = item.value;
@@ -160,7 +159,6 @@
 	
 	// pjax
     pjax.submit = function (options ,event) {
-		debugger;
         options = $.extend({
             selector: '',
             container: '',
@@ -181,7 +179,6 @@
 			url: $form.attr('action'),
 			container: $form.attr('data-pjax')
 		}
-		debugger;
 		if (defaults.type !== 'GET' && window.FormData !== undefined) {
 			var vvc = Util.convert_FormData_to_json(new FormData(form));
 			defaults.data = new FormData(form);
@@ -197,7 +194,6 @@
 		}
 		let json = $form.serialize();
 		defaults.url = defaults.url + "?" + json;
-		debugger;
 		options = $.extend(defaults, options);
 		options = $.extend(true, pjax.defaultOptions, options);
 		
@@ -227,7 +223,6 @@
 		options.cache = false;
         pjax.options = options;
         pjax.options.success = pjax.success;
-		debugger;
 		pjax.options.type = "POST";
 		pjax.xhr = $.ajax(pjax.options);
 		
@@ -260,7 +255,6 @@
             xhr && xhr.setRequestHeader('X-PJAX', true);
         },
         error: function (XMLHttpRequest, textStatus, errorThrown) {
-			debugger;
             pjax.options.callback && pjax.options.callback.call(pjax.options.element, {
                 type: 'error'
             });
@@ -319,20 +313,24 @@
         }, isCached);
     }
     // success callback
-    pjax.success = function (data, isCached) {
-		debugger;
+    pjax.success = function (cacheData, isCached) {
+		var data = cacheData , title;
         // isCached default is success
         if (isCached !== true) {
             isCached = false;
         }
+		if(isCached == true){
+			data = cacheData.data;
+			title = cacheData.title;
+		}
         //accept Whole html
         if (pjax.html) {
             data = $(data).find(pjax.html).html();
         }
 		if(isCached !== true){
-			var title = pjax.options.title || "", el;
+			title = pjax.options.title || "", el;
 			if (title == "" && pjax.options.element) {
-				el = $(pjax.options.element);
+				var el = $(pjax.options.element);
 				title = el.attr('title') || el.text();
 			}
 			var matches = data.match(/<title>(.*?)<\/title>/);
@@ -394,7 +392,6 @@
 
     // 发送请求
     pjax.request = function (options) {
-		debugger;
         if (options.hasOwnProperty('data')) {
             pjax.defaultOptions.data = options.data;
         }
@@ -427,7 +424,7 @@
         if (options.cache && (cache = Util.getCache(options.url, options.cache, options.storage))) {
             options.beforeSend();
             options.title = cache.title;
-            pjax.success(cache.data, true);
+            pjax.success(cache, true);
             options.complete();
             return true;
         }

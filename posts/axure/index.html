@@ -157,6 +157,7 @@
     </article>
     <div id="vcomments"></div>
     <script>
+		var pathname = window.location.pathname;
 		new Valine({
 			el: '#vcomments' ,
 			appId: '4h8m4l2jG89TodbCzFBDlwIQ-gzGzoHsz',
@@ -164,7 +165,8 @@
 			notify:false, 
 			verify:false, 
 			avatar:'monsterid', 
-			placeholder: 'just go go' 
+			placeholder: 'just go go',
+			path: pathname
 		});
     </script>
 </div>
