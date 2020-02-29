@@ -158,7 +158,7 @@
     };
 	
 	// pjax
-    pjax.submit = function (options ,event) {
+    pjax.submit = function (event , options) {
         options = $.extend({
             selector: '',
             container: '',
@@ -180,8 +180,7 @@
 			container: $form.attr('data-pjax')
 		}
 		if (defaults.type !== 'GET' && window.FormData !== undefined) {
-			var vvc = Util.convert_FormData_to_json(new FormData(form));
-			defaults.data = new FormData(form);
+			defaults.data = Util.convert_FormData_to_json($form.serializeArray());
 			defaults.processData = false;
 			defaults.contentType = false;
 		} else {
@@ -190,10 +189,10 @@
 				return
 			}
 			// Fallback to manually serializing the fields
-			//defaults.data = Util.convert_FormData_to_json($form.serializeArray());
+			defaults.data = Util.convert_FormData_to_json($form.serializeArray());
 		}
-		let json = $form.serialize();
-		defaults.url = defaults.url + "?" + json;
+		let params = $form.serialize();
+		localStorage.setItem("search_name",params);
 		options = $.extend(defaults, options);
 		options = $.extend(true, pjax.defaultOptions, options);
 		
@@ -221,9 +220,10 @@
             };
         }
 		options.cache = false;
+		options.oldUrl = options.url;
         pjax.options = options;
         pjax.options.success = pjax.success;
-		pjax.options.type = "POST";
+		pjax.options.type = "GET";
 		pjax.xhr = $.ajax(pjax.options);
 		
     };
