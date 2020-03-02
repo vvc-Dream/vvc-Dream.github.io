@@ -6,38 +6,36 @@
     <description>Recent content in hugo on vvc-Dream&#39; Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 05 May 2019 14:19:19 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 02 Mar 2020 14:08:43 +0800</lastBuildDate>
     
 	<atom:link href="https://vvc-dream.netlify.com/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Axure</title>
-      <link>https://vvc-dream.netlify.com/posts/Axure/</link>
-      <pubDate>Sun, 05 May 2019 14:19:19 +0800</pubDate>
+      <title>文章中引入音乐</title>
+      <link>https://vvc-dream.netlify.com/posts/2020/03/02/add-music-post.html</link>
+      <pubDate>Mon, 02 Mar 2020 14:08:43 +0800</pubDate>
       
-      <guid>https://vvc-dream.netlify.com/posts/Axure/</guid>
-      <description>&lt;p&gt;​	关于Axure的分享。&lt;/p&gt;</description>
+      <guid>https://vvc-dream.netlify.com/posts/2020/03/02/add-music-post.html</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;https://i.picsum.photos/id/77/800/250.jpg&#34; alt=&#34;展示图片&#34; /&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
-      <title>Git基本操作</title>
-      <link>https://vvc-dream.netlify.com/posts/git/</link>
-      <pubDate>Thu, 02 May 2019 12:26:10 +0800</pubDate>
+      <title>raw HMTL omitted</title>
+      <link>https://vvc-dream.netlify.com/posts/2020/03/02/raw-HMTL-omitted.html</link>
+      <pubDate>Mon, 02 Mar 2020 14:07:43 +0800</pubDate>
       
-      <guid>https://vvc-dream.netlify.com/posts/git/</guid>
-      <description>&lt;p&gt;​	个人整理日常使用较多的Git基本操作。&lt;/p&gt;</description>
+      <guid>https://vvc-dream.netlify.com/posts/2020/03/02/raw-HMTL-omitted.html</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;https://i.picsum.photos/id/723/800/250.jpg&#34; alt=&#34;展示图片&#34; /&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>使用Hugo&#43;Github创建个人博客</title>
-      <link>https://vvc-dream.netlify.com/posts/Create-Hugo-Blog/</link>
-      <pubDate>Sun, 20 Jan 2019 15:52:31 +0800</pubDate>
+      <link>https://vvc-dream.netlify.com/posts/2020/03/01/creat-hugo.html</link>
+      <pubDate>Sun, 01 Mar 2020 15:52:31 +0800</pubDate>
       
-      <guid>https://vvc-dream.netlify.com/posts/Create-Hugo-Blog/</guid>
-      <description>&lt;p&gt;​	本教程适合小白，稍微懂点前端知识最好。利用静态页面生成器Hugao + Github Pages制作个人博客。&lt;/p&gt;
-&lt;p&gt;​	教程相关内容都可以在网络上搜索到。&lt;/p&gt;
-&lt;p&gt;​	当然最好是查看官方文档。&lt;/p&gt;</description>
+      <guid>https://vvc-dream.netlify.com/posts/2020/03/01/creat-hugo.html</guid>
+      <description>&lt;p&gt;​   &lt;img src=&#34;https://i.picsum.photos/id/238/800/250.jpg&#34; alt=&#34;展示图片&#34; /&gt;&lt;/p&gt;</description>
     </item>
     
   </channel>
