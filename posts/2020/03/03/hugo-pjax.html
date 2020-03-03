@@ -1,0 +1,432 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>全局音乐 Pjax优化 | vvc-Dream&#39; Blog</title>
+    <meta property="og:title" content="全局音乐 Pjax优化 - vvc-Dream&#39; Blog">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content='2020-03-03T16:35:21&#43;08:00'>
+        
+        
+    <meta property="article:modified_time" content='2020-03-03T16:35:21&#43;08:00'>
+        
+    <meta name="Keywords" content="vvc-Dream keywords">
+    <meta name="description" content="全局音乐 Pjax优化">
+        <meta name="author" content="vvc-Dream">
+        
+    <meta property="og:url" content="https://vvc-dream.netlify.com/posts/2020/03/03/hugo-pjax.html">
+    <link rel="shortcut icon" href='/img/favicon.ico' type="image/x-icon">
+
+    <link rel="stylesheet" href='/css/normalize.css'>
+    <link rel="stylesheet" href='/css/style.css'>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+
+
+    
+    
+	
+	<script type="text/javascript" src="/js/jquery.ajaxSubmit.js" async="true"></script>
+	<script type="text/javascript" src="/js/jquery.pjax.js" async="true"></script>
+	<script type="text/javascript" src="/js/MyPjax.js" async="true"></script>
+	<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+	<link rel="stylesheet" href="https://vvc-dream.netlify.com/css/loading.css">
+	<script type="text/javascript" src="/js/loading.js" async="true"></script>
+	
+	<link rel="stylesheet" href="https://vvc-dream.netlify.com/css/APlayer.min.css">
+	<script type="text/javascript" src="https://vvc-dream.netlify.com/js/APlayer.min.js" ></script>
+	<script type="text/javascript" src="https://vvc-dream.netlify.com/js/Meting.min.js" ></script>
+	
+
+	<div class="aplayer" 
+		data-id="4879687332" 
+		data-server="netease" 
+		data-type="playlist" 
+		data-fixed="true"
+		data-autoplay="false" 
+		data-order="random" 
+		data-volume="0.55" 
+		data-theme="#cc543a" 
+		date-preload="auto" >
+	</div>
+	
+</head>
+
+
+<body>
+    <header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="https://vvc-dream.netlify.com/">
+                        vvc-Dream&#39; Blog
+                    </a>
+                
+                <p class="description">vvc-Dream的个人博客</p>
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="" href="https://vvc-dream.netlify.com/">首页</a>
+                    
+                    <a  href="https://vvc-dream.netlify.com/books/" title="新书">新书</a>
+                    
+                    <a  href="https://vvc-dream.netlify.com/archives/" title="归档">归档</a>
+                    
+                    <a  href="https://vvc-dream.netlify.com/about/" title="关于">关于</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <div id="body">
+        <div class="container">
+            <div class="col-group">
+
+                <div class="col-8" id="main">
+                    
+<div class="res-cons" id="pjax-content">
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">全局音乐 Pjax优化</h1>
+        </header>
+        <date class="post-meta meta-date">
+            2020年3月3日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='https://vvc-dream.netlify.com/categories/hugo'>hugo</a></span>
+            
+        </div>
+        
+        
+        <div class="post-meta">
+            <span id="busuanzi_container_page_pv">|<span id="busuanzi_value_page_pv"></span><span>
+                    阅读</span></span>
+        </div>
+        
+        
+        <div class="post-content">
+            <p><img src="https://i.picsum.photos/id/336/800/250.jpg" alt="随机图片"></p>
+<p>上篇说到文章中说到侧边栏音乐播放器，可以播放音乐，却无法实现全局音乐，即切换页面后切换文章后音乐播放器会重新加载。为了解决这个问题需引入pjax。</p>
+<p>​</p>
+<h4 id="一pjax">一、pjax</h4>
+<p>pjax是什么？</p>
+<ul>
+<li>pjax = pushState + ajax</li>
+</ul>
+<p>简单来说pjax是Ajax的升级版，即Ajax实现异步刷新，pushState 实现地质栏变更并存入历史记录。</p>
+<p><img src="https://s2.ax1x.com/2020/03/03/3hbjMQ.png" alt="3hbjMQ.png"></p>
+<p>可以看到本站主体由三部分，上边栏、侧边栏及中间的主体部分。要实现全局引用只需刷新主体部分即可。</p>
+<p>​</p>
+<p>这里找了两位大佬的例子：</p>
+<ul>
+<li><a href="https://github.com/defunkt/jquery-pjax">defunkt</a></li>
+<li><a href="https://github.com/welefen/pjax">welefen</a></li>
+</ul>
+<p>很遗憾的是，我的博客引用上述pjax后，毫无反应。而且目前hugo也没有相关主题及实例。所以得亲自动手。</p>
+<p>​</p>
+<h4 id="二实现pjax">二、实现pjax</h4>
+<p>既然大佬的不能用，那就自己造。回归最本质的问题，从原理入手：pushState + ajax</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">              <span style="color:#a6e22e">$</span>(<span style="color:#e6db74">&#39;a&#39;</span>).<span style="color:#a6e22e">bind</span>(<span style="color:#e6db74">&#39;click&#39;</span>,<span style="color:#66d9ef">function</span>(){
+              	<span style="color:#a6e22e">$</span>.<span style="color:#a6e22e">ajax</span>({
+              		<span style="color:#a6e22e">type</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#39;GET&#39;</span>,
+              		<span style="color:#a6e22e">url</span><span style="color:#f92672">:</span><span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">href</span>,
+              		<span style="color:#a6e22e">success</span><span style="color:#f92672">:</span><span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">data</span>){
+              			<span style="color:#a6e22e">$</span>(<span style="color:#e6db74">&#39;#pjax-content&#39;</span>).<span style="color:#a6e22e">html</span>(<span style="color:#a6e22e">data</span>);<span style="color:#75715e">//pjax-content为主体部分
+</span><span style="color:#75715e"></span>              		}
+              	});
+              	window.<span style="color:#a6e22e">history</span>.<span style="color:#a6e22e">pushState</span>({<span style="color:#a6e22e">url</span><span style="color:#f92672">:</span><span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">href</span>},<span style="color:#66d9ef">null</span>,<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">href</span>);
+              	<span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>;
+              });
+              window.<span style="color:#a6e22e">addEventListener</span>(<span style="color:#e6db74">&#34;popstate&#34;</span>, <span style="color:#66d9ef">function</span>() {
+              	<span style="color:#a6e22e">$</span>.<span style="color:#a6e22e">ajax</span>({
+              		<span style="color:#a6e22e">type</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#39;GET&#39;</span>,
+              		<span style="color:#a6e22e">url</span><span style="color:#f92672">:</span><span style="color:#a6e22e">location</span>.<span style="color:#a6e22e">href</span>,
+              		<span style="color:#a6e22e">success</span><span style="color:#f92672">:</span><span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">data</span>){
+              			<span style="color:#a6e22e">$</span>(<span style="color:#e6db74">&#39;#pjax-content&#39;</span>).<span style="color:#a6e22e">html</span>(<span style="color:#a6e22e">data</span>);
+              		}
+              	});										
+	          });
+</code></pre></div><p>引入上述js后基本上能实现只刷新主体部分，但是还存在一写问题。即引入的主体部分中的链接无法实现异步刷新，但是侧边栏的都可以。开始一只找不到原因，明明绑定了a标签，但点击引入部分的链接就是无法执行上述js。最后还是参考了一下大佬 <a href="https://github.com/welefen/pjax">welefen</a> 的例子才找到原因。</p>
+<p>大佬没有用<code>bind</code>而是用的<code>delegate</code>，<a href="https://www.w3school.com.cn/jquery/event_delegate.asp">delegate</a>有什么作用呢，官方定义是这样的：</p>
+<pre><code>delegate() 方法为指定的元素（属于被选元素的子元素）添加一个或多个事件处理程序，并规定当这些事件发生时运行的函数。
+使用 delegate() 方法的事件处理程序适用于当前或未来的元素（比如由脚本创建的新元素）。
+</code></pre><p>注意未来两个字。<code>bind</code>是只对当前页面有效，对引用的元素无效，而<code>delegate</code>对引入的元素也有效。</p>
+<p>改成<code>delegate</code>后的代码如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js">			  <span style="color:#a6e22e">$</span>(<span style="color:#e6db74">&#39;body&#39;</span>).<span style="color:#a6e22e">delegate</span>(<span style="color:#e6db74">&#39;a&#39;</span>, <span style="color:#e6db74">&#39;click&#39;</span>, <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">event</span>) {
+				  <span style="color:#a6e22e">event</span>.<span style="color:#a6e22e">preventDefault</span>();
+				  <span style="color:#a6e22e">$</span>.<span style="color:#a6e22e">ajax</span>({
+              		<span style="color:#a6e22e">type</span><span style="color:#f92672">:</span><span style="color:#e6db74">&#39;GET&#39;</span>,
+              		<span style="color:#a6e22e">url</span><span style="color:#f92672">:</span><span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">href</span>,
+              		<span style="color:#a6e22e">success</span><span style="color:#f92672">:</span><span style="color:#66d9ef">function</span>(<span style="color:#a6e22e">data</span>){
+						<span style="color:#a6e22e">data</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">$</span>(<span style="color:#a6e22e">data</span>).<span style="color:#a6e22e">find</span>(<span style="color:#e6db74">&#34;#pjax-content&#34;</span>).<span style="color:#a6e22e">html</span>();
+              			<span style="color:#a6e22e">$</span>(<span style="color:#e6db74">&#39;#pjax-content&#39;</span>).<span style="color:#a6e22e">html</span>(<span style="color:#a6e22e">data</span>);
+              		}
+              	});
+				<span style="color:#75715e">//改变地址栏并添加历史记录
+</span><span style="color:#75715e"></span>              	window.<span style="color:#a6e22e">history</span>.<span style="color:#a6e22e">pushState</span>({<span style="color:#a6e22e">url</span><span style="color:#f92672">:</span><span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">href</span>},<span style="color:#66d9ef">null</span>,<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">href</span>);
+			  });
+</code></pre></div><p>这下就完美了所有的链接都能实现异步刷新了，音乐也不随文章的改变而从新刷新了。</p>
+<h4 id="三优化pjax">三、优化pjax</h4>
+<p>见了自己，得见天地了。之前大佬们的现在也差不多能看懂了。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">$</span>.<span style="color:#a6e22e">pjax</span>({
+  <span style="color:#a6e22e">selector</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;a&#39;</span>,
+  <span style="color:#a6e22e">container</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;#container&#39;</span>, <span style="color:#75715e">//内容替换的容器
+</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">show</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;fade&#39;</span>,  <span style="color:#75715e">//展现的动画，支持默认和fade, 可以自定义动画方式，这里为自定义的function即可。
+</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">cache</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>,  <span style="color:#75715e">//是否使用缓存
+</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">storage</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>,  <span style="color:#75715e">//是否使用本地存储
+</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">titleSuffix</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;&#39;</span>, <span style="color:#75715e">//标题后缀
+</span><span style="color:#75715e"></span>  <span style="color:#a6e22e">filter</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span>(){},
+  <span style="color:#a6e22e">callback</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span>(){}
+})
+</code></pre></div><p><a href="https://github.com/welefen/pjax">welefen</a> 大佬不愧为大佬，在实现了基本pjax的同时，还增加了：</p>
+<ul>
+<li>页面缓存</li>
+<li>过度动画</li>
+<li>过滤器</li>
+<li>回调函数</li>
+</ul>
+<p>基本上所有要优化的点都有了。但是问题来了大佬的pjax并兼容我的需求：</p>
+<ul>
+<li>不支持返回带html标签的代码</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">if</span> ((<span style="color:#a6e22e">data</span> <span style="color:#f92672">||</span> <span style="color:#e6db74">&#39;&#39;</span>).<span style="color:#a6e22e">indexOf</span>(<span style="color:#e6db74">&#39;&lt;html&#39;</span>) <span style="color:#f92672">!=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>) {
+            <span style="color:#a6e22e">pjax</span>.<span style="color:#a6e22e">options</span>.<span style="color:#a6e22e">callback</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">pjax</span>.<span style="color:#a6e22e">options</span>.<span style="color:#a6e22e">callback</span>.<span style="color:#a6e22e">call</span>(<span style="color:#a6e22e">pjax</span>.<span style="color:#a6e22e">options</span>.<span style="color:#a6e22e">element</span>, {
+                <span style="color:#a6e22e">type</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;error&#39;</span>
+            });
+            <span style="color:#a6e22e">location</span>.<span style="color:#a6e22e">href</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">pjax</span>.<span style="color:#a6e22e">options</span>.<span style="color:#a6e22e">url</span>;
+            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>;
+        }
+</code></pre></div><ul>
+<li>只能将返回的代码放到指定的容器中，不能指定返回的容器</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">options</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">$</span>.<span style="color:#a6e22e">extend</span>({
+            <span style="color:#a6e22e">selector</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;&#39;</span>,
+            <span style="color:#a6e22e">container</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;&#39;</span>,	<span style="color:#75715e">//只能指定放置的容器
+</span><span style="color:#75715e"></span>            <span style="color:#a6e22e">callback</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span> () { },
+            <span style="color:#a6e22e">filter</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span> () { }
+        }, <span style="color:#a6e22e">options</span>);
+</code></pre></div><p>hugo的每一篇文章都是一个单独的页面，所以肯定有ajax返回的页面肯定有html标签，而且我只需要返回的主体部分，所以代码得改。</p>
+<p>首先得增加一个参数，取返回页面的指定容器：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">options</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">$</span>.<span style="color:#a6e22e">extend</span>({
+            <span style="color:#a6e22e">selector</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;&#39;</span>,
+            <span style="color:#a6e22e">container</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;&#39;</span>,<span style="color:#75715e">//放置的容器
+</span><span style="color:#75715e"></span>			<span style="color:#a6e22e">_container</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;&#39;</span>,<span style="color:#75715e">//要取的数据
+</span><span style="color:#75715e"></span>            <span style="color:#a6e22e">callback</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span> () { },
+            <span style="color:#a6e22e">filter</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span> () { }
+        }, <span style="color:#a6e22e">options</span>);
+</code></pre></div><p>取所需数据：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">pjax</span>.<span style="color:#a6e22e">options</span>.<span style="color:#a6e22e">_container</span>.<span style="color:#a6e22e">length</span><span style="color:#f92672">&gt;</span><span style="color:#ae81ff">0</span>){
+				<span style="color:#a6e22e">data</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">$</span>(<span style="color:#a6e22e">data</span>).<span style="color:#a6e22e">find</span>(<span style="color:#a6e22e">pjax</span>.<span style="color:#a6e22e">options</span>.<span style="color:#a6e22e">_container</span>).<span style="color:#a6e22e">html</span>();
+			}
+</code></pre></div><p>最后引用改造后的js即可：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">$</span>.<span style="color:#a6e22e">pjax</span>({
+		<span style="color:#a6e22e">selector</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;a&#39;</span>,
+		<span style="color:#a6e22e">container</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;#pjax-content&#39;</span>, <span style="color:#75715e">//被替换的容器
+</span><span style="color:#75715e"></span>		<span style="color:#a6e22e">_container</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;#pjax-content&#39;</span>, <span style="color:#75715e">//要替换的容器
+</span><span style="color:#75715e"></span>		<span style="color:#a6e22e">show</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;fade&#39;</span>,  <span style="color:#75715e">//展现的动画，支持默认和fade, 可以自定义动画方式.
+</span><span style="color:#75715e"></span>		<span style="color:#a6e22e">cache</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>,  <span style="color:#75715e">//是否使用缓存
+</span><span style="color:#75715e"></span>		<span style="color:#a6e22e">storage</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>,  <span style="color:#75715e">//是否使用本地存储
+</span><span style="color:#75715e"></span>		<span style="color:#a6e22e">titleSuffix</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;&#39;</span>, <span style="color:#75715e">//标题后缀
+</span><span style="color:#75715e"></span>		<span style="color:#a6e22e">filter</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span>(){},
+		<span style="color:#a6e22e">callback</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span>(){}
+	});
+</code></pre></div><p>至此，就能享受全局音乐了。</p>
+<p>​</p>
+<p>​</p>
+<p>​</p>
+        </div>
+
+        
+
+
+        
+
+<div class="post-archive">
+    <h2>See Also</h2>
+    <ul class="listing">
+        
+        <li><a href="/posts/2020/03/02/add-music-post.html">文章中加入音、视频</a></li>
+        
+        <li><a href="/posts/2020/03/02/raw-HMTL-omitted.html">raw HMTL omitted</a></li>
+        
+        <li><a href="/posts/2020/03/01/creat-hugo.html">使用Hugo&#43;Github创建个人博客</a></li>
+        
+        <li><a href="/archives/">Archives</a></li>
+        
+        <li><a href="/about/">about</a></li>
+        
+    </ul>
+</div>
+
+
+        <div class="post-meta meta-tags">
+            
+            <ul class="clearfix">
+                
+                <li><a href='https://vvc-dream.netlify.com/tags/blog'>blog</a></li>
+                
+            </ul>
+            
+        </div>
+    </article>
+    <div id="vcomments"></div>
+    <script>
+		var pathname = window.location.pathname;
+		new Valine({
+			el: '#vcomments' ,
+			appId: '4h8m4l2jG89TodbCzFBDlwIQ-gzGzoHsz',
+            appKey: 'P5H2wqnHovoDC7eb0jnNNEYD',
+			notify:false, 
+			verify:false, 
+			avatar:'monsterid', 
+			placeholder: 'just go go',
+			path: pathname
+		});
+    </script>
+</div>
+
+                </div>
+
+                <div id="secondary">
+    <section class="widget">
+        <form id="search" action='https://vvc-dream.netlify.com/search/' method="get" accept-charset="utf-8" target="_self" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="https://vvc-dream.netlify.com/">
+      <button type="submit" class="submit icon-search" ></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://vvc-dream.netlify.com/posts/2020/03/03/hugo-pjax.html" title="全局音乐 Pjax优化">全局音乐 Pjax优化</a>
+    </li>
+    
+    <li>
+        <a href="https://vvc-dream.netlify.com/posts/2020/03/02/add-music-post.html" title="文章中加入音、视频">文章中加入音、视频</a>
+    </li>
+    
+    <li>
+        <a href="https://vvc-dream.netlify.com/posts/2020/03/02/raw-HMTL-omitted.html" title="raw HMTL omitted">raw HMTL omitted</a>
+    </li>
+    
+    <li>
+        <a href="https://vvc-dream.netlify.com/posts/2020/03/01/creat-hugo.html" title="使用Hugo&#43;Github创建个人博客">使用Hugo&#43;Github创建个人博客</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">分类</h3>
+<ul class="widget-list">
+    
+    <li><a href="https://vvc-dream.netlify.com/categories/blog/">blog (3)</a></li>
+    
+    <li><a href="https://vvc-dream.netlify.com/categories/hugo/">hugo (1)</a></li>
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title">标签</h3>
+<div class="tagcloud">
+    
+    <a href="https://vvc-dream.netlify.com/tags/blog/">blog</a>
+    
+    <a href="https://vvc-dream.netlify.com/tags/hugo/">hugo</a>
+    
+</div>
+    </section>
+
+    
+<section class="widget">
+    <h3 class="widget-title">友情链接</h3>
+    <ul class="widget-list">
+        
+        <li>
+            <a target="_blank" href="https://github.com/vvc-Dream/vvc-Dream.github.io" title="Github">Github</a>
+        </li>
+        
+        <li>
+            <a target="_blank" href="http://space.bilibili.com/44178647?" title="哔哩哔哩">哔哩哔哩</a>
+        </li>
+        
+    </ul>
+</section>
+
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="https://vvc-dream.netlify.com/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+            </div>
+        </div>
+    </div>
+    <footer id="footer">
+    <div class="container">
+        &copy; 2020 <a href="https://vvc-dream.netlify.com/">vvc-Dream&#39; Blog By vvc-Dream</a>.
+        Powered by <a rel="nofollow noreferer noopener" href="https://gohugo.io" target="_blank">Hugo</a>.
+        <a href="https://www.flysnow.org/" target="_blank">Theme</a> based on <a href="https://github.com/flysnow-org/maupassant-hugo" target="_blank">maupassant</a>.
+        
+    </div>
+</footer>
+
+
+    
+    <script type="text/javascript">
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src='/js/totop.js?v=0.0.0' async=""></script>
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'GA ID', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+    <script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+
+
+
+</body>
+
+</html>

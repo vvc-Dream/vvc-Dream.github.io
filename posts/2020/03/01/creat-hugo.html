@@ -36,7 +36,8 @@
 	<script type="text/javascript" src="/js/jquery.pjax.js" async="true"></script>
 	<script type="text/javascript" src="/js/MyPjax.js" async="true"></script>
 	<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
-
+	<link rel="stylesheet" href="https://vvc-dream.netlify.com/css/loading.css">
+	<script type="text/javascript" src="/js/loading.js" async="true"></script>
 	
 	<link rel="stylesheet" href="https://vvc-dream.netlify.com/css/APlayer.min.css">
 	<script type="text/javascript" src="https://vvc-dream.netlify.com/js/APlayer.min.js" ></script>
@@ -117,291 +118,205 @@
         
         
         <div class="post-content">
-            <p>​   <img src="https://i.picsum.photos/id/238/800/250.jpg" alt="展示图片" /></p>
-
+            <p>​	<img src="https://i.picsum.photos/id/238/800/250.jpg" alt="展示图片"></p>
 <h4 id="原理">原理：</h4>
-
-<p>​   使用Hugo生成静态网页，做成自己的网站，用Github Pages来托管你的网站。</p>
-
-<p>​   此教程使用于Windows.</p>
-
+<p>​	使用Hugo生成静态网页，做成自己的网站，用Github Pages来托管你的网站。</p>
+<p>​	此教程使用于Windows.</p>
 <h4 id="概览">概览：</h4>
 <pre><code>1. Hugo是什么
 2. Github Pages是什么
 3. 安装Hugo
 4. 安装Git 
 5. Hugo主题下载配置
-6. 上传 Github </code></pre>
-<h5 id="1-hugo是什么">1. Hugo是什么</h5>
-
+6. 上传 Github 
+</code></pre><h5 id="1-hugo是什么">1. Hugo是什么</h5>
 <p>Hugo 是一个基于 Go 语言开发的静态站点生成工具 。</p>
-
 <p>Hugo特点：</p>
-
 <ul>
 <li>无需数据库、无需需要各种权限的插件、无需跑在服务器上的底层平台，更没有额外的安全问题。</li>
 <li>都是静态站点，因此拥有轻量级、快速响应的服务性能。此外，所有的网页都是在部署的时候生成，所以服务器负载很小。</li>
 <li>极易操作的版本控制。一些 CMS 平台使用它们自己的版本控制软件（VCS）或者在网页上集成 Git 工具。而 Hugo，所有的源文件都可以用你所选的 VCS 软件来管理。</li>
 </ul>
-
 <p>更多的关于Hugo的介绍，请参考Hugo的官网 <a href="https://gohugo.io/">https://gohugo.io/</a> 。</p>
-
 <h5 id="2-github-pages是什么">2. Github Pages是什么</h5>
-
 <p>GitHub Pages是GitHub提供的一个网页寄存服务，于2008年推出。可以用于存放静态网页，包括博客、项目文档甚至整本书。Jekyll软件可以用于将文档转换成静态网页，该软件提供了将网页上传到GitHub Pages的功能。一般GitHub Pages的网站使用github.io的子域名，但是用户也可以使用第三方域名。</p>
-
 <p>注：相当于用Hugo替换Jekyll生成静态网页。关于Hugo较于Jekyll的优势：<a href="https://www.simongong.net/xuan-ze-kun-nan-zheng/">Jekyll、Hugo、Hexo对比</a></p>
-
 <h5 id="3-安装git">3. 安装Git</h5>
-
 <p>Git官网下载：<a href="https://www.git-scm.com/download/">Git</a></p>
-
 <p>安装一路默认就行。</p>
-
 <p>下载完成，通过在命令行输入 <code>git version</code> 查看是否安装成功，有输出版本号说明安装成功。</p>
-
 <p>鼠标邮件菜单里就多了<code>Git GUI Here</code>和<code>Git Bash Here</code>两个按钮，一个是图形界面的Git操作，一个是命令行。</p>
-
 <ul>
 <li>安装教程：<a href="http://jingyan.baidu.com/article/90895e0fb3495f64ed6b0b50.html">如何在windows下安装GIT</a></li>
 <li>Git入门教程：<a href="http://git.oschina.net/progit/">Pro Git（中文版）</a></li>
-<li>Git基本操作：[Git基本操作]()</li>
+<li>Git基本操作：<a href="">Git基本操作</a></li>
 </ul>
-
 <h5 id="4-安装hugo">4. 安装Hugo</h5>
-
 <p>官方文档：<a href="http://www.gohugo.org/">Hugo中文文档</a></p>
-
 <p>此处推荐使用二进制安装。</p>
-
 <p>Hugo二进制文件下载：<a href="https://github.com/spf13/hugo/releases">Hugo Releases</a></p>
-
 <blockquote>
 <p>hugo_0.53_Windows-64bit.zip</p>
 </blockquote>
-
 <p>选择对应的版本，下载后解压放入任意路径下，如：<code>D:\Blog\Hugo</code>。双击执行。</p>
-
 <h6 id="配置环境变量">配置环境变量：</h6>
-
 <p>找到系统变量下 -Path-编辑-新建  <code>D:\Blog\Hugo</code>即hugo.exe的路径。</p>
-
 <h6 id="验证安装">验证安装</h6>
-
 <p>打开cmd命令窗口，输入如下命令验证是否安装成功</p>
-
 <blockquote>
 <p>hugo version</p>
 </blockquote>
-
 <p>如果没问题的话，会输出Hugo的版本号等一些信息。</p>
-
 <h6 id="创建一个站点">创建一个站点</h6>
-
 <p>在文件夹下右键，打开 Git Bash Here 命令窗口</p>
-
 <blockquote>
 <p>hugo new site blog</p>
 </blockquote>
-
 <p>会生成名为 blog 的文件夹，以下为生成的站点结构，themes下放的模板文件，config.toml是站点配置文件</p>
-
 <blockquote>
 <p>▸ archetypes/</p>
-
 <p>▸ content/</p>
-
 <p>▸data/</p>
-
 <p>▸ layouts/</p>
-
 <p>▸ resources/</p>
-
 <p>▸ static/</p>
-
 <p>▸ themes/</p>
-
 <p>config.toml</p>
 </blockquote>
-
 <p>此时themes文件夹下是没有主题文件的，所以我们需要下载一个主题。</p>
-
 <h5 id="5-hugo主题下载配置">5. Hugo主题下载配置</h5>
-
 <h6 id="hugo主题下载">Hugo主题下载</h6>
-
 <p>Hugo官网有很多主题，选择自己喜欢的就好：<a href="https://themes.gohugo.io/">themes</a></p>
-
 <p>这里我以 maupassant 主题为例：<a href="https://github.com/rujews/maupassant-hugo">maupassant </a></p>
-
 <p>在 blog 文件夹下 ，执行：</p>
-
 <blockquote>
 <p>git clone <a href="https://github.com/rujews/maupassant-hugo">https://github.com/rujews/maupassant-hugo</a> themes/maupassant</p>
 </blockquote>
-
 <p>然后在Hugo的配置文件里config.toml(yaml,json)中进行如下配置，即可使用。</p>
-
 <blockquote>
 <p>theme = &ldquo;maupassant&rdquo;</p>
 </blockquote>
-
 <h6 id="maupassant-主题配置">maupassant 主题配置</h6>
-
 <p>Hugo maupassant 主题配置也不难，是否熟悉Hugo都可以快速配置，并生成自己的网站。 我博客的配置如下，大家可以参考。</p>
-
 <p><em>config.toml</em></p>
-<pre><code>baseURL = "https://vvc-Dream.github.io/"
-languageCode = "zh-CN"
-title = "vvc-Dream的博客"
-theme = "maupassant"
+<pre><code>baseURL = &quot;https://vvc-Dream.github.io/&quot;
+languageCode = &quot;zh-CN&quot;
+title = &quot;vvc-Dream的博客&quot;
+theme = &quot;maupassant&quot;
 
 [author]
-  name = "vvc-Dream"
+  name = &quot;vvc-Dream&quot;
 
 [params]
-  author = "vvc-Dream"
-  subtitle = "vvc-Dream subtitle"
-  keywords = "vvc-Dream keywords"
-  description = "vvc-Dream description"</code></pre>
-<h6 id="maupassant-自定义菜单">maupassant 自定义菜单</h6>
+  author = &quot;vvc-Dream&quot;
+  subtitle = &quot;vvc-Dream subtitle&quot;
+  keywords = &quot;vvc-Dream keywords&quot;
+  description = &quot;vvc-Dream description&quot;
+</code></pre><h6 id="maupassant-自定义菜单">maupassant 自定义菜单</h6>
 <pre><code>[menu]
   [[menu.main]]
-    identifier = "books"
-    name = "新书"
-    url = "/books/"
+    identifier = &quot;books&quot;
+    name = &quot;新书&quot;
+    url = &quot;/books/&quot;
     weight = 2
   [[menu.main]]
-    identifier = "archives"
-    name = "归档"
-    url = "/archives/"
+    identifier = &quot;archives&quot;
+    name = &quot;归档&quot;
+    url = &quot;/archives/&quot;
     weight = 3
   [[menu.main]]
-    identifier = "about"
-    name = "关于"
-    url = "/about/"
-    weight = 4</code></pre>
-<h6 id="maupassant-添加链接">maupassant  添加链接</h6>
+    identifier = &quot;about&quot;
+    name = &quot;关于&quot;
+    url = &quot;/about/&quot;
+    weight = 4
+</code></pre><h6 id="maupassant--添加链接">maupassant  添加链接</h6>
 <pre><code>[[params.links]]
-  title = "Github"
-  name = "Github"
-  url = "https://github.com/vvc-Dream/vvc-Dream.github.io"
+  title = &quot;Github&quot;
+  name = &quot;Github&quot;
+  url = &quot;https://github.com/vvc-Dream/vvc-Dream.github.io&quot;
 [[params.links]]
-  title = "哔哩哔哩"
-  name = "哔哩哔哩"
-  url = "http://space.bilibili.com/44178647?"</code></pre>
-<p>至此，基本配置完毕，下面来添加你的个人文章把。</p>
-
+  title = &quot;哔哩哔哩&quot;
+  name = &quot;哔哩哔哩&quot;
+  url = &quot;http://space.bilibili.com/44178647?&quot;
+</code></pre><p>至此，基本配置完毕，下面来添加你的个人文章把。</p>
 <h6 id="添加一篇文章">添加一篇文章</h6>
-
 <blockquote>
 <p>hugo new 页面名称 .md  #在content文件夹下生成.md内容页</p>
 </blockquote>
-
 <p>不过我们一般是在content文件夹下新建post文件夹(方便以后聚合内容)来放置.md</p>
-
 <blockquote>
 <p>hugo new post/first.md</p>
 </blockquote>
-
 <p>.md为markdown文件</p>
-
-<p>markdown编辑器推荐：[markdown]()</p>
-
-<p>markdown语法汇总：[markdown语法]()</p>
-
+<p>markdown编辑器推荐：<a href="">markdown</a></p>
+<p>markdown语法汇总：<a href="">markdown语法</a></p>
 <h6 id="查看运行效果">查看运行效果</h6>
-
 <blockquote>
 <p>hugo server -D</p>
 </blockquote>
-
 <p>然后我们就可以打开浏览器，输入<code>http://localhost:1313</code>查看我们新创建的站点了。</p>
-
 <h5 id="6-上传github">6. 上传Github</h5>
-
 <p>若无Github 账号，则先注册 Github 账号：<a href="https://github.com/">Github注册</a></p>
-
 <p>注册完登陆后，我们就创建一个我们自己的Github Pages项目。点击<a href="https://github.com/new">New repository</a>。</p>
-
 <p>创建要点如 ：</p>
-
 <ul>
 <li>Repository name 可任意填，</li>
 <li>但点击 Create Repository 后的URL则必须填成：<code>username.github.io</code></li>
 </ul>
-
 <h6 id="配置ssh密钥">配置SSH密钥</h6>
-
 <p>配置Github的SSH密钥可以让本地git项目与远程的github建立联系，让我们在本地写了代码之后直接通过git操作就可以实现本地代码库与Github代码库同步。操作如下：</p>
-
-<h6 id="第一步-看看是否存在ssh密钥-keys"># 第一步、看看是否存在SSH密钥(keys)</h6>
-
+<h6 id="-第一步看看是否存在ssh密钥keys"># 第一步、看看是否存在SSH密钥(keys)</h6>
 <p>首先，我们需要看看是否看看本机是否存在SSH keys,打开Git Bash,并运行:</p>
-<pre><code>$ cd ~/. ssh </code></pre>
-<p>检查你本机用户home目录下是否存在.ssh目录</p>
-
+<pre><code>$ cd ~/. ssh 
+</code></pre><p>检查你本机用户home目录下是否存在.ssh目录</p>
 <p>如果，不存在此目录，则进行第二步操作，否则，你本机已经存在ssh公钥和私钥，可以略过第二步，直接进入第三步操作。</p>
-
-<h6 id="第二步-创建一对新的ssh密钥-keys"># 第二步、创建一对新的SSH密钥(keys)</h6>
-<pre><code>$ssh-keygen -t rsa -C "your_email@example.com"
+<h6 id="-第二步创建一对新的ssh密钥keys"># 第二步、创建一对新的SSH密钥(keys)</h6>
+<pre><code>$ssh-keygen -t rsa -C &quot;your_email@example.com&quot;
 #这将按照你提供的邮箱地址，创建一对密钥
 Generating public/private rsa key pair.
-Enter file in which to save the key (/c/Users/you/.ssh/id_rsa): [Press enter]</code></pre>
-<p>直接回车，则将密钥按默认文件进行存储。此时也可以输入特定的文件名，比如/c/Users/you/.ssh/github_rsa</p>
-
+Enter file in which to save the key (/c/Users/you/.ssh/id_rsa): [Press enter]
+</code></pre><p>直接回车，则将密钥按默认文件进行存储。此时也可以输入特定的文件名，比如/c/Users/you/.ssh/github_rsa</p>
 <p>接着，根据提示，你需要输入密码和确认密码（说到这里，如果你很放心，其实可以不用密码，就是到输密码的地方，都直接回车，所以每次push就只管回车就行了。所谓的最安全的密码，就是没有密码 哈哈）。相关提示如下：</p>
 <pre><code>Enter passphrase (empty for no passphrase): [Type a passphrase]
-Enter same passphrase again: [Type passphrase again]</code></pre>
-<p>输入完成之后，屏幕会显示如下信息：</p>
+Enter same passphrase again: [Type passphrase again]
+</code></pre><p>输入完成之后，屏幕会显示如下信息：</p>
 <pre><code>Your identification has been saved in /c/Users/you/.ssh/id_rsa.
 Your public key has been saved in /c/Users/you/.ssh/id_rsa.pub.
 The key fingerprint is:
-01:0f:f4:3b:ca:85:d6:17:a1:7d:f0:68:9d:f0:a2:db your_email@example.com</code></pre>
-<h6 id="第三步-在github账户中添加你的公钥"># 第三步、在GitHub账户中添加你的公钥</h6>
-
+01:0f:f4:3b:ca:85:d6:17:a1:7d:f0:68:9d:f0:a2:db your_email@example.com
+</code></pre><h6 id="-第三步在github账户中添加你的公钥"># 第三步、在GitHub账户中添加你的公钥</h6>
 <p>运行如下命令，将公钥的内容复制到系统粘贴板(clipboard)中。</p>
-<pre><code>clip < ~/.ssh/id_rsa.pub</code></pre>
-<p>接着：</p>
-
+<pre><code>clip &lt; ~/.ssh/id_rsa.pub
+</code></pre><p>接着：</p>
 <ol>
 <li>登陆GitHub,进入你的Account Settings.</li>
 <li>选择SSH Keys</li>
 <li>粘贴密钥，添加即可</li>
 </ol>
-
-<h6 id="第四步-测试"># 第四步、测试</h6>
-
+<h6 id="-第四步测试"># 第四步、测试</h6>
 <p>可以输入下面的命令，看看设置是否成功，git@github.com的部分不要修改：</p>
-<pre><code>$ ssh -T git@github.com</code></pre>
-<p>如果是下面的反馈：</p>
+<pre><code>$ ssh -T git@github.com
+</code></pre><p>如果是下面的反馈：</p>
 <pre><code>The authenticity of host 'github.com (207.97.227.239)' can't be established.
 RSA key fingerprint is 16:27:ac:a5:76:28:2d:36:63:1b:56:4d:eb:df:a6:48.
-Are you sure you want to continue connecting (yes/no)?</code></pre>
-<p>不要紧张，输入yes就好。</p>
-
+Are you sure you want to continue connecting (yes/no)?
+</code></pre><p>不要紧张，输入yes就好。</p>
 <p>至此，Github项目已创建好。</p>
-
 <h5 id="上传github">上传Github</h5>
-
 <p>上传Github：<a href="http://www.gohugo.org/">Hugo官方文档</a></p>
-
 <p>首先通过命令（blog文件夹下）：</p>
-
 <blockquote>
 <p>hugo</p>
 </blockquote>
-
 <p>生成要上传的静态文件，存于public 文件加下。</p>
-
 <p>接下来上传：</p>
 <pre><code>$ cd public
 $ git init
 $ git remote add origin https://github.com/coderzh/coderzh.github.io.git
 $ git add -A
-$ git commit -m "first commit"
-$ git push -u origin master</code></pre>
-<p>浏览器访问：<code>https://username.github.io/</code>  user替换成你自己的用户名。</p>
+$ git commit -m &quot;first commit&quot;
+$ git push -u origin master
+</code></pre><p>浏览器访问：<code>https://username.github.io/ </code>  user替换成你自己的用户名。</p>
         </div>
 
         
@@ -468,7 +383,11 @@ $ git push -u origin master</code></pre>
 <ul class="widget-list">
     
     <li>
-        <a href="https://vvc-dream.netlify.com/posts/2020/03/02/add-music-post.html" title="文章中引入音乐">文章中引入音乐</a>
+        <a href="https://vvc-dream.netlify.com/posts/2020/03/03/hugo-pjax.html" title="全局音乐 Pjax优化">全局音乐 Pjax优化</a>
+    </li>
+    
+    <li>
+        <a href="https://vvc-dream.netlify.com/posts/2020/03/02/add-music-post.html" title="文章中加入音、视频">文章中加入音、视频</a>
     </li>
     
     <li>
@@ -490,12 +409,16 @@ $ git push -u origin master</code></pre>
     
     <li><a href="https://vvc-dream.netlify.com/categories/blog/">blog (3)</a></li>
     
+    <li><a href="https://vvc-dream.netlify.com/categories/hugo/">hugo (1)</a></li>
+    
 </ul>
     </section>
 
     <section class="widget">
         <h3 class="widget-title">标签</h3>
 <div class="tagcloud">
+    
+    <a href="https://vvc-dream.netlify.com/tags/blog/">blog</a>
     
     <a href="https://vvc-dream.netlify.com/tags/hugo/">hugo</a>
     

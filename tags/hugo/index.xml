@@ -12,12 +12,12 @@
     
     
     <item>
-      <title>文章中引入音乐</title>
+      <title>文章中加入音、视频</title>
       <link>https://vvc-dream.netlify.com/posts/2020/03/02/add-music-post.html</link>
       <pubDate>Mon, 02 Mar 2020 14:08:43 +0800</pubDate>
       
       <guid>https://vvc-dream.netlify.com/posts/2020/03/02/add-music-post.html</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;https://i.picsum.photos/id/77/800/250.jpg&#34; alt=&#34;展示图片&#34; /&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;&lt;img src=&#34;https://i.picsum.photos/id/77/800/250.jpg&#34; alt=&#34;展示图片&#34;&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -26,7 +26,7 @@
       <pubDate>Mon, 02 Mar 2020 14:07:43 +0800</pubDate>
       
       <guid>https://vvc-dream.netlify.com/posts/2020/03/02/raw-HMTL-omitted.html</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;https://i.picsum.photos/id/723/800/250.jpg&#34; alt=&#34;展示图片&#34; /&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;&lt;img src=&#34;https://i.picsum.photos/id/723/800/250.jpg&#34; alt=&#34;展示图片&#34;&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -35,7 +35,7 @@
       <pubDate>Sun, 01 Mar 2020 15:52:31 +0800</pubDate>
       
       <guid>https://vvc-dream.netlify.com/posts/2020/03/01/creat-hugo.html</guid>
-      <description>&lt;p&gt;​   &lt;img src=&#34;https://i.picsum.photos/id/238/800/250.jpg&#34; alt=&#34;展示图片&#34; /&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;​	&lt;img src=&#34;https://i.picsum.photos/id/238/800/250.jpg&#34; alt=&#34;展示图片&#34;&gt;&lt;/p&gt;</description>
     </item>
     
   </channel>

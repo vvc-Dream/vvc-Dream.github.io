@@ -1,6 +1,10 @@
 
 $(document).ready(function(){
-
+	
+	var load = new Loading();
+	load.init({
+		target: '#pjax-content'
+	});
 	$.pjax({
 		selector: 'a',
 		container: '#pjax-content', //被替换的容器
@@ -9,8 +13,12 @@ $(document).ready(function(){
 		cache: true,  //是否使用缓存
 		storage: true,  //是否使用本地存储
 		titleSuffix: '', //标题后缀
-		filter: function(){},
-		callback: function(){}
+		filter: function(){
+			load.start();
+		},
+		callback: function(){
+			load.stop();
+		}
 	});
   
 	if (!!window.localStorage) {

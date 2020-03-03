@@ -36,7 +36,8 @@
 	<script type="text/javascript" src="/js/jquery.pjax.js" async="true"></script>
 	<script type="text/javascript" src="/js/MyPjax.js" async="true"></script>
 	<script src='//unpkg.com/valine/dist/Valine.min.js'></script>
-
+	<link rel="stylesheet" href="https://vvc-dream.netlify.com/css/loading.css">
+	<script type="text/javascript" src="/js/loading.js" async="true"></script>
 	
 	<link rel="stylesheet" href="https://vvc-dream.netlify.com/css/APlayer.min.css">
 	<script type="text/javascript" src="https://vvc-dream.netlify.com/js/APlayer.min.js" ></script>
@@ -117,39 +118,26 @@
         
         
         <div class="post-content">
-            <p><img src="https://i.picsum.photos/id/723/800/250.jpg" alt="展示图片" /></p>
-
+            <p><img src="https://i.picsum.photos/id/723/800/250.jpg" alt="展示图片"></p>
 <h3 id="记录一次hugo给我挖的坑">记录一次hugo给我挖的坑</h3>
-
 <p>记录一下hugo文章中插入html语句的槽点及解决方法</p>
-
-<hr />
-
-<p>​       最开始是想在文章中插入音乐，试一下效果咋样，因为本来markdown中就支持插入音乐。</p>
-
+<hr>
+<h4 id="heading"></h4>
+<p>​		最开始是想在文章中插入音乐，试一下效果咋样，因为本来markdown中就支持插入音乐。</p>
 <p>此处以网易音乐为例，官方外链代码：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">iframe</span> <span style="color:#a6e22e">frameborder</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;no&#34;</span> <span style="color:#a6e22e">border</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;0&#34;</span> <span style="color:#a6e22e">marginwidth</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;0&#34;</span> <span style="color:#a6e22e">marginheight</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;0&#34;</span> <span style="color:#a6e22e">width</span><span style="color:#f92672">=</span><span style="color:#e6db74">330</span> <span style="color:#a6e22e">height</span><span style="color:#f92672">=</span><span style="color:#e6db74">86</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;//music.163.com/outchain/player?type=2&amp;id=409931420&amp;auto=0&amp;height=66&#34;</span>&gt;&lt;/<span style="color:#f92672">iframe</span>&gt;</code></pre></div>
-<p>在markdown中是这样的效果：</p>
-
-<p><img src="https://s2.ax1x.com/2020/03/02/3fp5f1.png" alt="3fp5f1.png" /></p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">iframe</span> <span style="color:#a6e22e">frameborder</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;no&#34;</span> <span style="color:#a6e22e">border</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;0&#34;</span> <span style="color:#a6e22e">marginwidth</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;0&#34;</span> <span style="color:#a6e22e">marginheight</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;0&#34;</span> <span style="color:#a6e22e">width</span><span style="color:#f92672">=</span><span style="color:#e6db74">330</span> <span style="color:#a6e22e">height</span><span style="color:#f92672">=</span><span style="color:#e6db74">86</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;//music.163.com/outchain/player?type=2&amp;id=409931420&amp;auto=0&amp;height=66&#34;</span>&gt;&lt;/<span style="color:#f92672">iframe</span>&gt;
+</code></pre></div><p>在markdown中是这样的效果：</p>
+<p><img src="https://s2.ax1x.com/2020/03/02/3fp5f1.png" alt="3fp5f1.png"></p>
 <p>但在本地预览时却一直出不来，我一直以为在markdown中插入html代码的方式不对，找了半天也没法解决。所幸后来喵了一眼经hugo解析后生成的代码，最终才发现问题所在。解析后的代码如下：</p>
-
-<p><img src="https://s2.ax1x.com/2020/03/02/3Wbicj.png" alt="3Wbicj.png" /></p>
-
+<p><img src="https://s2.ax1x.com/2020/03/02/3Wbicj.png" alt="3Wbicj.png"></p>
 <p>可以很明显得看到是由于hugo解析时将markdown中的html代码忽略所致<code>raw HMTL omitted</code></p>
-
 <p>找到了问题所在就可以利用强大的互联网精确锁定了，最终在 <a href="https://jdhao.github.io/2019/12/29/hugo_html_not_shown/">hugo_html_not_shown</a> 这篇文章找到解决的办法。即在配置文件 <code>config.toml</code> 中增加：</p>
 <pre><code>[markup]
-  defaultMarkdownHandler = "blackfriday"</code></pre>
-<p>即可解决。最终效果如下：</p>
-
+  defaultMarkdownHandler = &quot;blackfriday&quot;
+</code></pre><p>即可解决。最终效果如下：</p>
 <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=409931420&auto=1&height=66"></iframe>
-
 <p>​</p>
-
 <p>​</p>
-
 <p>​</p>
         </div>
 
@@ -219,7 +207,11 @@
 <ul class="widget-list">
     
     <li>
-        <a href="https://vvc-dream.netlify.com/posts/2020/03/02/add-music-post.html" title="文章中引入音乐">文章中引入音乐</a>
+        <a href="https://vvc-dream.netlify.com/posts/2020/03/03/hugo-pjax.html" title="全局音乐 Pjax优化">全局音乐 Pjax优化</a>
+    </li>
+    
+    <li>
+        <a href="https://vvc-dream.netlify.com/posts/2020/03/02/add-music-post.html" title="文章中加入音、视频">文章中加入音、视频</a>
     </li>
     
     <li>
@@ -241,12 +233,16 @@
     
     <li><a href="https://vvc-dream.netlify.com/categories/blog/">blog (3)</a></li>
     
+    <li><a href="https://vvc-dream.netlify.com/categories/hugo/">hugo (1)</a></li>
+    
 </ul>
     </section>
 
     <section class="widget">
         <h3 class="widget-title">标签</h3>
 <div class="tagcloud">
+    
+    <a href="https://vvc-dream.netlify.com/tags/blog/">blog</a>
     
     <a href="https://vvc-dream.netlify.com/tags/hugo/">hugo</a>
     
