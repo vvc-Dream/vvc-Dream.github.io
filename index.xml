@@ -2,84 +2,84 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>vvc-Dream&#39; Blog</title>
-    <link>https://vvc-dream.netlify.com/</link>
+    <link>https://www.vvc-dream.top/</link>
     <description>Recent content on vvc-Dream&#39; Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <lastBuildDate>Tue, 03 Mar 2020 16:35:21 +0800</lastBuildDate>
     
-	<atom:link href="https://vvc-dream.netlify.com/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.vvc-dream.top/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>全局音乐 Pjax优化</title>
-      <link>https://vvc-dream.netlify.com/posts/2020/03/03/hugo-pjax.html</link>
+      <link>https://www.vvc-dream.top/posts/2020/03/03/hugo-pjax.html</link>
       <pubDate>Tue, 03 Mar 2020 16:35:21 +0800</pubDate>
       
-      <guid>https://vvc-dream.netlify.com/posts/2020/03/03/hugo-pjax.html</guid>
+      <guid>https://www.vvc-dream.top/posts/2020/03/03/hugo-pjax.html</guid>
       <description>&lt;p&gt;&lt;img src=&#34;https://i.picsum.photos/id/336/800/250.jpg&#34; alt=&#34;随机图片&#34;&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>文章中加入音、视频</title>
-      <link>https://vvc-dream.netlify.com/posts/2020/03/02/add-music-post.html</link>
+      <link>https://www.vvc-dream.top/posts/2020/03/02/add-music-post.html</link>
       <pubDate>Mon, 02 Mar 2020 14:08:43 +0800</pubDate>
       
-      <guid>https://vvc-dream.netlify.com/posts/2020/03/02/add-music-post.html</guid>
+      <guid>https://www.vvc-dream.top/posts/2020/03/02/add-music-post.html</guid>
       <description>&lt;p&gt;&lt;img src=&#34;https://i.picsum.photos/id/77/800/250.jpg&#34; alt=&#34;展示图片&#34;&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>raw HMTL omitted</title>
-      <link>https://vvc-dream.netlify.com/posts/2020/03/02/raw-HMTL-omitted.html</link>
+      <link>https://www.vvc-dream.top/posts/2020/03/02/raw-HMTL-omitted.html</link>
       <pubDate>Mon, 02 Mar 2020 14:07:43 +0800</pubDate>
       
-      <guid>https://vvc-dream.netlify.com/posts/2020/03/02/raw-HMTL-omitted.html</guid>
+      <guid>https://www.vvc-dream.top/posts/2020/03/02/raw-HMTL-omitted.html</guid>
       <description>&lt;p&gt;&lt;img src=&#34;https://i.picsum.photos/id/723/800/250.jpg&#34; alt=&#34;展示图片&#34;&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>使用Hugo&#43;Github创建个人博客</title>
-      <link>https://vvc-dream.netlify.com/posts/2020/03/01/creat-hugo.html</link>
+      <link>https://www.vvc-dream.top/posts/2020/03/01/creat-hugo.html</link>
       <pubDate>Sun, 01 Mar 2020 15:52:31 +0800</pubDate>
       
-      <guid>https://vvc-dream.netlify.com/posts/2020/03/01/creat-hugo.html</guid>
+      <guid>https://www.vvc-dream.top/posts/2020/03/01/creat-hugo.html</guid>
       <description>&lt;p&gt;​	&lt;img src=&#34;https://i.picsum.photos/id/238/800/250.jpg&#34; alt=&#34;展示图片&#34;&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>about</title>
-      <link>https://vvc-dream.netlify.com/about/</link>
+      <link>https://www.vvc-dream.top/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://vvc-dream.netlify.com/about/</guid>
+      <guid>https://www.vvc-dream.top/about/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Archives</title>
-      <link>https://vvc-dream.netlify.com/archives/</link>
+      <link>https://www.vvc-dream.top/archives/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://vvc-dream.netlify.com/archives/</guid>
+      <guid>https://www.vvc-dream.top/archives/</guid>
       <description></description>
     </item>
     
     <item>
       <title>books</title>
-      <link>https://vvc-dream.netlify.com/books/</link>
+      <link>https://www.vvc-dream.top/books/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://vvc-dream.netlify.com/books/</guid>
+      <guid>https://www.vvc-dream.top/books/</guid>
       <description></description>
     </item>
     
     <item>
       <title>搜索</title>
-      <link>https://vvc-dream.netlify.com/search/</link>
+      <link>https://www.vvc-dream.top/search/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://vvc-dream.netlify.com/search/</guid>
+      <guid>https://www.vvc-dream.top/search/</guid>
       <description></description>
     </item>
     

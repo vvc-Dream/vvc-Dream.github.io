@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>blog on vvc-Dream&#39; Blog</title>
-    <link>https://vvc-dream.netlify.com/tags/blog/</link>
+    <link>https://www.vvc-dream.top/tags/blog/</link>
     <description>Recent content in blog on vvc-Dream&#39; Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <lastBuildDate>Tue, 03 Mar 2020 16:35:21 +0800</lastBuildDate>
     
-	<atom:link href="https://vvc-dream.netlify.com/tags/blog/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.vvc-dream.top/tags/blog/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>全局音乐 Pjax优化</title>
-      <link>https://vvc-dream.netlify.com/posts/2020/03/03/hugo-pjax.html</link>
+      <link>https://www.vvc-dream.top/posts/2020/03/03/hugo-pjax.html</link>
       <pubDate>Tue, 03 Mar 2020 16:35:21 +0800</pubDate>
       
-      <guid>https://vvc-dream.netlify.com/posts/2020/03/03/hugo-pjax.html</guid>
+      <guid>https://www.vvc-dream.top/posts/2020/03/03/hugo-pjax.html</guid>
       <description>&lt;p&gt;&lt;img src=&#34;https://i.picsum.photos/id/336/800/250.jpg&#34; alt=&#34;随机图片&#34;&gt;&lt;/p&gt;</description>
     </item>
     

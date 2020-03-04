@@ -2,39 +2,39 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>hugo on vvc-Dream&#39; Blog</title>
-    <link>https://vvc-dream.netlify.com/tags/hugo/</link>
+    <link>https://www.vvc-dream.top/tags/hugo/</link>
     <description>Recent content in hugo on vvc-Dream&#39; Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <lastBuildDate>Mon, 02 Mar 2020 14:08:43 +0800</lastBuildDate>
     
-	<atom:link href="https://vvc-dream.netlify.com/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.vvc-dream.top/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>文章中加入音、视频</title>
-      <link>https://vvc-dream.netlify.com/posts/2020/03/02/add-music-post.html</link>
+      <link>https://www.vvc-dream.top/posts/2020/03/02/add-music-post.html</link>
       <pubDate>Mon, 02 Mar 2020 14:08:43 +0800</pubDate>
       
-      <guid>https://vvc-dream.netlify.com/posts/2020/03/02/add-music-post.html</guid>
+      <guid>https://www.vvc-dream.top/posts/2020/03/02/add-music-post.html</guid>
       <description>&lt;p&gt;&lt;img src=&#34;https://i.picsum.photos/id/77/800/250.jpg&#34; alt=&#34;展示图片&#34;&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>raw HMTL omitted</title>
-      <link>https://vvc-dream.netlify.com/posts/2020/03/02/raw-HMTL-omitted.html</link>
+      <link>https://www.vvc-dream.top/posts/2020/03/02/raw-HMTL-omitted.html</link>
       <pubDate>Mon, 02 Mar 2020 14:07:43 +0800</pubDate>
       
-      <guid>https://vvc-dream.netlify.com/posts/2020/03/02/raw-HMTL-omitted.html</guid>
+      <guid>https://www.vvc-dream.top/posts/2020/03/02/raw-HMTL-omitted.html</guid>
       <description>&lt;p&gt;&lt;img src=&#34;https://i.picsum.photos/id/723/800/250.jpg&#34; alt=&#34;展示图片&#34;&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>使用Hugo&#43;Github创建个人博客</title>
-      <link>https://vvc-dream.netlify.com/posts/2020/03/01/creat-hugo.html</link>
+      <link>https://www.vvc-dream.top/posts/2020/03/01/creat-hugo.html</link>
       <pubDate>Sun, 01 Mar 2020 15:52:31 +0800</pubDate>
       
-      <guid>https://vvc-dream.netlify.com/posts/2020/03/01/creat-hugo.html</guid>
+      <guid>https://www.vvc-dream.top/posts/2020/03/01/creat-hugo.html</guid>
       <description>&lt;p&gt;​	&lt;img src=&#34;https://i.picsum.photos/id/238/800/250.jpg&#34; alt=&#34;展示图片&#34;&gt;&lt;/p&gt;</description>
     </item>
     
