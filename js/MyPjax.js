@@ -1,6 +1,5 @@
 
 $(document).ready(function(){
-	
 	var load = new Loading();
 	load.init({
 		target: '#pjax-content'
