@@ -1050,3 +1050,15 @@ table tr th, table tr td {
     padding: 0.5em 1em;
     text-align: left;
 }
+
+.video {
+    width:780px;
+    height:480px;
+}
+
+@media print, screen and (max-width:500px) {
+    .video {
+    width:360px;
+    height:170px;
+	}
+}
